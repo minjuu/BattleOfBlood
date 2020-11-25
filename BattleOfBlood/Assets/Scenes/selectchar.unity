@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 224002162}
   - component: {fileID: 224002161}
   - component: {fileID: 224002160}
+  - component: {fileID: 224002163}
   m_Layer: 5
   m_Name: SelectButton
   m_TagString: Untagged
@@ -509,13 +510,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 224002158}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 224002163}
+        m_TargetAssemblyTypeName: selectchar, Assembly-CSharp
+        m_MethodName: onStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -559,6 +560,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224002158}
   m_CullTransparentMesh: 0
+--- !u!114 &224002163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224002158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e9d7d6791e0b14089fcbcc634da702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &328511651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 507914458}
   - component: {fileID: 507914459}
+  - component: {fileID: 507914460}
   m_Layer: 5
   m_Name: Sonny
   m_TagString: Untagged
@@ -1183,19 +1197,32 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 7a2946088a45cc64090294920103abd9, type: 3}
-        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 507914460}
+        m_TargetAssemblyTypeName: sonnychar, Assembly-CSharp
+        m_MethodName: PanelControl
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &507914460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507914457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2946088a45cc64090294920103abd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
 --- !u!1 &546283677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838764358}
   - component: {fileID: 838764359}
+  - component: {fileID: 838764360}
   m_Layer: 5
   m_Name: Healer
   m_TagString: Untagged
@@ -1537,19 +1565,32 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: b2e86ed95c26fdc419d454a92fa09fb8, type: 3}
-        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 838764360}
+        m_TargetAssemblyTypeName: healerchar, Assembly-CSharp
+        m_MethodName: PanelControl
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &838764360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838764357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e86ed95c26fdc419d454a92fa09fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
 --- !u!1 &864317366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883308350}
   - component: {fileID: 883308351}
+  - component: {fileID: 883308352}
   m_Layer: 5
   m_Name: Shooter
   m_TagString: Untagged
@@ -1726,7 +1768,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: a7cb8cf508ad18f499692284f62b6958, type: 3}
+      - m_Target: {fileID: 883308349}
         m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor
         m_MethodName: 
         m_Mode: 1
@@ -1739,6 +1781,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &883308352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883308349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cb8cf508ad18f499692284f62b6958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 758463853107030955, guid: 17dad0f17d8e63b408be1401692e8836, type: 3}
 --- !u!1 &955985420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,6 +1879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1721811756}
   - component: {fileID: 1721811757}
+  - component: {fileID: 1721811758}
   m_Layer: 5
   m_Name: Booster
   m_TagString: Untagged
@@ -1898,19 +1954,32 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 7a97f7dfc77423644b69ffffa508b9f7, type: 3}
-        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1721811758}
+        m_TargetAssemblyTypeName: boosterchar, Assembly-CSharp
+        m_MethodName: PanelControl
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &1721811758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721811755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a97f7dfc77423644b69ffffa508b9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 6206743720604802716, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
 --- !u!1 &1907295631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921640519}
   - component: {fileID: 1921640520}
+  - component: {fileID: 1921640521}
   m_Layer: 5
   m_Name: Bastion
   m_TagString: Untagged
@@ -2078,19 +2148,32 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 3d308f915c62c3b4aaf452a071556bae, type: 3}
-        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1921640521}
+        m_TargetAssemblyTypeName: bastionchar, Assembly-CSharp
+        m_MethodName: PanelControl
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &1921640521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921640518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d308f915c62c3b4aaf452a071556bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
 --- !u!1 &1922458444
 GameObject:
   m_ObjectHideFlags: 0

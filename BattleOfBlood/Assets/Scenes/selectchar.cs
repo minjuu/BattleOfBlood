@@ -2,19 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class selectchar : MonoBehaviour
 {
-    Toggle m_Toggle;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void onStart()
     {
-        
+        SceneManager.LoadScene("SampleScene"); //스테이지2 씬 로드
     }
 }
