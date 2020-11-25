@@ -30,6 +30,7 @@ public class WaterBalloon : MonoBehaviour
             GameObject Water = GameObject.Instantiate(water);
             water_pos.x = transform.position.x; // 구멍의 x 위치 = 아이템 공의 x 위치
             water_pos.z = transform.position.z; // 구멍의 z 위치 = 아이템 공의 z 위치
+            water_pos.y = 0.35f; // 구멍의 x 위치 = 아이템 공의 x 위치
             Water.transform.position = water_pos; // Water 오브젝트의 위치 저장
             Water.transform.parent = null;  //위치 독립
         }
