@@ -5,27 +5,11 @@ using UnityEngine;
 public class sonnychar : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public void MyListener(bool value)
+    /*
+    public void PanelControl(Toggle toggletest)
     {
-        if (value)
-        {
-            //do the stuff when the toggle is on
-        }
-        else
-        {
-            //do the stuff when the toggle is off
-        }
-
+        if(toggletest.isOn)
+            character.gameObject.tag = "Team";
     }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    */
 }
