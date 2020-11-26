@@ -242,8 +242,8 @@ GameObject:
   - component: {fileID: 6273956640279298811}
   - component: {fileID: 4803436812980472080}
   m_Layer: 0
-  m_Name: TT_demo_male_B
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Team
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

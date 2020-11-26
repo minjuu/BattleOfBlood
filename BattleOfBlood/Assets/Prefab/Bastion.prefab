@@ -256,8 +256,8 @@ GameObject:
   - component: {fileID: 8610373646479813803}
   - component: {fileID: 5952048417208958064}
   m_Layer: 0
-  m_Name: TankFree_Yel
-  m_TagString: Untagged
+  m_Name: Bastion
+  m_TagString: Team
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

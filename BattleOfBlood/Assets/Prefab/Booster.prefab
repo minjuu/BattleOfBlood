@@ -101,8 +101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6206743720605069696}
   m_Layer: 0
-  m_Name: TT_ww1_demo_british_A
-  m_TagString: Untagged
+  m_Name: Booster
+  m_TagString: Team
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

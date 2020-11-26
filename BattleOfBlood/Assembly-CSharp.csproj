@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scenes\sonnychar.cs" />
     <Compile Include="Assets\Scenes\healerchar.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\Scenes\SelectMng.cs" />
     <Compile Include="Assets\Scenes\boosterchar.cs" />
   </ItemGroup>
   <ItemGroup>
