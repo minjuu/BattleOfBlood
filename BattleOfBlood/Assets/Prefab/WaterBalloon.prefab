@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1410214059288176273}
   - component: {fileID: -4404955956585667194}
   - component: {fileID: -8683295707417597715}
+  - component: {fileID: 6842517991227849197}
   m_Layer: 0
   m_Name: WaterBalloon
-  m_TagString: Untagged
+  m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water: {fileID: 7713075259290374625, guid: a62ac1c95d480554d8d67b5cb06004d1, type: 3}
+  Dir: {x: 0, y: 0, z: 0}
 --- !u!54 &-8683295707417597715
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +128,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6842517991227849197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055676447326888723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4a83f384271374f8e4f264c15fb1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dir: {x: 0, y: 0, z: 0}
