@@ -9,6 +9,7 @@ TagManager:
   - Team
   - Enemy
   - Bullet
+  - Bastion_balloon
   layers:
   - Default
   - TransparentFX
