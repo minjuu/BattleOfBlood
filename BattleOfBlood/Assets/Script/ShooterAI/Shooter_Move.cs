@@ -6,14 +6,13 @@ public class Shooter_Move : MonoBehaviour
 {
     public static float ShooterSpeed = 3f;
     public static int ShooterHp = 100;
-
+    public static string ShooterTag;
     GameObject[] teamObject;
     GameObject[] enemyObject;
 
     public GameObject Prefab_bullet;
     public static GameObject shortEnemy; //슈터와 가장 가까운 적
     public static Vector3 Goal;
-    float DirR = 180.0f; //플레이어와 반대방향
     Vector3 Dir;
     Vector3 lookat;
     int nTime = 0;
@@ -72,9 +71,12 @@ public class Shooter_Move : MonoBehaviour
 
         x = gameObject.transform.position.x - shortEnemy.transform.position.x;
         z = gameObject.transform.position.z - shortEnemy.transform.position.z;
-
-        if (gtimer > etimer || col == true)
+        if (gtimer > etimer)
         {
+            if (shortDistance <= 1.5f)
+            {
+                shooter_dir = 4;
+            }
             if (Mathf.Abs(x) < Mathf.Abs(z))
             {
                 if (x < 0)
@@ -89,7 +91,9 @@ public class Shooter_Move : MonoBehaviour
                 if (z >= 0)
                     shooter_dir = 3;
             }
-            if (Player.ShooterHp >= 50)
+            if (cubecol == true)
+                shooter_dir = Random.Range(0, 4);
+            if (Player.ShooterHp >= 0 || col == true)
             {
                 if (shooter_dir == 0)
                 {
@@ -107,12 +111,18 @@ public class Shooter_Move : MonoBehaviour
                 {
                     Goal = new Vector3(0, 0, -1);
                 }
+                if (shooter_dir == 4)
+                {
+                    Goal = new Vector3(0, 0, 0);
+                }
             }
             Quaternion Rot = Quaternion.LookRotation(Goal);
             gameObject.transform.localRotation = Rot;
-            Dir = Dir = shortEnemy.transform.position.normalized;
+
+            Dir = (shortEnemy.transform.position - gameObject.transform.position).normalized;
             Dir.y = 0;
 
+            cubecol = false;
             col = false;
             return true;
         }
@@ -172,7 +182,7 @@ public class Shooter_Move : MonoBehaviour
     {
         if (cubecol == true)
         {
-            Dir = cube_position.normalized;
+            Dir = (cube_position - gameObject.transform.position).normalized;
             Dir.y = 0;
             cubecol = false;
             return true;
@@ -187,6 +197,7 @@ public class Shooter_Move : MonoBehaviour
         enemyObject = GameObject.FindGameObjectsWithTag("Enemy");
         col = false;
         cubecol = false;
+        ShooterTag = gameObject.tag;
     }
 
     // Update is called once per frame
