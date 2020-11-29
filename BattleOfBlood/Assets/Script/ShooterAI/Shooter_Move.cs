@@ -11,7 +11,7 @@ public class Shooter_Move : MonoBehaviour
     GameObject[] enemyObject;
 
     public GameObject Prefab_bullet;
-    public GameObject shortEnemy; //슈터와 가장 가까운 적
+    public static GameObject shortEnemy; //슈터와 가장 가까운 적
     public static Vector3 Goal;
     float DirR = 180.0f; //플레이어와 반대방향
     Vector3 Dir;
@@ -26,8 +26,11 @@ public class Shooter_Move : MonoBehaviour
     public static bool cubecol;
     public static int bulletCount = 3;
     private float shortDistance;
+    public static int shooter_dir = -1;
 
     int sd_1 = 0;
+    private float x;
+    private float z;
 
     public bool ShooterMove()
     {
@@ -65,34 +68,50 @@ public class Shooter_Move : MonoBehaviour
 
         float gtimer = Time.time;
         etimer = gtimer + 0.035f;
-
         gtimer += Time.deltaTime;
+
+        x = gameObject.transform.position.x - shortEnemy.transform.position.x;
+        z = gameObject.transform.position.y - shortEnemy.transform.position.z;
+
         if (gtimer > etimer || col == true)
         {
+            if (Mathf.Abs(x) < Mathf.Abs(z))
+            {
+                if (x < 0)
+                    shooter_dir = 0;
+                if (x >= 0)
+                    shooter_dir = 1;
+            }
+            if (Mathf.Abs(x) > Mathf.Abs(z))
+            {
+                if (z < 0) //적이 슈터보다 z값큼
+                    shooter_dir = 2;
+                if (z >= 0)
+                    shooter_dir = 3;
+            }
             if (Player.ShooterHp >= 50)
             {
-                int ran = Random.Range(0, 4);
-
-                if (ran == 0)
+                if (shooter_dir == 0)
                 {
                     Goal = new Vector3(1, 0, 0);
                 }
-                if (ran == 1)
+                if (shooter_dir == 1)
                 {
                     Goal = new Vector3(-1, 0, 0);
                 }
-                if (ran == 2)
+                if (shooter_dir == 2)
                 {
                     Goal = new Vector3(0, 0, 1);
                 }
-                if (ran == 3)
+                if (shooter_dir == 3)
                 {
                     Goal = new Vector3(0, 0, -1);
                 }
             }
             Quaternion Rot = Quaternion.LookRotation(Goal);
             gameObject.transform.localRotation = Rot;
-
+            Dir = Dir = shortEnemy.transform.position.normalized;
+            Dir.y = 0;
 
             col = false;
             return true;
@@ -120,10 +139,7 @@ public class Shooter_Move : MonoBehaviour
                     }
                 }
 
-                Vector3 Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
-                Enemy_Dir.Normalize();
-                Dir = Enemy_Dir;
-                Debug.Log("가까운enemy: " + shortEnemy.name + "\ndir : " + Dir);
+                Debug.Log("가까운 TeamEnemy: " + shortEnemy.name + "\ndir : " + Dir);
             }
             else
             {
@@ -137,6 +153,7 @@ public class Shooter_Move : MonoBehaviour
                         shortEnemy = Player.Enemy_array[sd_1];
                     }
                 }
+                Debug.Log("가까운 EnemyEnemy: " + shortEnemy.name + "\ndir : " + Dir);
             }
             return true;
         }
@@ -159,10 +176,6 @@ public class Shooter_Move : MonoBehaviour
             Dir.y = 0;
             cubecol = false;
             return true;
-        }
-        else
-        {
-            Dir = Goal;
         }
         return false;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BastionMove : MonoBehaviour
 {
-    public static float BastionSpeed = 0.05f;
+    public static float BastionSpeed = 0.01f;
     public static int BastionHp = 100;
 
     public GameObject Prefab_balloon;
@@ -104,7 +104,17 @@ public class BastionMove : MonoBehaviour
                 Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
                 DirR = Rot.eulerAngles.y;
                 gameObject.transform.localRotation = Rot;
-                gameObject.transform.position += lookat * BastionSpeed;
+
+                //gameObject.transform.position += lookat * BastionSpeed;
+
+                if (shortDistance > 1.5f)
+                {
+                    gameObject.transform.position += lookat * BastionSpeed;
+                }
+                else
+                {
+                    gameObject.transform.position -= lookat * BastionSpeed;
+                }
 
             }
             if (gameObject.tag == "Enemy")
@@ -150,10 +160,19 @@ public class BastionMove : MonoBehaviour
                     else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
                         lookat = new Vector3(0, 0, -1);
                 }
+
                 Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
                 DirR = Rot.eulerAngles.y;
                 gameObject.transform.localRotation = Rot;
-                gameObject.transform.position += lookat * BastionSpeed;
+
+                if (shortDistance > 1.5f)
+                {
+                    gameObject.transform.position += lookat * BastionSpeed;
+                }
+                else
+                {
+                    gameObject.transform.position -= lookat * BastionSpeed;
+                }
             }
 
             return true;
