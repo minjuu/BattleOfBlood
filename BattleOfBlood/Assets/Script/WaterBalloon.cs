@@ -16,7 +16,7 @@ public class WaterBalloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float wtimer = Time.time;
+        float wtimer = 0;
         etimer = wtimer+0.002f;
     }
 

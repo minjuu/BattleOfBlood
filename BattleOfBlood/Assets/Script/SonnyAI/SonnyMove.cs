@@ -161,65 +161,69 @@ public class SonnyMove : MonoBehaviour
             min = 1000000;
             int m_idx=0;
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Balloon");
-            for (int i = 0; i < objArray.Length; i++)
-            { 
-                if ((objArray[i].transform.position - gameObject.transform.position).magnitude < min)
-                {
-                    min = (objArray[i].transform.position - gameObject.transform.position).magnitude;
-                    m_idx = i;
-                }
-            }
-           if ((objArray[m_idx].transform.position - gameObject.transform.position).magnitude < 5)
+            if (objArray.Length > 0)
             {
-                Vector3 Dir = transform.position - objArray[m_idx].transform.position;
-                Dir.Normalize();
-                Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-                gameObject.transform.localRotation = Rot;
-                gameObject.transform.position += Dir * SonnySpeed;
-            }
-           else
-            {
-                if (gameObject.tag == "Team")
+                for (int i = 0; i < objArray.Length; i++)
                 {
-                    float e_min = 1000000;
-                    m_idx=0;
-                    GameObject[] e_Array = GameObject.FindGameObjectsWithTag("Enemy");
-                    for (int i = 0; i < e_Array.Length; i++)
+                    if ((objArray[i].transform.position - gameObject.transform.position).magnitude < min)
                     {
-                        if ((e_Array[i].transform.position - gameObject.transform.position).magnitude < e_min)
-                        {
-                            e_min = (e_Array[i].transform.position - gameObject.transform.position).magnitude;
-                            m_idx = i;
-                        }
+                        min = (objArray[i].transform.position - gameObject.transform.position).magnitude;
+                        m_idx = i;
                     }
-                    Vector3 Dir = transform.position - e_Array[m_idx].transform.position;
+                }
+                if ((objArray[m_idx].transform.position - gameObject.transform.position).magnitude < 5)
+                {
+                    Vector3 Dir = transform.position - objArray[m_idx].transform.position;
                     Dir.Normalize();
                     Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
                     gameObject.transform.localRotation = Rot;
                     gameObject.transform.position += Dir * SonnySpeed;
                 }
-                else if (gameObject.tag == "Enemy")
+                else
                 {
-                    m_idx=0;
-                    float e_min = 1000000;
-                    GameObject[] e_Array = GameObject.FindGameObjectsWithTag("Team");
-                    for (int i = 0; i < e_Array.Length; i++)
+                    if (gameObject.tag == "Team")
                     {
-                        if ((e_Array[i].transform.position - gameObject.transform.position).magnitude < e_min)
+                        float e_min = 1000000;
+                        m_idx = 0;
+                        GameObject[] e_Array = GameObject.FindGameObjectsWithTag("Enemy");
+                        for (int i = 0; i < e_Array.Length; i++)
                         {
-                            e_min = (e_Array[i].transform.position - gameObject.transform.position).magnitude;
-                            m_idx = i;
+                            if ((e_Array[i].transform.position - gameObject.transform.position).magnitude < e_min)
+                            {
+                                e_min = (e_Array[i].transform.position - gameObject.transform.position).magnitude;
+                                m_idx = i;
+                            }
                         }
+                        Vector3 Dir = transform.position - e_Array[m_idx].transform.position;
+                        Dir.Normalize();
+                        Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
+                        gameObject.transform.localRotation = Rot;
+                        gameObject.transform.position += Dir * SonnySpeed;
                     }
-                    Vector3 Dir = transform.position - e_Array[m_idx].transform.position;
-                    Dir.Normalize();
-                    Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-                    gameObject.transform.localRotation = Rot;
-                    gameObject.transform.position += Dir * SonnySpeed;
+                    else if (gameObject.tag == "Enemy")
+                    {
+                        m_idx = 0;
+                        float e_min = 1000000;
+                        GameObject[] e_Array = GameObject.FindGameObjectsWithTag("Team");
+                        for (int i = 0; i < e_Array.Length; i++)
+                        {
+                            if ((e_Array[i].transform.position - gameObject.transform.position).magnitude < e_min)
+                            {
+                                e_min = (e_Array[i].transform.position - gameObject.transform.position).magnitude;
+                                m_idx = i;
+                            }
+                        }
+                        Vector3 Dir = transform.position - e_Array[m_idx].transform.position;
+                        Dir.Normalize();
+                        Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
+                        gameObject.transform.localRotation = Rot;
+                        gameObject.transform.position += Dir * SonnySpeed;
+                    }
                 }
             }
-            Debug.Log("Move");
-            return true;
+                Debug.Log("Move");
+                return true;
+            
         }
         return false;
     }
