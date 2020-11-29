@@ -71,7 +71,7 @@ public class Shooter_Move : MonoBehaviour
         gtimer += Time.deltaTime;
 
         x = gameObject.transform.position.x - shortEnemy.transform.position.x;
-        z = gameObject.transform.position.y - shortEnemy.transform.position.z;
+        z = gameObject.transform.position.z - shortEnemy.transform.position.z;
 
         if (gtimer > etimer || col == true)
         {

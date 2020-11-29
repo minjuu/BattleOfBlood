@@ -8,7 +8,7 @@ public class SonnyMove : MonoBehaviour
     public static int SonnyHp = 200; //체력
     public static int SonnyAp = 10; //공격력
     public static Vector3 SonnyPos;
-    public static float SonnySpeed = 0.01f;
+    public static float SonnySpeed = 0.03f;
     public GameObject Ballon;
 
     public static Vector3 GoalPos; // 물풍선 미는 위치
@@ -25,6 +25,7 @@ public class SonnyMove : MonoBehaviour
     public static Vector3 Goal;
     private float shortDistance;
     public static GameObject shortEnemy; //슈터와 가장 가까운 적
+    public static bool cubecoll;
     int sd_1 = 0;
     Vector3 Dir;
     Vector3 Now;
@@ -69,7 +70,7 @@ public class SonnyMove : MonoBehaviour
         gtimer += Time.deltaTime;
 
         x = gameObject.transform.position.x - shortEnemy.transform.position.x;
-        z = gameObject.transform.position.y - shortEnemy.transform.position.z;
+        z = gameObject.transform.position.z - shortEnemy.transform.position.z;
 
             if (gtimer > etimer || coll == true)
             {
@@ -143,7 +144,7 @@ public class SonnyMove : MonoBehaviour
     {
         nTime++;
         Now = transform.position;
-        Now.y = 0;
+        Now.y = 0.3f;
         transform.position=Now;
     }
     public bool SonnyIsDead()
@@ -265,12 +266,23 @@ public class SonnyMove : MonoBehaviour
         return false;
     }
 
+    public bool Is_Collision() //충돌 처리 기능 추가
+    {
+        if (cubecoll == true)
+        {
+            Dir = cube_position.normalized;
+            Dir.y = 0;
+            cubecoll = false;
+            return true;
+        }
+        return false;
+    }
 
     public bool FindBalloon()
     {
         if (SonnyMove.SonnyHp > 0)
         {
-            min = 1000000;
+            /*min = 1000000;
             int m_idx=0;
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Balloon");
             if (objArray.Length > 0)
@@ -332,7 +344,7 @@ public class SonnyMove : MonoBehaviour
                         gameObject.transform.position += Dir * SonnySpeed;
                     }
                 }
-            }
+            }*/
                 Debug.Log("Move");
                 return true;
             

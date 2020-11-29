@@ -72,6 +72,18 @@ public class FindBalloon : Node
 
     }
 }
+public class Is_Collision : Node       //IsCollision 노드 추가함
+{
+    public SonnyMove Enemy           //노드 내용
+    {
+        set { _Enemy = value; }
+    }
+    private SonnyMove _Enemy;
+    public override bool Invoke()
+    {
+        return _Enemy.Is_Collision();
+    }
+}
 
 public class DetectPosi : Node       //IsCollision 노드 추가함
 {

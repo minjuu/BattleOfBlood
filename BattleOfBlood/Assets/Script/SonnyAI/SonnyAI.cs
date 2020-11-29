@@ -14,6 +14,7 @@ public class SonnyAI : MonoBehaviour
     private SonnyIsDead m_IsDead = new SonnyIsDead();
     private FindingGoalPos m_findinggoalpos = new FindingGoalPos();
     private FindBalloon m_balloon = new FindBalloon();
+    private Is_Collision isCollision = new Is_Collision(); //isCollision 추가
     private DetectPosi detectPos = new DetectPosi();
 
     private SonnyMove m_Sonny;
@@ -32,12 +33,14 @@ public class SonnyAI : MonoBehaviour
         m_balloon.Enemy = m_Sonny;
         m_OnAttack.Enemy = m_Sonny;
         m_IsDead.Enemy = m_Sonny;
+        isCollision.Enemy = m_Sonny;  
         detectPos.Enemy = m_Sonny;
 
         seqMovingAttack.AddChild(m_findinggoalpos);
         seqMovingAttack.AddChild(m_OnAttack);
         seqMovingAttack.AddChild(m_balloon);
         seqMovingAttack.AddChild(moveinmap);
+        seqMovingAttack.AddChild(isCollision); //IsCollision 자식 노드 추가
         seqMovingAttack.AddChild(detectPos);
 
         seqDead.AddChild(m_IsDead);
