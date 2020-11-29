@@ -14,6 +14,7 @@ public class SonnyAI : MonoBehaviour
     private SonnyIsDead m_IsDead = new SonnyIsDead();
     private FindingGoalPos m_findinggoalpos = new FindingGoalPos();
     private FindBalloon m_balloon = new FindBalloon();
+    private DetectPosi detectPos = new DetectPosi();
 
     private SonnyMove m_Sonny;
     private IEnumerator behaviorProcess;
@@ -31,13 +32,14 @@ public class SonnyAI : MonoBehaviour
         m_balloon.Enemy = m_Sonny;
         m_OnAttack.Enemy = m_Sonny;
         m_IsDead.Enemy = m_Sonny;
+        detectPos.Enemy = m_Sonny;
 
-       
         seqMovingAttack.AddChild(m_findinggoalpos);
         seqMovingAttack.AddChild(m_OnAttack);
         seqMovingAttack.AddChild(m_balloon);
         seqMovingAttack.AddChild(moveinmap);
-        
+        seqMovingAttack.AddChild(detectPos);
+
         seqDead.AddChild(m_IsDead);
 
         behaviorProcess = BehaviorProcess();

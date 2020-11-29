@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public static int PlayerHp = 100;
     public static int ShooterHp = 100;
     public static int BastionHp = 100;
+    public static int SonnyHp = 100;
     public static Vector3 PlayerPos;
     public static Vector3 PlayerColPos;
     bool col = false;
