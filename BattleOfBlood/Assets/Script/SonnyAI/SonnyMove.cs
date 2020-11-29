@@ -88,6 +88,8 @@ public class SonnyMove : MonoBehaviour
                     if (z >= 0)
                         sonny_dir = 3;
                 }
+                if (cubecoll == true)
+                    sonny_dir = Random.Range(0, 4);
                 if (Player.SonnyHp >= 50)
                 {
                     if (sonny_dir == 0)
@@ -113,7 +115,7 @@ public class SonnyMove : MonoBehaviour
                 Dir.y = 0;
 
                 coll = false;
-
+                cubecoll = false;
             }
 
 
