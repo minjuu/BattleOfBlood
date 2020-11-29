@@ -18,19 +18,146 @@ public class HealerMove : MonoBehaviour
     public static bool cubecol;
     public static Vector3 cube_position;
 
+    Vector3 Enemy_Dir;
+    Vector3 lookat;
+    public GameObject shortEnemy; //바스티온과 가장 가까운 적
+    float distance = 0.0f; //바스티온과 적과의 거리
+    int sd_1 = 0;
+    float shortDistance;
+
+    public Transform target;
+    private float relativeHeigth = 1.0f; // 높이 즉 y값
+    private float zDistance = -1.0f;// z값 나는 사실 필요 없었다.
+    private float xDistance = 1.0f; // x값
+    public float dampSpeed = 1;  // 따라가는 속도 짧으면 타겟과 같이 움직인다.
+
+
     public bool MoveHealer()
     {
-        //팀 위치 감지 후 그쪽으로 이동
-        if (HealerHp >= 50)
+        Vector3 newPos = target.position + new Vector3(xDistance, relativeHeigth, -zDistance); // 타겟 포지선에 해당 위치를 더해.. 즉 타겟 주변에 위치할 위치를 담는다.. 일정의 거리를 구하는 방법
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * dampSpeed);
+        /*
+        if (HealerHp > 0)
         {
-            Dir = Player.PlayerPos - gameObject.transform.position;
-            Dir.Normalize();
-            Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-            DirR = Rot.eulerAngles.y;
-            gameObject.transform.localRotation = Rot;
-            gameObject.transform.position += Dir * speed;
+            if (gameObject.tag == "Team")
+            {
+                shortDistance = Vector3.Distance(Player.Team_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Team_array.Count; sd_1++)
+                {
+                    distance = Vector3.Distance(Player.Team_array[sd_1].transform.position, gameObject.transform.position);
+                    if (distance <= shortDistance)
+                    {
+                        shortDistance = distance;
+                        shortEnemy = Player.Team_array[sd_1];
+                    }
+                }
+                Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
+                Enemy_Dir.Normalize();
+                if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, 1);
+
+                }
+                else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, -1);
+                }
+                else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(-1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, 1);
+                }
+                else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(-1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, -1);
+                }
+
+                Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
+                DirR = Rot.eulerAngles.y;
+                gameObject.transform.localRotation = Rot;
+
+                if (shortDistance > 1.5f)
+                {
+                    gameObject.transform.position += lookat * HealerSpeed;
+                }
+                else
+                {
+                    gameObject.transform.position -= lookat * HealerSpeed;
+                }
+            }
+            if (gameObject.tag == "Enemy")
+            {
+                shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Enemy_array.Count; sd_1++)
+                {
+                    distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
+                    if (distance <= shortDistance)
+                    {
+                        shortDistance = distance;
+                        shortEnemy = Player.Enemy_array[sd_1];
+                    }
+                }
+                Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
+                Enemy_Dir.Normalize();
+                if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, 1);
+
+                }
+                else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, -1);
+                }
+                else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(-1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, 1);
+                }
+                else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
+                {
+                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(-1, 0, 0);
+                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
+                        lookat = new Vector3(0, 0, -1);
+                }
+
+                Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
+                DirR = Rot.eulerAngles.y;
+                gameObject.transform.localRotation = Rot;
+
+                //gameObject.transform.position += lookat * BastionSpeed;
+
+                if (shortDistance > 1.5f)
+                {
+                    gameObject.transform.position += lookat * HealerSpeed;
+                }
+                else
+                {
+                    gameObject.transform.position -= lookat * HealerSpeed;
+                }
+            }
+        
             return true;
-        }
+        }*/
         return false;
     }
 
