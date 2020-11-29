@@ -55,7 +55,7 @@ public class BastionMove : MonoBehaviour
     }
     public bool BastionMoveFollowTarget()
     {
-        if (Player.BastionHp > 0)
+        if (BastionMove.BastionHp > 0)
         {
             if (gameObject.tag == "Team")
             {
@@ -199,7 +199,7 @@ public class BastionMove : MonoBehaviour
 
     public bool FindEnemy() //제일 가까운 상대팀 위치
     {
-        if (Player.BastionHp > 0)
+        if (BastionMove.BastionHp > 0)
         {
             if (gameObject.tag == "Team")
             {

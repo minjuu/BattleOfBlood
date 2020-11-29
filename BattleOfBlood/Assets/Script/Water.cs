@@ -46,8 +46,29 @@ public class Water : MonoBehaviour
         }
         if (col.gameObject.name == "Shooter")  
         {
-            Player.ShooterHp -= 10;
+            Shooter_Move.ShooterHp -= 10;
         }
-        
+        if (col.gameObject.name == "Bastion")
+        {
+            BastionMove.BastionHp -= 10;
+        }
+        if (col.gameObject.name == "Healer")
+        {
+            HealerMove.HealerHp -= 10;
+        }
+        if (col.gameObject.name == "Booster")
+        {
+            BoosterMove.BoosterHp -= 10;
+        }
+        if (col.gameObject.name == "Player")
+        {
+            Player.PlayerHp -= 10;
+        }
+        if (col.gameObject.name == "Sonny")
+        {
+            SonnyMove.SonnyHp -= 10;
+        }
+
+
     }
 }

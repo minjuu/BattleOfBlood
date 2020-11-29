@@ -6,6 +6,8 @@ public class Shooter_Move : MonoBehaviour
 {
     public static float ShooterSpeed = 3f;
     public static int ShooterHp = 100;
+    public static int ShooterAp = 100;
+    public static int bulletTime = 100;
     public static string ShooterTag;
     GameObject[] teamObject;
     GameObject[] enemyObject;
@@ -73,18 +75,15 @@ public class Shooter_Move : MonoBehaviour
         z = gameObject.transform.position.z - shortEnemy.transform.position.z;
         if (gtimer > etimer)
         {
-            if (shortDistance <= 1.5f)
-            {
-                shooter_dir = 4;
-            }
-            if (Mathf.Abs(x) < Mathf.Abs(z))
+            
+            if (Mathf.Abs(x) > Mathf.Abs(z))
             {
                 if (x < 0)
                     shooter_dir = 0;
                 if (x >= 0)
                     shooter_dir = 1;
             }
-            if (Mathf.Abs(x) > Mathf.Abs(z))
+            if (Mathf.Abs(x) < Mathf.Abs(z))
             {
                 if (z < 0) //적이 슈터보다 z값큼
                     shooter_dir = 2;
@@ -93,7 +92,7 @@ public class Shooter_Move : MonoBehaviour
             }
             if (cubecol == true)
                 shooter_dir = Random.Range(0, 4);
-            if (Player.ShooterHp >= 0 || col == true)
+            if (Shooter_Move.ShooterHp >= 0 || col == true)
             {
                 if (shooter_dir == 0)
                 {
@@ -115,6 +114,10 @@ public class Shooter_Move : MonoBehaviour
                 {
                     Goal = new Vector3(0, 0, 0);
                 }
+                if (shortDistance <= 2)
+                {
+                    Goal = -Goal;
+                }
             }
             Quaternion Rot = Quaternion.LookRotation(Goal);
             gameObject.transform.localRotation = Rot;
@@ -134,7 +137,7 @@ public class Shooter_Move : MonoBehaviour
 
     public bool DetectPos() //적 위치 감지
     {
-        if (ShooterHp > 0)
+        if (Shooter_Move.ShooterHp > 0)
         {
             if (gameObject.tag == "Enemy")
             {
@@ -172,9 +175,35 @@ public class Shooter_Move : MonoBehaviour
 
     public bool ChangeGun() //물총장전
     {
-        if (cubecol == false)
+        if (Shooter_Move.ShooterHp > 0) 
         {
-
+            if (shortEnemy.name == "Shooter")
+            {
+                Shooter_Move.ShooterAp = 10;
+                bulletTime = 100;
+            }
+            if (shortEnemy.name == "Healer")
+            {
+                Shooter_Move.ShooterAp = 6;
+                bulletTime = 50;
+            }
+            if (shortEnemy.name == "Bastion")
+            {
+                Shooter_Move.ShooterAp = 10;
+                bulletTime = 100;
+            }
+            if (shortEnemy.name == "Booster")
+            {
+                Shooter_Move.ShooterAp = 6;
+                bulletTime = 50;
+            }
+            if (shortEnemy.name == "Player")
+            {
+                Shooter_Move.ShooterAp = 10;
+                bulletTime = 100;
+            }
+            Debug.Log("장전" + ShooterAp);
+            return true;
         }
         return false;
     }
@@ -208,7 +237,7 @@ public class Shooter_Move : MonoBehaviour
     }
     public bool IsDead()
     {
-        if (Player.ShooterHp <= 0)
+        if (Shooter_Move.ShooterHp <= 0)
         {
             Debug.Log("Shooter is Dead");
             Destroy(gameObject, 0f);
@@ -219,9 +248,9 @@ public class Shooter_Move : MonoBehaviour
 
     public bool AddBullet()
     {
-        if (Player.ShooterHp > 0 && bulletCount > 0)
+        if (Shooter_Move.ShooterHp > 0 && bulletCount > 0)
         {
-            if (nTime % 100 == 0)
+            if (nTime % bulletTime == 0)
             {
                 GameObject bullet = GameObject.Instantiate(Prefab_bullet) as GameObject;
                 bullet.GetComponent<Bullet_Move>().Dir = Dir;

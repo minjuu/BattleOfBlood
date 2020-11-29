@@ -90,7 +90,7 @@ public class SonnyMove : MonoBehaviour
                 }
                 if (cubecoll == true)
                     sonny_dir = Random.Range(0, 4);
-                if (Player.SonnyHp >= 50)
+                if (SonnyMove.SonnyHp >= 50)
                 {
                     if (sonny_dir == 0)
                     {
@@ -107,6 +107,10 @@ public class SonnyMove : MonoBehaviour
                     if (sonny_dir == 3)
                     {
                         Goal = new Vector3(0, 0, -1);
+                    }
+                    if (shortDistance <= 2)
+                    {
+                        Goal = -Goal;
                     }
                 }
                 Quaternion Rot = Quaternion.LookRotation(Goal);

@@ -5,9 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static int PlayerHp = 100;
-    public static int ShooterHp = 100;
-    public static int BastionHp = 100;
-    public static int SonnyHp = 100;
     public static Vector3 PlayerPos;
     public static Vector3 PlayerColPos;
     bool col = false;
@@ -50,6 +47,17 @@ public class Player : MonoBehaviour
             Enemy_Ap.Add(5.0f); //공격력 임의로 추가
         }
 
+        for (int i = 0; i < Team_array.Count; i++)
+        {
+            Team_Pos.Add(Team_array[i].transform.position); //우리 팀의 위치를 리스트에 저장
+        }
+
+        for (int i = 0; i < Enemy_array.Count; i++)
+        {
+            Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
+        }
+
+
         //int count_1 = 0;
         //for (int i = 0; i < characters.Length; i++)
         //{
@@ -76,16 +84,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < Team_array.Count; i++)
-        {
-            Team_Pos.Add(Team_array[i].transform.position); //우리 팀의 위치를 리스트에 저장
-        }
-
-        for (int i = 0; i < Enemy_array.Count; i++)
-        {
-            Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
-        }
-
+        
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {
@@ -172,11 +171,15 @@ public class Player : MonoBehaviour
         rect = new Rect(0, 0, w, h * 4 / 100);
         style = new GUIStyle();
         style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = h * 4 / 100;
+        style.fontSize = h * 2 / 100;
         style.normal.textColor = Color.white;
 
-        string text = "Player HP: " + PlayerHp + "% \n"
-                     +"Shooter HP: " + ShooterHp + "% \n";
+        string text = "Player HP: " + Player.PlayerHp + "% \n"
+                     +"Shooter HP: " + Shooter_Move.ShooterHp + "% \n"
+                     + "Bastion HP: " + BastionMove.BastionHp + "% \n"
+                     + "Sonny HP: " + SonnyMove.SonnyHp + "% \n"
+                     + "Healer HP: " + HealerMove.HealerHp + "% \n"
+                     + "Booster HP: " + BoosterMove.BoosterHp + "% \n";
         GUI.Label(rect, text, style);
     }
 }

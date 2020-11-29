@@ -27,17 +27,17 @@ public class Bullet_Move : MonoBehaviour
         }
         if (col.gameObject.tag != Shooter_Move.ShooterTag)
         {
-            Debug.Log("물총 충돌");
+             Debug.Log("물총 충돌");
             if (col.gameObject.name == "Healer")
-                HealerMove.HealerHp -= 10;
+                HealerMove.HealerHp -= Shooter_Move.ShooterAp;
             if (col.gameObject.name == "Sonny")
-                SonnyMove.SonnyHp -= 10;
+                SonnyMove.SonnyHp -= Shooter_Move.ShooterAp;
             if (col.gameObject.name == "Bastion")
-                BastionMove.BastionHp -= 10;
+                BastionMove.BastionHp -= Shooter_Move.ShooterAp;
             if (col.gameObject.name == "Booster")
-                BoosterMove.BoosterHp -= 10;
+                BoosterMove.BoosterHp -= Shooter_Move.ShooterAp;
             if (col.gameObject.name == "Player")
-                Player.PlayerHp -= 10;
+                Player.PlayerHp -= Shooter_Move.ShooterAp;
         }
     }
 }
