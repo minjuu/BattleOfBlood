@@ -56,19 +56,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\bastionchar.cs" />
+    <Compile Include="Assets\Script\ShooterAI\Bullet_Move.cs" />
     <Compile Include="Assets\Script\Water.cs" />
     <Compile Include="Assets\Script\shooterchar.cs" />
     <Compile Include="Assets\Script\selectchar.cs" />
     <Compile Include="Assets\Script\WaterBalloon.cs" />
+    <Compile Include="Assets\Script\ShooterAI\Shooter_AI.cs" />
     <Compile Include="Assets\Script\sonnychar.cs" />
     <Compile Include="Assets\Script\healerchar.cs" />
     <Compile Include="Assets\Script\Player.cs" />
-    <Compile Include="Assets\Script\SelectMng.cs" />
-    <Compile Include="Assets\Script\boosterchar.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_BtBase.cs" />
-    <Compile Include="Assets\Script\ShooterAI\Shooter_AI.cs" />
+    <Compile Include="Assets\Script\SelectMng.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_Move.cs" />
-    <Compile Include="Assets\Script\ShooterAI\Bullet_Move.cs" />
+    <Compile Include="Assets\Script\boosterchar.cs" />
+    <Compile Include="Assets\Script\HealerAI\HealerMove.cs" />
+    <Compile Include="Assets\Script\HealerAI\Healer_AI.cs" />
+    <Compile Include="Assets\Script\HealerAI\Healer_BT.cs" />
+    <Compile Include="Assets\Script\BoosterAI\BoosterMove.cs" />
+    <Compile Include="Assets\Script\BoosterAI\Booster_AI.cs" />
+    <Compile Include="Assets\Script\BoosterAI\Booster_BT.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
