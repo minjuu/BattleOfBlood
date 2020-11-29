@@ -3,7 +3,7 @@
 /out:Temp/Assembly-CSharp.dll
 /deterministic
 /debug:portable
-/optimize+
+/optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest

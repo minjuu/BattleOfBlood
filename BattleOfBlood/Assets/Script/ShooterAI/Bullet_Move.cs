@@ -26,7 +26,6 @@ public class Bullet_Move : MonoBehaviour
         {
             Destroy(gameObject, 0.0f);
             Destroy(col.gameObject, 0.05f);
-            Debug.Log("Cube총알 충돌 및 destroy");
         }
     }
 }

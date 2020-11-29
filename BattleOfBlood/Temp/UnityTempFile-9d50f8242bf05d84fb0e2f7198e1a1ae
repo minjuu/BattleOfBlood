@@ -1,12 +1,17 @@
 /target:library
 /nowarn:0169
-/out:Temp/Assembly-CSharp.dll
+/out:Temp/Unity.TextMeshPro.dll
 /deterministic
 /debug:portable
-/optimize+
+/optimize-
 /nostdlib+
 /preferreduilang:en-US
 /langversion:latest
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
+/reference:"C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll"
+/reference:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll"
+/reference:"C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -185,15 +190,6 @@
 /reference:"C:/Program Files/Unity/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XmlDocument.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XmlSerializer.dll"
 /reference:"C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
-/reference:Library/ScriptAssemblies/Unity.Rider.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.Timeline.dll
-/reference:Library/ScriptAssemblies/Unity.VSCode.Editor.dll
-/reference:Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll
-/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
-/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
 /define:CSHARP_7_3_OR_NEWER
 /define:CSHARP_7_OR_LATER
 /define:DEBUG
@@ -252,6 +248,7 @@
 /define:ENABLE_VIDEO
 /define:ENABLE_VIRTUALTEXTURING
 /define:ENABLE_VR
+/define:ENABLE_VSTU
 /define:ENABLE_WEBCAM
 /define:ENABLE_WEBSOCKET_CLIENT
 /define:ENABLE_WEBSOCKET_HOST
@@ -291,26 +288,61 @@
 /define:UNITY_STANDALONE
 /define:UNITY_STANDALONE_WIN
 /define:UNITY_TEAM_LICENSE
-Assets\Script\BastionAI\BastionAI.cs
-Assets\Script\BastionAI\BastionMove.cs
-Assets\Script\BastionAI\Bastion_BT_Base.cs
-Assets\Script\BoosterAI\BoosterMove.cs
-Assets\Script\BoosterAI\Booster_AI.cs
-Assets\Script\BoosterAI\Booster_BT.cs
-Assets\Script\HealerAI\HealerMove.cs
-Assets\Script\HealerAI\Healer_AI.cs
-Assets\Script\HealerAI\Healer_BT.cs
-Assets\Script\Player.cs
-Assets\Script\SelectMng.cs
-Assets\Script\ShooterAI\Bullet_Move.cs
-Assets\Script\ShooterAI\Shooter_AI.cs
-Assets\Script\ShooterAI\Shooter_BtBase.cs
-Assets\Script\ShooterAI\Shooter_Move.cs
-Assets\Script\Water.cs
-Assets\Script\WaterBalloon.cs
-Assets\Script\bastionchar.cs
-Assets\Script\boosterchar.cs
-Assets\Script\healerchar.cs
-Assets\Script\selectchar.cs
-Assets\Script\shooterchar.cs
-Assets\Script\sonnychar.cs
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\AssemblyInfo.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\FastAction.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\MaterialReferenceManager.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Asset.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Character.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_CharacterInfo.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_ColorGradient.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Compatibility.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_CoroutineTween.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_DefaultControls.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Dropdown.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_EditorResourceManager.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_FontAsset.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_FontAssetCommon.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_FontAssetUtilities.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_FontFeatureTable.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_FontFeaturesCommon.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_InputField.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_InputValidator.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_LineInfo.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_ListPool.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_MaterialManager.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_MeshInfo.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_ObjectPool.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_PackageResourceImporter.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_ResourcesManager.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_RichTextTagStack.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_RichTextTagsCommon.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_ScrollbarEventHandler.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SelectionCaret.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Settings.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_ShaderUtilities.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Sprite.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SpriteAnimator.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SpriteAsset.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SpriteAssetImportFormats.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SpriteCharacter.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SpriteGlyph.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Style.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_StyleSheet.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SubMesh.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_SubMeshUI.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_Text.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_TextElement.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_TextElement_Legacy.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_TextInfo.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_TextParsingUtilities.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_TextUtilities.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_UpdateManager.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMP_UpdateRegistery.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMPro_EventManager.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMPro_ExtensionMethods.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMPro_MeshUtilities.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMPro_Private.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TMPro_UGUI_Private.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TextContainer.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TextMeshPro.cs"
+"C:\Users\minnj\OneDrive\문서\GitHub\BattleOfBlood\BattleOfBlood\Library\PackageCache\com.unity.textmeshpro@3.0.0-preview.1\Scripts\Runtime\TextMeshProUGUI.cs"

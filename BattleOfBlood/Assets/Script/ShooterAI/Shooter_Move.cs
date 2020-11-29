@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Shooter_Move : MonoBehaviour
 {
-    public static float ShooterSpeed = 0.05f;
+    public static float ShooterSpeed = 3f;
     public static int ShooterHp = 100;
 
     GameObject[] teamObject;
     GameObject[] enemyObject;
 
     public GameObject Prefab_bullet;
+    public GameObject shortEnemy; //슈터와 가장 가까운 적
     public static Vector3 Goal;
     float DirR = 180.0f; //플레이어와 반대방향
     Vector3 Dir;
+    Vector3 lookat;
     int nTime = 0;
     private float gtimer;
     private float etimer;
@@ -23,6 +25,9 @@ public class Shooter_Move : MonoBehaviour
     public static Vector3 cube_position;
     public static bool cubecol;
     public static int bulletCount = 3;
+    private float shortDistance;
+
+    int sd_1 = 0;
 
     public bool ShooterMove()
     {
@@ -62,7 +67,7 @@ public class Shooter_Move : MonoBehaviour
         etimer = gtimer + 0.035f;
 
         gtimer += Time.deltaTime;
-        if (gtimer > etimer|| col==true)
+        if (gtimer > etimer || col == true)
         {
             if (Player.ShooterHp >= 50)
             {
@@ -84,12 +89,11 @@ public class Shooter_Move : MonoBehaviour
                 {
                     Goal = new Vector3(0, 0, -1);
                 }
-                Debug.Log("Range: " + ran + "Goal: " + Goal.x + ", " + Goal.y + ", " + Goal.z);
             }
             Quaternion Rot = Quaternion.LookRotation(Goal);
             gameObject.transform.localRotation = Rot;
-            
-            
+
+
             col = false;
             return true;
         }
@@ -99,23 +103,66 @@ public class Shooter_Move : MonoBehaviour
         return false;
     }
 
-    public bool MoveBackFollowTarget()
+    public bool DetectPos() //적 위치 감지
     {
-        if (cubecol==false)
+        if (ShooterHp > 0)
         {
-            Dir = Goal;
+            if (gameObject.tag == "Enemy")
+            {
+                shortDistance = Vector3.Distance(Player.Team_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Team_array.Count; sd_1++)
+                {
+                    float distance = Vector3.Distance(Player.Team_array[sd_1].transform.position, gameObject.transform.position);
+                    if (distance <= shortDistance)
+                    {
+                        shortDistance = distance;
+                        shortEnemy = Player.Team_array[sd_1];
+                    }
+                }
+
+                Vector3 Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
+                Enemy_Dir.Normalize();
+                Dir = Enemy_Dir;
+                Debug.Log("가까운enemy: " + shortEnemy.name + "\ndir : " + Dir);
+            }
+            else
+            {
+                shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Enemy_array.Count; sd_1++)
+                {
+                    float distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
+                    if (distance <= shortDistance)
+                    {
+                        shortDistance = distance;
+                        shortEnemy = Player.Enemy_array[sd_1];
+                    }
+                }
+            }
             return true;
+        }
+        return false;
+    }
+
+    public bool ChangeGun() //물총장전
+    {
+        if (cubecol == false)
+        {
+
         }
         return false;
     }
     public bool IsCollision() //충돌 처리 기능 추가
     {
-        if(cubecol==true)
+        if (cubecol == true)
         {
             Dir = cube_position.normalized;
             Dir.y = 0;
             cubecol = false;
             return true;
+        }
+        else
+        {
+            Dir = Goal;
         }
         return false;
     }
@@ -132,7 +179,7 @@ public class Shooter_Move : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        
+
         nTime++;
     }
     public bool IsDead()
@@ -148,7 +195,7 @@ public class Shooter_Move : MonoBehaviour
 
     public bool AddBullet()
     {
-        if (Player.ShooterHp > 0 && bulletCount > 0) 
+        if (Player.ShooterHp > 0 && bulletCount > 0)
         {
             if (nTime % 100 == 0)
             {
@@ -163,13 +210,12 @@ public class Shooter_Move : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-       
+
         col = true;
         if (collision.collider.CompareTag("Cube"))
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            Debug.Log("큐브 충돌");
         }
     }
 }

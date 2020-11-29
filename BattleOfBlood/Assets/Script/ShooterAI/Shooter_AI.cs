@@ -10,10 +10,11 @@ public class Shooter_AI : MonoBehaviour
     private Sequence seqDead = new Sequence();
 
     private ShooterMove moveForTarget = new ShooterMove();
-    private MoveBackFollowTarget moveBackForTarget = new MoveBackFollowTarget();
+    private ChangeGun changeGun = new ChangeGun();
     private OnAttack m_OnAttack = new OnAttack();
     private IsDead m_IsDead = new IsDead();
     private IsCollision isCollision = new IsCollision(); //isCollision 추가
+    private DetectPos detectPos = new DetectPos();
 
     private Shooter_Move m_Shooter;
     private IEnumerator behaviorProcess;
@@ -26,15 +27,17 @@ public class Shooter_AI : MonoBehaviour
         selector.AddChild(seqMovingAttack);
 
         moveForTarget.Shooter = m_Shooter;
-        moveBackForTarget.Shooter = m_Shooter;
+        changeGun.Shooter = m_Shooter;
         isCollision.Shooter = m_Shooter;  //isCollision Shooter추가
+        detectPos.Shooter = m_Shooter;
         m_OnAttack.Shooter = m_Shooter;
         m_IsDead.Shooter = m_Shooter;
 
         seqMovingAttack.AddChild(moveForTarget);
         seqMovingAttack.AddChild(m_OnAttack);
-        seqMovingAttack.AddChild(moveBackForTarget);
+        seqMovingAttack.AddChild(changeGun);
         seqMovingAttack.AddChild(isCollision); //IsCollision 자식 노드 추가
+        seqMovingAttack.AddChild(detectPos);
 
         seqDead.AddChild(m_IsDead);
 

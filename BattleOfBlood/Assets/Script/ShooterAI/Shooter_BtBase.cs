@@ -71,7 +71,7 @@ public class ShooterMove : Node
     }
 }
 
-public class MoveBackFollowTarget : Node
+public class ChangeGun : Node
 {
     public Shooter_Move Shooter
     {
@@ -80,7 +80,7 @@ public class MoveBackFollowTarget : Node
     private Shooter_Move _Shooter;
     public override bool Invoke()
     {
-        return _Shooter.MoveBackFollowTarget();
+        return _Shooter.ChangeGun();
 
     }
 }
@@ -96,6 +96,20 @@ public class IsCollision : Node       //IsCollision 노드 추가함
         return _Shooter.IsCollision();
     }
 }
+
+public class DetectPos : Node       //IsCollision 노드 추가함
+{
+    public Shooter_Move Shooter           //노드 내용
+    {
+        set { _Shooter = value; }
+    }
+    private Shooter_Move _Shooter;
+    public override bool Invoke()
+    {
+        return _Shooter.DetectPos();
+    }
+}
+
 public class IsDead : Node
 {
     public Shooter_Move Shooter
@@ -121,4 +135,3 @@ public class OnAttack : Node
         return _Shooter.AddBullet();
     }
 }
-
