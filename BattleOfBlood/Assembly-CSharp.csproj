@@ -58,6 +58,7 @@
     <Compile Include="Assets\Script\bastionchar.cs" />
     <Compile Include="Assets\Script\ShooterAI\Bullet_Move.cs" />
     <Compile Include="Assets\Script\Water.cs" />
+    <Compile Include="Assets\Script\BastionAI\BastionMove.cs" />
     <Compile Include="Assets\Script\BoosterAI\Booster_BT.cs" />
     <Compile Include="Assets\Script\shooterchar.cs" />
     <Compile Include="Assets\Script\BoosterAI\Booster_AI.cs" />
@@ -72,12 +73,11 @@
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_BtBase.cs" />
     <Compile Include="Assets\Script\SelectMng.cs" />
+    <Compile Include="Assets\Script\BastionAI\BastionAI.cs" />
+    <Compile Include="Assets\Script\BastionAI\Bastion_BT_Base.cs" />
     <Compile Include="Assets\Script\BoosterAI\BoosterMove.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_Move.cs" />
     <Compile Include="Assets\Script\boosterchar.cs" />
-    <Compile Include="Assets\Script\BastionAI\BastionAI.cs" />
-    <Compile Include="Assets\Script\BastionAI\BastionMove.cs" />
-    <Compile Include="Assets\Script\BastionAI\Bastion_BT_Base.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Shooter_Move : MonoBehaviour
 {
+    public static float ShooterSpeed = 0.05f;
+    public static int ShooterHp = 100;
+
     GameObject[] teamObject;
     GameObject[] enemyObject;
 
     public GameObject Prefab_bullet;
-    public static float ShooterSpeed = 3f;
     public static Vector3 Goal;
     float DirR = 180.0f; //플레이어와 반대방향
     Vector3 Dir;

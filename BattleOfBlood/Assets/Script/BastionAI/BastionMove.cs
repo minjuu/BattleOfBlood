@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BastionMove : MonoBehaviour
 {
+    public static float BastionSpeed = 0.05f;
+    public static int BastionHp = 100;
+
     public GameObject Prefab_balloon;
     float DirR = 180.0f;
-    float BastionHp = 100.0f; //임시 바스티온 체력
     Vector3 Dir;
     Vector3 Enemy_Dir;
     Vector3 lookat;
 
-    float speed = 0.01f;
     int nTime = 0;
 
     Vector3 pos; //오브젝트의 위치 저장 변수
@@ -103,7 +104,7 @@ public class BastionMove : MonoBehaviour
                 Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
                 DirR = Rot.eulerAngles.y;
                 gameObject.transform.localRotation = Rot;
-                gameObject.transform.position += lookat * speed;
+                gameObject.transform.position += lookat * BastionSpeed;
 
             }
             if (gameObject.tag == "Enemy")
@@ -152,8 +153,7 @@ public class BastionMove : MonoBehaviour
                 Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
                 DirR = Rot.eulerAngles.y;
                 gameObject.transform.localRotation = Rot;
-                gameObject.transform.position += lookat * speed;
-
+                gameObject.transform.position += lookat * BastionSpeed;
             }
 
             return true;
@@ -171,7 +171,7 @@ public class BastionMove : MonoBehaviour
             DirR = Rot.eulerAngles.y;
             gameObject.transform.localRotation = Rot;
 
-            gameObject.transform.position -= Dir * speed;
+            gameObject.transform.position -= Dir * BastionSpeed;
 
             return true;
         }
@@ -214,7 +214,7 @@ public class BastionMove : MonoBehaviour
             //Quaternion Rot = Quaternion.LookRotation(Enemy_Dir, new Vector3(0, 1, 0));
             //DirR = Rot.eulerAngles.y;
             //gameObject.transform.localRotation = Rot;
-            //gameObject.transform.position += Enemy_Dir * speed;
+            //gameObject.transform.position += Enemy_Dir * BastionSpeed;
 
             return true;
         }

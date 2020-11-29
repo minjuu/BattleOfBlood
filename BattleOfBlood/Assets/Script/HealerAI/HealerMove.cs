@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class HealerMove : MonoBehaviour
 {
-    public static int SonnyHp = 100;    //SonnyMove 코드 만들어서 넣기
-    public static int BastionHp = 100;
-    public static int ShooterHp = 100;
+    public static float HealerSpeed = 0.05f;
     public static int HealerHp = 100;
+    public static int SonnyHp = 100;
 
     public GameObject Prefab_bullet;
     float DirR = 180.0f;
     Vector3 Dir;
     float speed = 0.02f;
     int nTime = 0;
+
+    private bool col;
+    public static bool cubecol;
+    public static Vector3 cube_position;
 
     public bool MoveHealer()
     {
@@ -45,13 +48,17 @@ public class HealerMove : MonoBehaviour
 
     public bool HealerObstacleDetect()
     {
-
-        return true;
+        if (cubecol == true)
+        {
+            cubecol = false;
+            return true;
+        }
+        return false;
     }
 
     public bool HealerTeamHpDetect()      // Team 체력 감지
     {
-        int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionHp, ShooterHp, HealerHp, BoosterMove.BoosterHp);
+        int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionMove.BastionHp, Shooter_Move.ShooterHp, HealerHp, BoosterMove.BoosterHp);
 
         if (minHp == Player.PlayerHp && GameObject.Find("Player").gameObject.tag == "team")
         {
@@ -61,13 +68,13 @@ public class HealerMove : MonoBehaviour
         {
             SonnyHp += 10;
         }
-        if (minHp == BastionHp && GameObject.Find("Bastion").gameObject.tag == "team")
+        if (minHp == BastionMove.BastionHp && GameObject.Find("Bastion").gameObject.tag == "team")
         {
-            BastionHp += 10;
+            BastionMove.BastionHp += 10;
         }
-        if (minHp == ShooterHp && GameObject.Find("Shooter").gameObject.tag == "team")
+        if (minHp == Shooter_Move.ShooterHp && GameObject.Find("Shooter").gameObject.tag == "team")
         {
-            ShooterHp += 10;
+            Shooter_Move.ShooterHp += 10;
         }
         if (minHp == HealerHp && GameObject.Find("Healer").gameObject.tag == "team")
         {
@@ -100,6 +107,16 @@ public class HealerMove : MonoBehaviour
         return true;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
 
+        col = true;
+        if (collision.collider.CompareTag("Cube"))
+        {
+            cube_position = collision.transform.position;
+            cubecol = true;
+            Debug.Log("큐브 충돌");
+        }
+    }
 
 }

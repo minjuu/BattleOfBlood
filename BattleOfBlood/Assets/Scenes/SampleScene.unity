@@ -180,36 +180,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
---- !u!1 &183118414 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
-  m_PrefabInstance: {fileID: 183118413}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &183118415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183118414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9899bd9e344f72744a6e5f0c50d58d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Prefab_bullet: {fileID: 0}
---- !u!114 &183118416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183118414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf6b5c6c22ea2d4bb7044f91a1350d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &189173527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -908,6 +878,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
+--- !u!1 &1330903492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6206743720604802716, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
+  m_PrefabInstance: {fileID: 1330903491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1330903493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330903492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9899bd9e344f72744a6e5f0c50d58d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab_bullet: {fileID: 0}
+  shortEnemy: {fileID: 0}
+--- !u!114 &1330903494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330903492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf6b5c6c22ea2d4bb7044f91a1350d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1384122885
 PrefabInstance:
   m_ObjectHideFlags: 0
