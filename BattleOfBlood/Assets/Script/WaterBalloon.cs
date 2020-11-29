@@ -17,7 +17,7 @@ public class WaterBalloon : MonoBehaviour
     void Start()
     {
         float wtimer = 0;
-        etimer = wtimer+0.002f;
+        etimer = wtimer+2;
     }
 
     // Update is called once per frame

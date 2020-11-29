@@ -11,7 +11,7 @@ public class Water : MonoBehaviour
     void Start()
     {
         float wtimer = 0;
-        etimer = wtimer + 0.002f;
+        etimer = wtimer + 1;
       
     }
 

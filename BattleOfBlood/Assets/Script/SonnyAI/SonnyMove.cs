@@ -8,7 +8,7 @@ public class SonnyMove : MonoBehaviour
     public static int SonnyHp = 200; //체력
     public static int SonnyAp = 10; //공격력
     public static Vector3 SonnyPos;
-    public static float SonnySpeed = 0.3f;
+    public static float SonnySpeed = 0.01f;
     public GameObject Ballon;
 
     public static Vector3 GoalPos; // 물풍선 미는 위치
