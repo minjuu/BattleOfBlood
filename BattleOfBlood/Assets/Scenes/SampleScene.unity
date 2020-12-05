@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 4793268389112455628, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
       propertyPath: Ballon
       value: 
-      objectReference: {fileID: 1055676447326888723, guid: 290eea4d90e5ce1429b2755073dc39bf, type: 3}
+      objectReference: {fileID: 2955710447788013895, guid: 922ef5606711f5c43a0d5b80fce6b95e, type: 3}
     - target: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
       propertyPath: m_Name
       value: Sonny
@@ -749,6 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245c6df74061483429f836a2979e8c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   Prefab_bullet: {fileID: 0}
   shortEnemy: {fileID: 0}
   target: {fileID: 753764620}
@@ -944,7 +945,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab_bullet: {fileID: 0}
+  rb: {fileID: 0}
   shortEnemy: {fileID: 0}
+  ShortEnemy: {fileID: 0}
+  ShortEnemy2: {fileID: 0}
 --- !u!114 &1330903494
 MonoBehaviour:
   m_ObjectHideFlags: 0

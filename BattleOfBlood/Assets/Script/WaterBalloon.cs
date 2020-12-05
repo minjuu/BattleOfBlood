@@ -28,7 +28,7 @@ public class WaterBalloon : MonoBehaviour
     {
         if (gameObject.tag == "Bastion_balloon") //바스티온에서 나온 물풍선의 경우
         {
-            gameObject.transform.position += Dir * 0.05f; ; //날라가다가 멈춰야하나?
+            gameObject.transform.position += Dir * 0.05f; //날라가다가 멈춰야하나?
             if (Time.time > btimer_2)
             {
                 btimer_2 = Time.time + btimer_1;

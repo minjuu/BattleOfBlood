@@ -29,6 +29,7 @@ public class SonnyMove : MonoBehaviour
     int sd_1 = 0;
     Vector3 Dir;
     Vector3 Now;
+    public Rigidbody bb_rb;
     public bool MoveinMap()
     {
         
@@ -180,23 +181,31 @@ public class SonnyMove : MonoBehaviour
     {
         if (SonnyHp > 0)
         {
-            if (nTime % 500 == 0)
+            if (nTime % 300 == 0)
             {
                 GameObject ballon = GameObject.Instantiate(Ballon) as GameObject;
-                ballon.transform.parent = null;
-                ballon.transform.position = transform.position;
+                bb_rb = ballon.GetComponent<Rigidbody>();
+                bb_rb.isKinematic = false; //////////////
+                ballon.transform.parent = null; ////////////
+                ballon.gameObject.tag = "SonnyBalloon"; /////////
+                Vector3 bPos; 
+              
+                bPos = transform.position;
+                bPos.y = 0.8f;
+                ballon.transform.position = bPos;
+               
             }
             return true;
         }
         return false;
     }
-
     private void OnCollisionEnter(Collision col)
     {
         int m_idx=0;
-        if (col.gameObject.tag == "Balloon")
+        if (col.gameObject.tag == "Balloon" || col.gameObject.tag== "SonnyBalloon")
         {
             col.gameObject.tag = "SonnyBalloon";
+         
             if (gameObject.tag == "Team")
             {
                 float e_min = 1000000;
@@ -209,8 +218,11 @@ public class SonnyMove : MonoBehaviour
                         m_idx = i;
                     }
                 }
-                GoalPos = (transform.position - e_Array[m_idx].transform.position);
-                
+                GoalPos.y = 0.8f;
+                GoalPos = (e_Array[m_idx].transform.position - transform.position).normalized;
+               
+               // GoalPos.Normalize();
+
             }
             else if (gameObject.tag == "Enemy")
             {
@@ -224,7 +236,11 @@ public class SonnyMove : MonoBehaviour
                         m_idx = i;
                     }
                 }
-                GoalPos = transform.position - e_Array[m_idx].transform.position;
+                // GoalPos = transform.position - e_Array[m_idx].transform.position;
+                 GoalPos.y = 0.8f;
+                GoalPos = (e_Array[m_idx].transform.position - transform.position).normalized;
+                
+                //GoalPos.Normalize();
             }
             BalloonMove.Sonnykick = true; //물풍선 충돌시 물풍선 목표 지점까지 이동시키는 BallonMove내 코드 실행
         }
@@ -250,10 +266,12 @@ public class SonnyMove : MonoBehaviour
                     {
                         shortDistance = distance;
                         shortEnemy = Player.Team_array[sd_1];
+                        GoalPos.y = 0.8f;
+                        GoalPos = (shortEnemy.transform.position - transform.position).normalized;
                     }
                 }
 
-                Debug.Log("가까운 TeamEnemy: " + shortEnemy.name + "\ndir : " + Dir);
+               
             }
             else
             {
@@ -265,9 +283,11 @@ public class SonnyMove : MonoBehaviour
                     {
                         shortDistance = distance;
                         shortEnemy = Player.Enemy_array[sd_1];
+                        GoalPos.y = 0.8f;
+                        GoalPos = (shortEnemy.transform.position - transform.position).normalized;
                     }
                 }
-                Debug.Log("가까운 EnemyEnemy: " + shortEnemy.name + "\ndir : " + Dir);
+                
             }
             return true;
         }

@@ -155,6 +155,7 @@ public class Player : MonoBehaviour
             Vector3 v = transform.position;
             v.y = 0.8f;
             balloon.transform.position = v;
+           
         }
     }
     void OnCollisionEnter(Collision collision)
