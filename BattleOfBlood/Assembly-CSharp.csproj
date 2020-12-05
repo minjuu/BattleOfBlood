@@ -62,7 +62,7 @@
     <Compile Include="Assets\Script\Water.cs" />
     <Compile Include="Assets\Script\quitbtn.cs" />
     <Compile Include="Assets\Script\BalloonMove.cs" />
-    <Compile Include="Assets\BastionAI\BastionMove.cs" />
+    <Compile Include="Assets\Script\BastionAI\BastionMove.cs" />
     <Compile Include="Assets\Script\BoosterAI\Booster_BT.cs" />
     <Compile Include="Assets\Script\SonnyAI\SonnyAI.cs" />
     <Compile Include="Assets\Script\shooterchar.cs" />
@@ -82,8 +82,8 @@
     <Compile Include="Assets\Script\ShooterAI\Shooter_BtBase.cs" />
     <Compile Include="Assets\Script\SelectMng.cs" />
     <Compile Include="Assets\Script\gamestartbtn.cs" />
-    <Compile Include="Assets\BastionAI\BastionAI.cs" />
-    <Compile Include="Assets\BastionAI\Bastion_BT_Base.cs" />
+    <Compile Include="Assets\Script\BastionAI\BastionAI.cs" />
+    <Compile Include="Assets\Script\BastionAI\Bastion_BT_Base.cs" />
     <Compile Include="Assets\Script\BoosterAI\BoosterMove.cs" />
     <Compile Include="Assets\Script\Tut.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_Move.cs" />
@@ -624,35 +624,42 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{65BD50F6-99B9-5FBA-52F8-E12925F3EE35}</Project>
+      <Name>Unity.Timeline.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{BE9AD04D-BF47-B9C6-F430-89577659FA6E}</Project>
+      <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
+      <Project>{6AD09C5B-FE16-9794-5A68-D2D83EAEA303}</Project>
+      <Name>Unity.TextMeshPro.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{6EB71810-5F42-9987-ABA8-1D21B6302EC7}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{2B796D2B-0C40-8623-72B3-F582A4FC03DA}</Project>
+      <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{633DA19E-0154-285F-B8A2-6B2E51E4F1D9}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{FC67C76D-5399-7462-9104-D34FC397B5C6}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

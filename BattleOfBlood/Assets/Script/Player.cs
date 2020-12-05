@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public static List<float> Enemy_Ap;
     public static List<Vector3> Team_Pos;
     public static List<Vector3> Enemy_Pos;
-
+    public Rigidbody b_rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {
@@ -143,15 +143,18 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
 
-        
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             GameObject balloon = GameObject.Instantiate(WaterBalloon)
-                as GameObject;
+               as GameObject;
+            b_rb = balloon.GetComponent<Rigidbody>();
+            b_rb.isKinematic = false;
             Vector3 v = transform.position;
             v.y = 0.8f;
-            balloon .transform.position = v;
+            balloon.transform.position = v;
         }
     }
     void OnCollisionEnter(Collision collision)
@@ -174,7 +177,7 @@ public class Player : MonoBehaviour
         style.normal.textColor = Color.white;
 
         string text = "Player HP: " + Player.PlayerHp + "% \n"
-                     +"Shooter HP: " + Shooter_Move.ShooterHp + "% \n"
+                     + "Shooter HP: " + Shooter_Move.ShooterHp + "% \n"
                      + "Bastion HP: " + BastionMove.BastionHp + "% \n"
                      + "Sonny HP: " + SonnyMove.SonnyHp + "% \n"
                      + "Healer HP: " + HealerMove.HealerHp + "% \n"

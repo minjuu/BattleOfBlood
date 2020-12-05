@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BalloonMove : MonoBehaviour
 {
-    public static bool Sonnykick=false;
+    public static bool Sonnykick = false;
     public Vector3 Dir;
+    public Rigidbody rb;
     void Start()
     {
         Destroy(gameObject, 5.0f);
@@ -25,7 +26,15 @@ public class BalloonMove : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            rb = gameObject.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+        }
+    }
+
 
 }
 
