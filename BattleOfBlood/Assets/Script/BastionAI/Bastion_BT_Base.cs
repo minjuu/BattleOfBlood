@@ -17,7 +17,7 @@ public class BastionMoveFollowTarget : Node
     }
 }
 
-public class BastionMoveBackFollowTarget : Node
+public class BastionFindEnemy : Node
 {
     public BastionMove Enemy
     {
@@ -26,12 +26,13 @@ public class BastionMoveBackFollowTarget : Node
     private BastionMove _Enemy;
     public override bool Invoke()
     {
-        return _Enemy.BastionMoveBackFollowTarget();
+        return _Enemy.BastionFindEnemy();
 
     }
 }
 
-public class FindEnemy : Node //LeftRight 클래스를 노드에 추가함
+
+public class IsBastionCol : Node //LeftRight 클래스를 노드에 추가함
 {
     public BastionMove Enemy
     {
@@ -40,7 +41,7 @@ public class FindEnemy : Node //LeftRight 클래스를 노드에 추가함
     private BastionMove _Enemy;
     public override bool Invoke()
     {
-        return _Enemy.FindEnemy();
+        return _Enemy.IsBastionCol();
 
     }
 }

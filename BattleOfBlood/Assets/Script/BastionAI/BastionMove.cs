@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class BastionMove : MonoBehaviour
 {
-    public static float BastionSpeed = 0.01f;
+    public static float BastionSpeed = 8f;
     public static int BastionHp = 100;
+    public static int BastionAp = 5;
 
+    public static Vector3 cube_position;
+    public static int bastion_dir = -1;
     public GameObject Prefab_balloon;
+
     float DirR = 180.0f;
     Vector3 Dir;
-    Vector3 Enemy_Dir;
-    Vector3 lookat;
+    public static Vector3 b_lookat;
 
     int nTime = 0;
 
     Vector3 pos; //오브젝트의 위치 저장 변수
 
-    Rigidbody Bastion_rigid;
-    Vector3 point;
-    Vector3 point1;
-    Vector3 point2;
-    Vector3 point3;
-    Vector3 point4;
+    public Rigidbody Bastion_rigid;
+
+    Vector3 balloon1;
+    Vector3 balloon2;
+    Vector3 balloon3;
+    Vector3 balloon4;
+    Vector3 balloon5;
+    Vector3 balloon6;
+    Vector3 balloon7;
+    Vector3 balloon8;
+
     float turnTime = 1.0f;
     float nextTurn = 0.0f;
     float TimeLeft = 5.0f; //물풍선 생성시간
@@ -39,174 +47,150 @@ public class BastionMove : MonoBehaviour
     int sd_1 = 0;
     int ap = 0;
 
+    private float etimer;
+    private float x;
+    private float z;
+
+    public static bool cubecol;
+    private bool col;
     bool make_wb;
     void Start()
     {
         nTime = 0;
         pos = transform.position; //오브젝트의 위치를 변수에 저장
-
-        point1 = new Vector3(1, 0, 0);
-        point2 = new Vector3(0, 0, -1);
-        point3 = new Vector3(-1, 0, 0);
-        point4 = new Vector3(0, 0, 1);
         Bastion_rigid = gameObject.GetComponent<Rigidbody>();
-
+        col = false;
+        cubecol = false;
         make_wb = false;
+
+        if (gameObject.tag == "Team")
+            Player.Team_Hp.Add(BastionHp);
+        else if (gameObject.tag == "Enemy")
+            Player.Enemy_Hp.Add(BastionHp);
     }
     public bool BastionMoveFollowTarget()
     {
+        if (transform.position.z < -15) //절벽 범위 조건문
+        {
+            Vector3 swap1 = transform.position; //벡터 저장
+            swap1.z = -15;                                  //고정 위치 설정
+            transform.position = swap1;
+            col = true;
+        }
+
+        if (transform.position.z > 15)//절벽 범위 조건문
+        {
+            Vector3 swap2 = transform.position;//벡터 저장
+            swap2.z = 15;//고정 위치 설정
+            transform.position = swap2;
+            col = true;
+        }
+
+        if (transform.position.x < -15)//절벽 범위 조건문
+        {
+            Vector3 swap3 = transform.position;//벡터 저장
+            swap3.x = -15;//고정 위치 설정
+            transform.position = swap3;
+            col = true;
+        }
+        if (transform.position.x > 15)//절벽 범위 조건문
+        {
+            Vector3 swap4 = transform.position;//벡터 저장
+            swap4.x = 15;//고정 위치 설정
+            transform.position = swap4;
+            col = true;
+        }
+
+        float gtimer = Time.time;
+        etimer = gtimer + 0.035f;
+        gtimer += Time.deltaTime;
+
+        x = gameObject.transform.position.x - shortEnemy.transform.position.x;
+        z = gameObject.transform.position.z - shortEnemy.transform.position.z;
+        if (gtimer > etimer)
+        {
+            if (Mathf.Abs(x) > Mathf.Abs(z))
+            {
+                if (x < 0)
+                    bastion_dir = 0;
+                if (x >= 0)
+                    bastion_dir = 1;
+            }
+            if (Mathf.Abs(x) < Mathf.Abs(z))
+            {
+                if (z < 0) //적이 슈터보다 z값큼
+                    bastion_dir = 2;
+                if (z >= 0)
+                    bastion_dir = 3;
+            }
+            if (cubecol == true)
+                bastion_dir = Random.Range(0, 4);
+            if (BastionMove.BastionHp >= 0 || col == true)
+            {
+                if (bastion_dir == 0)
+                {
+                    b_lookat = new Vector3(1, 0, 0);
+                }
+                if (bastion_dir == 1)
+                {
+                    b_lookat = new Vector3(-1, 0, 0);
+                }
+                if (bastion_dir == 2)
+                {
+                    b_lookat = new Vector3(0, 0, 1);
+                }
+                if (bastion_dir == 3)
+                {
+                    b_lookat = new Vector3(0, 0, -1);
+                }
+                if (bastion_dir == 4)
+                {
+                    b_lookat = new Vector3(0, 0, 0);
+                }
+                if (shortDistance <= 2)
+                {
+                    b_lookat = -b_lookat;
+                }
+            }
+            Quaternion Rot = Quaternion.LookRotation(b_lookat);
+            gameObject.transform.localRotation = Rot;
+
+            Dir = (shortEnemy.transform.position - gameObject.transform.position).normalized;
+            Dir.y = 0;
+
+            cubecol = false;
+            col = false;
+            return true;
+        }
+        Vector3 newVelocity = b_lookat * BastionSpeed;
+        // 리지드바디의 속도에 newVelocity 할당
+        Bastion_rigid.velocity = newVelocity;
+        return false;
+    }
+
+    public bool BastionFindEnemy()
+    {
         if (BastionMove.BastionHp > 0)
         {
-            if (gameObject.tag == "Team")
-            {
-                shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
-                for (sd_1 = 0; sd_1 < Player.Enemy_array.Count; sd_1++)
-                {
-                    distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
-                    if (distance <= shortDistance)
-                    {
-                        shortDistance = distance;
-                        shortEnemy = Player.Enemy_array[sd_1];
-                    }
-                }
-                Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
-                Enemy_Dir.Normalize();
-                if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-
-                }
-                else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
-                }
-
-                Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
-                DirR = Rot.eulerAngles.y;
-                gameObject.transform.localRotation = Rot;
-
-                //gameObject.transform.position += lookat * BastionSpeed;
-
-                if (shortDistance > 1.5f)
-                {
-                    gameObject.transform.position += lookat * BastionSpeed;
-                }
-                else
-                {
-                    gameObject.transform.position -= lookat * BastionSpeed;
-                }
-
-            }
             if (gameObject.tag == "Enemy")
             {
                 shortDistance = Vector3.Distance(Player.Team_array[0].transform.position, gameObject.transform.position);
                 for (sd_1 = 0; sd_1 < Player.Team_array.Count; sd_1++)
                 {
-                    distance = Vector3.Distance(Player.Team_array[sd_1].transform.position, gameObject.transform.position);
+                    float distance = Vector3.Distance(Player.Team_array[sd_1].transform.position, gameObject.transform.position);
                     if (distance <= shortDistance)
                     {
                         shortDistance = distance;
                         shortEnemy = Player.Team_array[sd_1];
                     }
                 }
-                Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
-                Enemy_Dir.Normalize();
-                if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-
-                }
-                else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
-                }
-
-                Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
-                DirR = Rot.eulerAngles.y;
-                gameObject.transform.localRotation = Rot;
-
-                if (shortDistance > 1.5f)
-                {
-                    gameObject.transform.position += lookat * BastionSpeed;
-                }
-                else
-                {
-                    gameObject.transform.position -= lookat * BastionSpeed;
-                }
             }
-
-            return true;
-        }
-        return false;
-    }
-
-    public bool BastionMoveBackFollowTarget()
-    {
-        if (Player.PlayerHp < 50 && Player.PlayerHp > 0)
-        {
-            Dir = Player.PlayerPos - gameObject.transform.position;
-            Dir.Normalize();
-            Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-            DirR = Rot.eulerAngles.y;
-            gameObject.transform.localRotation = Rot;
-
-            gameObject.transform.position -= Dir * BastionSpeed;
-
-            return true;
-        }
-        return false;
-    }
-
-    public bool FindEnemy() //제일 가까운 상대팀 위치
-    {
-        if (BastionMove.BastionHp > 0)
-        {
-            if (gameObject.tag == "Team")
+            else
             {
-                //shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
-                for (sd_1 = 0; sd_1 < Player.Enemy_Pos.Count; sd_1++)
+                shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Enemy_array.Count; sd_1++)
                 {
-                    distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
+                    float distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
                     if (distance <= shortDistance)
                     {
                         shortDistance = distance;
@@ -214,27 +198,18 @@ public class BastionMove : MonoBehaviour
                     }
                 }
             }
-            else
-            {
-                for (int i = 0; i < Player.Team_Pos.Count; i++)
-                {
-                    float distance = Vector3.Distance(Player.Team_Pos[i], gameObject.transform.position);
-                    if (distance < shortDistance)
-                    {
-                        shortDistance = distance;
-                        shortDistance_index = i;
-                    }
-                }
-            }
+            return true;
+        }
+        return false;
+    }
 
-            //이동 방법에 따라 바꿔야하나
-            //Enemy_Dir = Player.Team_Pos[shortDistance_index] - gameObject.transform.position;
-            //Enemy_Dir.Normalize();
-            //Quaternion Rot = Quaternion.LookRotation(Enemy_Dir, new Vector3(0, 1, 0));
-            //DirR = Rot.eulerAngles.y;
-            //gameObject.transform.localRotation = Rot;
-            //gameObject.transform.position += Enemy_Dir * BastionSpeed;
-
+    public bool IsBastionCol() //충돌 처리 기능 추가
+    {
+        if (cubecol == true)
+        {
+            Dir = (cube_position - gameObject.transform.position).normalized;
+            Dir.y = 0;
+            cubecol = false;
             return true;
         }
         return false;
@@ -246,27 +221,18 @@ public class BastionMove : MonoBehaviour
     }
     public bool BastionIsDead()
     {
-        if (BastionHp <= 10)
+        if (BastionHp < 10)
         {
-            if (gameObject.tag == "Team")
+            BastionHp = 0;
+            for (int i = 0; i < Player.Team_array.Count; i++)
             {
-                for (ap = 0; ap < Player.Enemy_Ap.Count; ap++)
+                if (Player.Enemy_Hp[1] == -10 || Player.Team_Hp[1] == -10) // Team모두 또는 Enemy모두 Hp가 0일때
                 {
-                    float Ap_ap = Player.Enemy_Ap[0];
-                    if (Ap_ap >= Player.Enemy_Ap[ap])
-                    {
-                        largestAp = Ap_ap;
-                        largestAp_index = ap;
-                    }
+                    return false;
                 }
+                else
+                    gameObject.SetActive(false);
             }
-            else
-            {
-
-            }
-
-            Destroy(gameObject, 0f);
-            return false;
         }
         return true;
     }
@@ -279,20 +245,90 @@ public class BastionMove : MonoBehaviour
             {
                 nextTime = Time.time + TimeLeft;
                 GameObject water_balloon = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                water_balloon.GetComponent<WaterBalloon>().Dir = lookat;
+                water_balloon.GetComponent<WaterBalloon>().Dir = b_lookat;
                 water_balloon.tag = "Bastion_balloon"; //태그 추가하기
                 water_balloon.transform.position = transform.position;
                 water_balloon.transform.parent = null;
-                water_balloon.transform.position = transform.position;
 
-                if (BastionHp <= 10)
-                {
-                    //어떻게 만들지
+
+                if (BastionHp < 30)
                     make_wb = true;
+
+                if (make_wb == true)
+                {
+                    TimeLeft = 2.0f;
+                    //어떻게 만들지
+                    GameObject water_balloon1 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon1.x = transform.position.x + 1;
+                    balloon1.y = transform.position.y;
+                    balloon1.z = transform.position.z;
+                    water_balloon1.transform.parent = null;
+                    water_balloon1.transform.position = balloon1;
+
+                    GameObject water_balloon2 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon2.x = transform.position.x + 1;
+                    balloon2.y = transform.position.y;
+                    balloon2.z = transform.position.z + 1;
+                    water_balloon2.transform.parent = null;
+                    water_balloon2.transform.position = balloon2;
+
+                    GameObject water_balloon3 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon3.x = transform.position.x;
+                    balloon3.y = transform.position.y;
+                    balloon3.z = transform.position.z + 1;
+                    water_balloon3.transform.parent = null;
+                    water_balloon3.transform.position = balloon3;
+
+                    GameObject water_balloon4 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon4.x = transform.position.x - 1;
+                    balloon4.y = transform.position.y;
+                    balloon4.z = transform.position.z + 1;
+                    water_balloon4.transform.parent = null;
+                    water_balloon4.transform.position = balloon4;
+
+                    GameObject water_balloon5 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon5.x = transform.position.x - 1;
+                    balloon5.y = transform.position.y;
+                    balloon5.z = transform.position.z;
+                    water_balloon5.transform.parent = null;
+                    water_balloon5.transform.position = balloon5;
+
+                    GameObject water_balloon6 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon6.x = transform.position.x - 1;
+                    balloon6.y = transform.position.y;
+                    balloon6.z = transform.position.z - 1;
+                    water_balloon6.transform.parent = null;
+                    water_balloon6.transform.position = balloon6;
+
+                    GameObject water_balloon7 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon7.x = transform.position.x;
+                    balloon7.y = transform.position.y;
+                    balloon7.z = transform.position.z - 1;
+                    water_balloon7.transform.parent = null;
+                    water_balloon7.transform.position = balloon7;
+
+                    GameObject water_balloon8 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+                    balloon8.x = transform.position.x + 1;
+                    balloon8.y = transform.position.y;
+                    balloon8.z = transform.position.z - 1;
+                    water_balloon8.transform.parent = null;
+                    water_balloon8.transform.position = balloon8;
+
+                    make_wb = false;
                 }
             }
             return true;
         }
         return false;
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+
+        col = true;
+        if (collision.collider.CompareTag("Cube"))
+        {
+            cube_position = collision.transform.position;
+            cubecol = true;
+        }
     }
 }

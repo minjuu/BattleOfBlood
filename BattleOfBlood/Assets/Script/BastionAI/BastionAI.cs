@@ -9,9 +9,9 @@ public class BastionAI : MonoBehaviour
     private Sequence seqDead = new Sequence();
 
     private BastionMoveFollowTarget moveForTarget = new BastionMoveFollowTarget();
-    private BastionMoveBackFollowTarget moveBackForTarget = new BastionMoveBackFollowTarget();
+    private BastionFindEnemy bastionfindEnemy = new BastionFindEnemy();
     private BastionOnAttack m_OnAttack = new BastionOnAttack();
-    private FindEnemy m_FindEnemy = new FindEnemy(); //m_LeftRight를 생성
+    private IsBastionCol isBastion_Col = new IsBastionCol(); //isCollision 추가
     private BastionIsDead m_IsDead = new BastionIsDead();
 
     private BastionMove m_Enemy;
@@ -26,15 +26,15 @@ public class BastionAI : MonoBehaviour
         selector.AddChild(seqMovingAttack);
 
         moveForTarget.Enemy = m_Enemy;
-        moveBackForTarget.Enemy = m_Enemy;
+        bastionfindEnemy.Enemy = m_Enemy;
         m_OnAttack.Enemy = m_Enemy;
-        m_FindEnemy.Enemy = m_Enemy; //m_LeftRight를 추가함
+        isBastion_Col.Enemy = m_Enemy;
         m_IsDead.Enemy = m_Enemy;
 
         seqMovingAttack.AddChild(moveForTarget);
         seqMovingAttack.AddChild(m_OnAttack);
-        seqMovingAttack.AddChild(moveBackForTarget);
-        seqMovingAttack.AddChild(m_FindEnemy); //seqMovingAttack의 자식으로 m_LeftRight을 추가한다. 
+        seqMovingAttack.AddChild(bastionfindEnemy);
+        seqMovingAttack.AddChild(isBastion_Col);
         seqDead.AddChild(m_IsDead);
 
         behaviorProcess = BehaviorProcess();

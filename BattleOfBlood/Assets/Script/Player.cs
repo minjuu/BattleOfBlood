@@ -14,11 +14,11 @@ public class Player : MonoBehaviour
     public static GameObject[] characters;
     public static List<GameObject> Team_array;
     public static List<GameObject> Enemy_array;
-    public static List<float> Team_Ap;
-    public static List<float> Enemy_Ap;
+    public static List<int> Team_Hp;
+    public static List<int> Enemy_Hp;
     public static List<Vector3> Team_Pos;
     public static List<Vector3> Enemy_Pos;
-    public Rigidbody b_rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,14 +38,8 @@ public class Player : MonoBehaviour
         Enemy_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         Team_Pos = new List<Vector3>();
         Enemy_Pos = new List<Vector3>();
-        Team_Ap = new List<float>();
-        Enemy_Ap = new List<float>();
-
-        for (int i = 0; i < Team_Ap.Count; i++)
-        {
-            Team_Ap.Add(5.0f); //공격력 임의로 추가
-            Enemy_Ap.Add(5.0f); //공격력 임의로 추가
-        }
+        Team_Hp = new List<int>();
+        Enemy_Hp = new List<int>();
 
         for (int i = 0; i < Team_array.Count; i++)
         {
@@ -57,28 +51,12 @@ public class Player : MonoBehaviour
             Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
 
-
-        //int count_1 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Team") //tag가 Team 일때
-        //    {
-        //        Team_arr[count_1] = characters[i]; //characters배열에 있는 순서대로 재배열하여 저장
-        //        Team_Ap[count_1] = characters_Ap[i];
-        //        count_1++;
-        //    }
-        //}
-
-        //int count_2 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Enemy")
-        //    {
-        //        Enemy_arr[count_2] = characters[i];
-        //        Enemy_Ap[count_1] = characters_Ap[i];
-        //        count_2++;
-        //    }
-        //}
+        int count1 = 0; //Hp가 0 인 개수 찾을 생각
+        for (int i = 0; i < Team_Hp.Count; i++)
+        {
+            if (Team_Hp[i] == 0)
+                count1++;
+        }
     }
 
     // Update is called once per frame
@@ -147,15 +125,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             GameObject balloon = GameObject.Instantiate(WaterBalloon)
-               as GameObject;
-            b_rb = balloon.GetComponent<Rigidbody>();
-            b_rb.isKinematic = false;
+                as GameObject;
             Vector3 v = transform.position;
             v.y = 0.8f;
             balloon.transform.position = v;
-           
         }
     }
     void OnCollisionEnter(Collision collision)
