@@ -151,8 +151,9 @@ public class Player : MonoBehaviour
         {
             GameObject balloon = GameObject.Instantiate(WaterBalloon)
                 as GameObject;
-
-            balloon .transform.position = transform.position;
+            Vector3 v = transform.position;
+            v.y = 0.8f;
+            balloon .transform.position = v;
         }
     }
     void OnCollisionEnter(Collision collision)
