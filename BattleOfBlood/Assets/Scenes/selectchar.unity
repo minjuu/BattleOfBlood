@@ -254,7 +254,7 @@ MonoBehaviour:
   enemycharacter1: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
   enemycharacter2: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
   enemycharacter3: {fileID: 6206743720604802716, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
-  enemycharacter4: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
+  enemycharacter4: {fileID: 7013667018829698712, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
 --- !u!114 &376026541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   enemycharacter1: {fileID: 758463853107030955, guid: 17dad0f17d8e63b408be1401692e8836, type: 3}
   enemycharacter2: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
   enemycharacter3: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
-  enemycharacter4: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
+  enemycharacter4: {fileID: 7013667018829698712, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
 --- !u!114 &488115403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +714,7 @@ MonoBehaviour:
   character1: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
   character2: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
   character3: {fileID: 758463853107030955, guid: 17dad0f17d8e63b408be1401692e8836, type: 3}
-  character4: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
+  character4: {fileID: 7013667018829698712, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
   character5: {fileID: 6206743720604802716, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
 --- !u!4 &654388878
 Transform:
@@ -785,7 +785,7 @@ MonoBehaviour:
   character: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
   enemycharacter1: {fileID: 758463853107030955, guid: 17dad0f17d8e63b408be1401692e8836, type: 3}
   enemycharacter2: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
-  enemycharacter3: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
+  enemycharacter3: {fileID: 7013667018829698712, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
   enemycharacter4: {fileID: 6206743720604802716, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
 --- !u!114 &857057149
 MonoBehaviour:
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e86ed95c26fdc419d454a92fa09fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
+  character: {fileID: 7013667018829698712, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
   enemycharacter1: {fileID: 758463853107030955, guid: 17dad0f17d8e63b408be1401692e8836, type: 3}
   enemycharacter2: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
   enemycharacter3: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   character: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
   enemycharacter1: {fileID: 4081863303644485611, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
   enemycharacter2: {fileID: 758463853107030955, guid: 17dad0f17d8e63b408be1401692e8836, type: 3}
-  enemycharacter3: {fileID: 2872664852461957097, guid: a622b40153a71244f8422770691f23c8, type: 3}
+  enemycharacter3: {fileID: 7013667018829698712, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
   enemycharacter4: {fileID: 6206743720604802716, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
 --- !u!114 &1703023416
 MonoBehaviour:

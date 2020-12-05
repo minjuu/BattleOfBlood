@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoosterMove : MonoBehaviour
 {
-    public static float BoosterSpeed = 3f;
+    public static float BoosterSpeed = 0.05f;
     public static int BoosterHp = 100;
 
     public GameObject Prefab_bullet;
@@ -25,6 +25,8 @@ public class BoosterMove : MonoBehaviour
     float wtimer2;
     float etimer;
     float etimer2;
+    float gtimer3;
+    float etimer3;
 
     public static int booster_dir = -1;
     private float x;
@@ -82,7 +84,6 @@ public class BoosterMove : MonoBehaviour
                 {
                     shortEnemy = GameObject.Find("Healer");
                 }
-                //Debug.Log(shortEnemy.name);
 
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
 
@@ -117,15 +118,14 @@ public class BoosterMove : MonoBehaviour
                     col = true;
                 }
 
-                float gtimer3 = Time.time;
-                float etimer3 = gtimer3 + 0.035f;
                 gtimer3 += Time.deltaTime;
 
                 x = gameObject.transform.position.x - shortEnemy.transform.position.x;
                 z = gameObject.transform.position.z - shortEnemy.transform.position.z;
+
                 if (gtimer3 > etimer3)
                 {
-
+                    //Debug.Log("aaaa");
                     if (Mathf.Abs(x) > Mathf.Abs(z))
                     {
                         if (x < 0)
@@ -140,9 +140,14 @@ public class BoosterMove : MonoBehaviour
                         if (z >= 0)
                             booster_dir = 3;
                     }
+
                     if (cubecol == true)
+                    {
+                        Debug.Log("cubecol");
                         booster_dir = Random.Range(0, 4);
-                    if (Shooter_Move.ShooterHp >= 0 || col == true)
+                    }
+
+                    if (BoosterHp >= 0 || col == true)
                     {
                         if (booster_dir == 0)
                         {
@@ -172,14 +177,15 @@ public class BoosterMove : MonoBehaviour
                     Quaternion Rot = Quaternion.LookRotation(lookat);
                     gameObject.transform.localRotation = Rot;
 
+                    gtimer3 = 0;
                     cubecol = false;
                     col = false;
                 }
-                Vector3 newVelocity = lookat * BoosterSpeed;
-                // 리지드바디의 속도에 newVelocity 할당
-                rb.velocity = newVelocity;
+                transform.position += lookat * BoosterSpeed;
+                //Vector3 newVelocity = lookat * BoosterSpeed;
+                //rb.velocity = newVelocity;
             }
-
+            //Debug.Log("bbb");
             if (gameObject.tag == "Enemy")
             {
                 if (GameObject.Find("Player").gameObject.tag == "Enemy")
@@ -215,8 +221,7 @@ public class BoosterMove : MonoBehaviour
                 {
                     shortEnemy = GameObject.Find("Healer");
                 }
-                //Debug.Log(shortEnemy.name);
-                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
+
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
 
                 if (transform.position.z < -15) //절벽 범위 조건문
@@ -250,8 +255,6 @@ public class BoosterMove : MonoBehaviour
                     col = true;
                 }
 
-                float gtimer3 = Time.time;
-                float etimer3 = gtimer3 + 0.035f;
                 gtimer3 += Time.deltaTime;
 
                 x = gameObject.transform.position.x - shortEnemy.transform.position.x;
@@ -275,7 +278,8 @@ public class BoosterMove : MonoBehaviour
                     }
                     if (cubecol == true)
                         booster_dir = Random.Range(0, 4);
-                    if (Shooter_Move.ShooterHp >= 0 || col == true)
+
+                    if (BoosterHp >= 0 || col == true)
                     {
                         if (booster_dir == 0)
                         {
@@ -305,14 +309,14 @@ public class BoosterMove : MonoBehaviour
                     Quaternion Rot = Quaternion.LookRotation(lookat);
                     gameObject.transform.localRotation = Rot;
 
+                    gtimer3 = 0;
                     cubecol = false;
                     col = false;
-
                 }
-                Vector3 newVelocity = lookat * BoosterSpeed;
+                transform.position += lookat * BoosterSpeed;
+                //Vector3 newVelocity = lookat * BoosterSpeed;
                 // 리지드바디의 속도에 newVelocity 할당
-                rb.velocity = newVelocity;
-
+                //rb.velocity = newVelocity;
             }
             return true;
         }
@@ -326,6 +330,8 @@ public class BoosterMove : MonoBehaviour
         wtimer2 = 0;
         etimer = wtimer + 3f;
         etimer2 = wtimer2 + 3f;
+        gtimer3 = 0;
+        etimer3 = gtimer3 + 0.1f;
 
         Pos = gameObject.transform.position;
 
@@ -356,11 +362,7 @@ public class BoosterMove : MonoBehaviour
 
     public bool BoosterObstacleDetect()
     {
-        if (cubecol == true)
-        {
-            cubecol = false;
-            return true;
-        }
+
         return false;
     }
 
@@ -453,6 +455,7 @@ public class BoosterMove : MonoBehaviour
             else
             {
                 wtimer = 0;
+                return true;
             }
 
         }
@@ -639,6 +642,7 @@ public class BoosterMove : MonoBehaviour
             else
             {
                 wtimer2 = 0;
+                return true;
             }
         }
 
@@ -746,13 +750,12 @@ public class BoosterMove : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-
         col = true;
         if (collision.collider.CompareTag("Cube"))
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            Debug.Log("큐브 충돌");
+            //Debug.Log("booster큐브 충돌");
         }
     }
 }

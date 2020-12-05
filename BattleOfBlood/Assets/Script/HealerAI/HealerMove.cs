@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class HealerMove : MonoBehaviour
 {
-    public Rigidbody rb;
-    public static float HealerSpeed = 3f;
+    public static float HealerSpeed = 0.02f;
     public static int HealerHp = 100;
     public static int SonnyHp = 100;
-
-    public static int healer_dir = -1;
-    private float x;
-    private float z;
 
     public GameObject Prefab_bullet;
     float DirR = 180.0f;
@@ -30,53 +25,64 @@ public class HealerMove : MonoBehaviour
     int sd_1 = 0;
     float shortDistance;
 
-    public Transform target;
-    private float relativeHeigth = 1.0f; // 높이 즉 y값
-    private float zDistance = -1.0f;// z값 나는 사실 필요 없었다.
-    private float xDistance = 1.0f; // x값
-    public float dampSpeed = 1;  // 따라가는 속도 짧으면 타겟과 같이 움직인다.
+    float wtimer;
+    float etimer;
+    float wtimer2;
+    float etimer2;
+    float gtimer3;
+    float etimer3;
 
+    float min1, min2, min3, min4, min5;
+    float Min1, Min2, Min3, Min4, Min5;
+    public GameObject ShortEnemy;
+
+    public static int healer_dir = -1;
+    private float x;
+    private float z;
+    public Rigidbody rb;
 
     public bool MoveHealer()
     {
-        /*
-        Vector3 newPos = target.position + new Vector3(xDistance, relativeHeigth, -zDistance); // 타겟 포지선에 해당 위치를 더해.. 즉 타겟 주변에 위치할 위치를 담는다.. 일정의 거리를 구하는 방법
-        Dir = Player.PlayerPos - gameObject.transform.position;
-        Dir.Normalize();
-        Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-        DirR = Rot.eulerAngles.y;
-        gameObject.transform.localRotation = Rot;
-        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * dampSpeed);
-        */
-
         if (HealerHp > 0)
         {
             if (gameObject.tag == "Team")
             {
-                int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionMove.BastionHp, Shooter_Move.ShooterHp, BoosterMove.BoosterHp);
-                Debug.Log(minHp);
-                if (minHp == Player.PlayerHp && GameObject.Find("Player").gameObject.tag == "Team")
+                if (GameObject.Find("Player").gameObject.tag == "Team")
+                    min1 = Player.PlayerHp;
+                if (GameObject.Find("Sonny").gameObject.tag == "Team")
+                    min2 = SonnyMove.SonnyHp;
+                if (GameObject.Find("Bastion").gameObject.tag == "Team")
+                    min3 = BastionMove.BastionHp;
+                if (GameObject.Find("Shooter").gameObject.tag == "Team")
+                    min4 = Shooter_Move.ShooterHp;
+                if (GameObject.Find("Booster").gameObject.tag == "Team")
+                    min5 = BoosterMove.BoosterHp;
+
+                float MinHp = Mathf.Min(min1, min2, min3, min4, min5);
+
+                if (MinHp == min1 && GameObject.Find("Player").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Player");
                 }
-                if (minHp == SonnyHp && GameObject.Find("Sonny").gameObject.tag == "Team")
+                if (MinHp == min2 && GameObject.Find("Sonny").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Sonny");
                 }
-                if (minHp == BastionMove.BastionHp && GameObject.Find("Bastion").gameObject.tag == "Team")
+                if (MinHp == min3 && GameObject.Find("Bastion").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Bastion");
                 }
-                if (minHp == Shooter_Move.ShooterHp && GameObject.Find("Shooter").gameObject.tag == "Team")
+                if (MinHp == min4 && GameObject.Find("Shooter").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Shooter");
                 }
-                if (minHp == BoosterMove.BoosterHp && GameObject.Find("Booster").gameObject.tag == "Team")
+                if (MinHp == min5 && GameObject.Find("Booster").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Booster");
                 }
-                Debug.Log(shortEnemy.name);
+
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
+
                 if (transform.position.z < -15) //절벽 범위 조건문
                 {
                     Vector3 swap1 = transform.position; //벡터 저장
@@ -108,15 +114,13 @@ public class HealerMove : MonoBehaviour
                     col = true;
                 }
 
-                float gtimer3 = Time.time;
-                float etimer3 = gtimer3 + 0.035f;
                 gtimer3 += Time.deltaTime;
 
                 x = gameObject.transform.position.x - shortEnemy.transform.position.x;
                 z = gameObject.transform.position.z - shortEnemy.transform.position.z;
                 if (gtimer3 > etimer3)
                 {
-
+                    Debug.Log("xxxx");
                     if (Mathf.Abs(x) > Mathf.Abs(z))
                     {
                         if (x < 0)
@@ -126,14 +130,17 @@ public class HealerMove : MonoBehaviour
                     }
                     if (Mathf.Abs(x) < Mathf.Abs(z))
                     {
-                        if (z < 0) 
+                        if (z < 0) //적이 슈터보다 z값큼
                             healer_dir = 2;
                         if (z >= 0)
                             healer_dir = 3;
                     }
                     if (cubecol == true)
+                    {
                         healer_dir = Random.Range(0, 4);
-                    if (Shooter_Move.ShooterHp >= 0 || col == true)
+                        Debug.Log("healer cubecol");
+                    }
+                    if (HealerHp >= 0 || col == true)
                     {
                         if (healer_dir == 0)
                         {
@@ -163,40 +170,52 @@ public class HealerMove : MonoBehaviour
                     Quaternion Rot = Quaternion.LookRotation(lookat);
                     gameObject.transform.localRotation = Rot;
 
+                    gtimer3 = 0;
                     cubecol = false;
                     col = false;
                 }
-                Vector3 newVelocity = lookat * HealerSpeed;
+                transform.position += lookat * HealerSpeed;
                 // 리지드바디의 속도에 newVelocity 할당
-                rb.velocity = newVelocity;
             }
-        
+            Debug.Log("yyy");
 
             if (gameObject.tag == "Enemy")
             {
-                int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionMove.BastionHp, Shooter_Move.ShooterHp, BoosterMove.BoosterHp);
-                Debug.Log(minHp);
-                if (minHp == Player.PlayerHp && GameObject.Find("Player").gameObject.tag == "Enemy")
+                if (GameObject.Find("Player").gameObject.tag == "Enemy")
+                    min1 = Player.PlayerHp;
+                if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                    min2 = SonnyMove.SonnyHp;
+                if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                    min3 = BastionMove.BastionHp;
+                if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                    min4 = Shooter_Move.ShooterHp;
+                if (GameObject.Find("Booster").gameObject.tag == "Enemy")
+                    min5 = BoosterMove.BoosterHp;
+
+                float MinHp = Mathf.Min(min1, min2, min3, min4, min5);
+
+                if (MinHp == min1 && GameObject.Find("Player").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Player");
                 }
-                if (minHp == SonnyHp && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                if (MinHp == min2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Sonny");
                 }
-                if (minHp == BastionMove.BastionHp && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                if (MinHp == min3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Bastion");
                 }
-                if (minHp == Shooter_Move.ShooterHp && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                if (MinHp == min4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Shooter");
                 }
-                if (minHp == BoosterMove.BoosterHp && GameObject.Find("Booster").gameObject.tag == "Enemy")
+                if (MinHp == min5 && GameObject.Find("Booster").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Booster");
                 }
-                Debug.Log(shortEnemy.name);
+
+                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
 
                 if (transform.position.z < -15) //절벽 범위 조건문
@@ -230,14 +249,13 @@ public class HealerMove : MonoBehaviour
                     col = true;
                 }
 
-                float gtimer3 = Time.time;
-                float etimer3 = gtimer3 + 0.035f;
                 gtimer3 += Time.deltaTime;
 
                 x = gameObject.transform.position.x - shortEnemy.transform.position.x;
                 z = gameObject.transform.position.z - shortEnemy.transform.position.z;
                 if (gtimer3 > etimer3)
                 {
+
                     if (Mathf.Abs(x) > Mathf.Abs(z))
                     {
                         if (x < 0)
@@ -254,7 +272,7 @@ public class HealerMove : MonoBehaviour
                     }
                     if (cubecol == true)
                         healer_dir = Random.Range(0, 4);
-                    if (Shooter_Move.ShooterHp >= 0 || col == true)
+                    if (HealerHp >= 0 || col == true)
                     {
                         if (healer_dir == 0)
                         {
@@ -284,14 +302,12 @@ public class HealerMove : MonoBehaviour
                     Quaternion Rot = Quaternion.LookRotation(lookat);
                     gameObject.transform.localRotation = Rot;
 
+                    gtimer3 = 0;
                     cubecol = false;
                     col = false;
-
                 }
-                Vector3 newVelocity = lookat * HealerSpeed;
+                transform.position += lookat * HealerSpeed;
                 // 리지드바디의 속도에 newVelocity 할당
-                rb.velocity = newVelocity;
-
             }
             return true;
         }
@@ -301,8 +317,25 @@ public class HealerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         nTime = 0;
+        wtimer = 0.0f;
+        etimer = wtimer + 5f;
+        wtimer2 = 0.0f;
+        etimer = wtimer + 10f;
+        gtimer3 = 0;
+        etimer3 = gtimer3 + 1f;
+
+        min1 = 100000;
+        min2 = 100000;
+        min3 = 100000;
+        min4 = 100000;
+        min5 = 100000;
+
+        Min1 = 100000;
+        Min2 = 100000;
+        Min3 = 100000;
+        Min4 = 100000;
+        Min5 = 100000;
     }
 
     // Update is called once per frame
@@ -313,53 +346,112 @@ public class HealerMove : MonoBehaviour
 
     public bool HealerObstacleDetect()
     {
-        if (cubecol == true)
-        {
-            cubecol = false;
-            return true;
-        }
         return false;
     }
 
     public bool HealerTeamHpDetect()      // Team 체력 감지
     {
-        int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionMove.BastionHp, Shooter_Move.ShooterHp, HealerHp, BoosterMove.BoosterHp);
+        if (gameObject.tag == "Team")
+        {
+            if (GameObject.Find("Player").gameObject.tag == "Team")
+                Min1 = Player.PlayerHp;
+            if (GameObject.Find("Sonny").gameObject.tag == "Team")
+                Min2 = SonnyMove.SonnyHp;
+            if (GameObject.Find("Bastion").gameObject.tag == "Team")
+                Min3 = BastionMove.BastionHp;
+            if (GameObject.Find("Shooter").gameObject.tag == "Team")
+                Min4 = Shooter_Move.ShooterHp;
+            if (GameObject.Find("Booster").gameObject.tag == "Team")
+                Min5 = BoosterMove.BoosterHp;
 
-        if (minHp == Player.PlayerHp && GameObject.Find("Player").gameObject.tag == "team")
-        {
-            Player.PlayerHp += 10;
+            float minHp = Mathf.Min(Min1, Min2, Min3, Min4, Min5);
+            wtimer += Time.deltaTime;
+
+            if (wtimer > etimer)
+            {
+                if (minHp == Min1 && GameObject.Find("Player").gameObject.tag == "Team")
+                {
+                    Player.PlayerHp += 500;
+                }
+                if (minHp == Min2 && GameObject.Find("Sonny").gameObject.tag == "Team")
+                {
+                    SonnyMove.SonnyHp += 10;
+                }
+                if (minHp == Min3 && GameObject.Find("Bastion").gameObject.tag == "Team")
+                {
+                    BastionMove.BastionHp += 10;
+                }
+                if (minHp == Min4 && GameObject.Find("Shooter").gameObject.tag == "Team")
+                {
+                    Shooter_Move.ShooterHp += 10;
+                }
+                if (minHp == Min5 && GameObject.Find("Booster").gameObject.tag == "Team")
+                {
+                    BoosterMove.BoosterHp += 10;
+                }
+                wtimer = 0;
+                return true;
+            }
+
         }
-        if (minHp == SonnyHp && GameObject.Find("Sonny").gameObject.tag == "team")
+
+        if (gameObject.tag == "Enemy")
         {
-            SonnyHp += 10;
-        }
-        if (minHp == BastionMove.BastionHp && GameObject.Find("Bastion").gameObject.tag == "team")
-        {
-            BastionMove.BastionHp += 10;
-        }
-        if (minHp == Shooter_Move.ShooterHp && GameObject.Find("Shooter").gameObject.tag == "team")
-        {
-            Shooter_Move.ShooterHp += 10;
-        }
-        if (minHp == HealerHp && GameObject.Find("Healer").gameObject.tag == "team")
-        {
-            HealerHp += 10;
-        }
-        if (minHp == BoosterMove.BoosterHp && GameObject.Find("Booster").gameObject.tag == "team")
-        {
-            BoosterMove.BoosterHp += 10;
+            if (GameObject.Find("Player").gameObject.tag == "Enemy")
+                Min1 = Player.PlayerHp;
+            if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                Min2 = SonnyMove.SonnyHp;
+            if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                Min3 = BastionMove.BastionHp;
+            if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                Min4 = Shooter_Move.ShooterHp;
+            if (GameObject.Find("Booster").gameObject.tag == "Enemy")
+                Min5 = BoosterMove.BoosterHp;
+
+            float minHp = Mathf.Min(Min1, Min2, Min3, Min4, Min5);
+            wtimer += Time.deltaTime;
+
+            if (wtimer > etimer)
+            {
+                if (minHp == Min1 && GameObject.Find("Player").gameObject.tag == "Enemy")
+                {
+                    Player.PlayerHp += 10;
+                }
+                if (minHp == Min2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                {
+                    SonnyMove.SonnyHp += 10;
+                }
+                if (minHp == Min3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                {
+                    BastionMove.BastionHp += 10;
+                }
+                if (minHp == Min4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                {
+                    Shooter_Move.ShooterHp += 10;
+                }
+                if (minHp == Min5 && GameObject.Find("Booster").gameObject.tag == "Enemy")
+                {
+                    BoosterMove.BoosterHp += 10;
+                }
+                wtimer = 0;
+                return true;
+            }
         }
         return false;
     }
 
     public bool HealerMyHpDetect()    // 자기 체력 감지
     {
-        if (HealerHp <= 30)
+        wtimer2 += Time.deltaTime;
+        if (wtimer2 > etimer2)
         {
-            HealerHp += 20;
-            return false;
+            if (HealerHp <= 30)
+            {
+                HealerHp += 20;
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     public bool HealerIsDead() // Enemy의 죽음
@@ -380,7 +472,7 @@ public class HealerMove : MonoBehaviour
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            Debug.Log("큐브 충돌");
+            Debug.Log("healer큐브 충돌");
         }
     }
 
