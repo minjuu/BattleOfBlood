@@ -196,6 +196,7 @@ public class SonnyMove : MonoBehaviour
         int m_idx=0;
         if (col.gameObject.tag == "Balloon")
         {
+            col.gameObject.tag = "SonnyBalloon";
             if (gameObject.tag == "Team")
             {
                 float e_min = 1000000;
@@ -209,6 +210,7 @@ public class SonnyMove : MonoBehaviour
                     }
                 }
                 GoalPos = (transform.position - e_Array[m_idx].transform.position);
+                
             }
             else if (gameObject.tag == "Enemy")
             {

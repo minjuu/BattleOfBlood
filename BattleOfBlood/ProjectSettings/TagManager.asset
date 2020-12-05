@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - Bullet
   - Bastion_balloon
+  - Balloon
+  - SonnyBalloon
   layers:
   - Default
   - TransparentFX

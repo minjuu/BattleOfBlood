@@ -34,50 +34,27 @@ public class HealerMove : MonoBehaviour
 
     public bool MoveHealer()
     {
+        Vector3 newPos = target.position + new Vector3(xDistance, relativeHeigth, -zDistance); // 타겟 포지선에 해당 위치를 더해.. 즉 타겟 주변에 위치할 위치를 담는다.. 일정의 거리를 구하는 방법
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * dampSpeed);
         /*
-            Vector3 newPos = target.position + new Vector3(xDistance, relativeHeigth, -zDistance); // 타겟 포지선에 해당 위치를 더해.. 즉 타겟 주변에 위치할 위치를 담는다.. 일정의 거리를 구하는 방법
-            Dir = Player.PlayerPos - gameObject.transform.position;
-            Dir.Normalize();
-            Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-            DirR = Rot.eulerAngles.y;
-            gameObject.transform.localRotation = Rot;
-            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * dampSpeed);
-            */
-
         if (HealerHp > 0)
         {
             if (gameObject.tag == "Team")
             {
-                int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionMove.BastionHp, Shooter_Move.ShooterHp, BoosterMove.BoosterHp);
-                Debug.Log(minHp);
-                if (minHp == Player.PlayerHp && GameObject.Find("Player").gameObject.tag == "Team")
+                shortDistance = Vector3.Distance(Player.Team_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Team_array.Count; sd_1++)
                 {
-                    shortEnemy = GameObject.Find("Player");
+                    distance = Vector3.Distance(Player.Team_array[sd_1].transform.position, gameObject.transform.position);
+                    if (distance <= shortDistance)
+                    {
+                        shortDistance = distance;
+                        shortEnemy = Player.Team_array[sd_1];
+                    }
                 }
-                if (minHp == SonnyHp && GameObject.Find("Sonny").gameObject.tag == "Team")
-                {
-                    shortEnemy = GameObject.Find("Sonny");
-                }
-                if (minHp == BastionMove.BastionHp && GameObject.Find("Bastion").gameObject.tag == "Team")
-                {
-                    shortEnemy = GameObject.Find("Bastion");
-                }
-                if (minHp == Shooter_Move.ShooterHp && GameObject.Find("Shooter").gameObject.tag == "Team")
-                {
-                    shortEnemy = GameObject.Find("Shooter");
-                }
-                if (minHp == BoosterMove.BoosterHp && GameObject.Find("Booster").gameObject.tag == "Team")
-                {
-                    shortEnemy = GameObject.Find("Booster");
-                }
-                Debug.Log(shortEnemy.name);
-                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
                 Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
                 Enemy_Dir.Normalize();
-
                 if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
                 {
-                    Debug.Log("1111");
                     if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
                         lookat = new Vector3(1, 0, 0);
                     else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
@@ -86,7 +63,6 @@ public class HealerMove : MonoBehaviour
                 }
                 else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
                 {
-                    Debug.Log("2222");
                     if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
                         lookat = new Vector3(1, 0, 0);
                     else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
@@ -94,7 +70,6 @@ public class HealerMove : MonoBehaviour
                 }
                 else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
                 {
-                    Debug.Log("3333");
                     if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
                         lookat = new Vector3(-1, 0, 0);
                     else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
@@ -102,17 +77,15 @@ public class HealerMove : MonoBehaviour
                 }
                 else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
                 {
-                    Debug.Log("4444");
                     if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
                         lookat = new Vector3(-1, 0, 0);
                     else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
                         lookat = new Vector3(0, 0, -1);
                 }
 
-
-                //Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
-                //gameObject.transform.rotation = Rot;
-                transform.rotation = Quaternion.Euler(lookat);
+                Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
+                DirR = Rot.eulerAngles.y;
+                gameObject.transform.localRotation = Rot;
 
                 if (shortDistance > 1.5f)
                 {
@@ -123,33 +96,18 @@ public class HealerMove : MonoBehaviour
                     gameObject.transform.position -= lookat * HealerSpeed;
                 }
             }
-
             if (gameObject.tag == "Enemy")
             {
-                int minHp = Mathf.Min(Player.PlayerHp, SonnyHp, BastionMove.BastionHp, Shooter_Move.ShooterHp, BoosterMove.BoosterHp);
-                Debug.Log(minHp);
-                if (minHp == Player.PlayerHp && GameObject.Find("Player").gameObject.tag == "Enemy")
+                shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
+                for (sd_1 = 0; sd_1 < Player.Enemy_array.Count; sd_1++)
                 {
-                    shortEnemy = GameObject.Find("Player");
+                    distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
+                    if (distance <= shortDistance)
+                    {
+                        shortDistance = distance;
+                        shortEnemy = Player.Enemy_array[sd_1];
+                    }
                 }
-                if (minHp == SonnyHp && GameObject.Find("Sonny").gameObject.tag == "Enemy")
-                {
-                    shortEnemy = GameObject.Find("Sonny");
-                }
-                if (minHp == BastionMove.BastionHp && GameObject.Find("Bastion").gameObject.tag == "Enemy")
-                {
-                    shortEnemy = GameObject.Find("Bastion");
-                }
-                if (minHp == Shooter_Move.ShooterHp && GameObject.Find("Shooter").gameObject.tag == "Enemy")
-                {
-                    shortEnemy = GameObject.Find("Shooter");
-                }
-                if (minHp == BoosterMove.BoosterHp && GameObject.Find("Booster").gameObject.tag == "Enemy")
-                {
-                    shortEnemy = GameObject.Find("Booster");
-                }
-                Debug.Log(shortEnemy.name);
-                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
                 Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
                 Enemy_Dir.Normalize();
                 if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
@@ -182,9 +140,11 @@ public class HealerMove : MonoBehaviour
                         lookat = new Vector3(0, 0, -1);
                 }
 
-                //Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
-                //gameObject.transform.localRotation = Rot;
-                transform.rotation = Quaternion.Euler(lookat);
+                Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
+                DirR = Rot.eulerAngles.y;
+                gameObject.transform.localRotation = Rot;
+
+                //gameObject.transform.position += lookat * BastionSpeed;
 
                 if (shortDistance > 1.5f)
                 {
@@ -195,15 +155,14 @@ public class HealerMove : MonoBehaviour
                     gameObject.transform.position -= lookat * HealerSpeed;
                 }
             }
-
+        
             return true;
-        }
+        }*/
         return false;
     }
 
-
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         nTime = 0;
     }
