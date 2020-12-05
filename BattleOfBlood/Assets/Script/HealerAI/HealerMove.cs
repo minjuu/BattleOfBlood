@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class HealerMove : MonoBehaviour
 {
-    public static float HealerSpeed = 0.05f;
+    public Rigidbody rb;
+    public static float HealerSpeed = 3f;
     public static int HealerHp = 100;
     public static int SonnyHp = 100;
+
+    public static int healer_dir = -1;
+    private float x;
+    private float z;
 
     public GameObject Prefab_bullet;
     float DirR = 180.0f;
@@ -72,57 +77,100 @@ public class HealerMove : MonoBehaviour
                 }
                 Debug.Log(shortEnemy.name);
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
-                Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
-                Enemy_Dir.Normalize();
-
-                if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
+                if (transform.position.z < -15) //절벽 범위 조건문
                 {
-                    Debug.Log("1111");
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-
-                }
-                else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
-                {
-                    Debug.Log("2222");
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
-                {
-                    Debug.Log("3333");
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
-                {
-                    Debug.Log("4444");
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
+                    Vector3 swap1 = transform.position; //벡터 저장
+                    swap1.z = -15;                                  //고정 위치 설정
+                    transform.position = swap1;
+                    col = true;
                 }
 
-
-                //Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
-                //gameObject.transform.rotation = Rot;
-                transform.rotation = Quaternion.Euler(lookat);
-
-                if (shortDistance > 1.5f)
+                if (transform.position.z > 15)//절벽 범위 조건문
                 {
-                    gameObject.transform.position += lookat * HealerSpeed;
+                    Vector3 swap2 = transform.position;//벡터 저장
+                    swap2.z = 15;//고정 위치 설정
+                    transform.position = swap2;
+                    col = true;
                 }
-                else
+
+                if (transform.position.x < -15)//절벽 범위 조건문
                 {
-                    gameObject.transform.position -= lookat * HealerSpeed;
+                    Vector3 swap3 = transform.position;//벡터 저장
+                    swap3.x = -15;//고정 위치 설정
+                    transform.position = swap3;
+                    col = true;
                 }
+                if (transform.position.x > 15)//절벽 범위 조건문
+                {
+                    Vector3 swap4 = transform.position;//벡터 저장
+                    swap4.x = 15;//고정 위치 설정
+                    transform.position = swap4;
+                    col = true;
+                }
+
+                float gtimer3 = Time.time;
+                float etimer3 = gtimer3 + 0.035f;
+                gtimer3 += Time.deltaTime;
+
+                x = gameObject.transform.position.x - shortEnemy.transform.position.x;
+                z = gameObject.transform.position.z - shortEnemy.transform.position.z;
+                if (gtimer3 > etimer3)
+                {
+
+                    if (Mathf.Abs(x) > Mathf.Abs(z))
+                    {
+                        if (x < 0)
+                            healer_dir = 0;
+                        if (x >= 0)
+                            healer_dir = 1;
+                    }
+                    if (Mathf.Abs(x) < Mathf.Abs(z))
+                    {
+                        if (z < 0) 
+                            healer_dir = 2;
+                        if (z >= 0)
+                            healer_dir = 3;
+                    }
+                    if (cubecol == true)
+                        healer_dir = Random.Range(0, 4);
+                    if (Shooter_Move.ShooterHp >= 0 || col == true)
+                    {
+                        if (healer_dir == 0)
+                        {
+                            lookat = new Vector3(1, 0, 0);
+                        }
+                        if (healer_dir == 1)
+                        {
+                            lookat = new Vector3(-1, 0, 0);
+                        }
+                        if (healer_dir == 2)
+                        {
+                            lookat = new Vector3(0, 0, 1);
+                        }
+                        if (healer_dir == 3)
+                        {
+                            lookat = new Vector3(0, 0, -1);
+                        }
+                        if (healer_dir == 4)
+                        {
+                            lookat = new Vector3(0, 0, 0);
+                        }
+                        if (shortDistance <= 2)
+                        {
+                            lookat = -lookat;
+                        }
+                    }
+                    Quaternion Rot = Quaternion.LookRotation(lookat);
+                    gameObject.transform.localRotation = Rot;
+
+                    cubecol = false;
+                    col = false;
+                }
+                Vector3 newVelocity = lookat * HealerSpeed;
+                // 리지드바디의 속도에 newVelocity 할당
+                rb.velocity = newVelocity;
             }
+        
 
             if (gameObject.tag == "Enemy")
             {
@@ -150,52 +198,101 @@ public class HealerMove : MonoBehaviour
                 }
                 Debug.Log(shortEnemy.name);
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
-                Enemy_Dir = shortEnemy.transform.position - gameObject.transform.position;
-                Enemy_Dir.Normalize();
-                if (Enemy_Dir.x >= 0 && Enemy_Dir.z >= 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
 
-                }
-                else if (Enemy_Dir.x >= 0 && Enemy_Dir.z < 0)
+                if (transform.position.z < -15) //절벽 범위 조건문
                 {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z >= 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, 1);
-                }
-                else if (Enemy_Dir.x < 0 && Enemy_Dir.z < 0)
-                {
-                    if (Mathf.Abs(Enemy_Dir.x) >= Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(-1, 0, 0);
-                    else if (Mathf.Abs(Enemy_Dir.x) < Mathf.Abs(Enemy_Dir.z))
-                        lookat = new Vector3(0, 0, -1);
+                    Vector3 swap1 = transform.position; //벡터 저장
+                    swap1.z = -15;                                  //고정 위치 설정
+                    transform.position = swap1;
+                    col = true;
                 }
 
-                //Quaternion Rot = Quaternion.LookRotation(lookat, new Vector3(0, 1, 0));
-                //gameObject.transform.localRotation = Rot;
-                transform.rotation = Quaternion.Euler(lookat);
+                if (transform.position.z > 15)//절벽 범위 조건문
+                {
+                    Vector3 swap2 = transform.position;//벡터 저장
+                    swap2.z = 15;//고정 위치 설정
+                    transform.position = swap2;
+                    col = true;
+                }
 
-                if (shortDistance > 1.5f)
+                if (transform.position.x < -15)//절벽 범위 조건문
                 {
-                    gameObject.transform.position += lookat * HealerSpeed;
+                    Vector3 swap3 = transform.position;//벡터 저장
+                    swap3.x = -15;//고정 위치 설정
+                    transform.position = swap3;
+                    col = true;
                 }
-                else
+                if (transform.position.x > 15)//절벽 범위 조건문
                 {
-                    gameObject.transform.position -= lookat * HealerSpeed;
+                    Vector3 swap4 = transform.position;//벡터 저장
+                    swap4.x = 15;//고정 위치 설정
+                    transform.position = swap4;
+                    col = true;
                 }
+
+                float gtimer3 = Time.time;
+                float etimer3 = gtimer3 + 0.035f;
+                gtimer3 += Time.deltaTime;
+
+                x = gameObject.transform.position.x - shortEnemy.transform.position.x;
+                z = gameObject.transform.position.z - shortEnemy.transform.position.z;
+                if (gtimer3 > etimer3)
+                {
+                    if (Mathf.Abs(x) > Mathf.Abs(z))
+                    {
+                        if (x < 0)
+                            healer_dir = 0;
+                        if (x >= 0)
+                            healer_dir = 1;
+                    }
+                    if (Mathf.Abs(x) < Mathf.Abs(z))
+                    {
+                        if (z < 0) //적이 슈터보다 z값큼
+                            healer_dir = 2;
+                        if (z >= 0)
+                            healer_dir = 3;
+                    }
+                    if (cubecol == true)
+                        healer_dir = Random.Range(0, 4);
+                    if (Shooter_Move.ShooterHp >= 0 || col == true)
+                    {
+                        if (healer_dir == 0)
+                        {
+                            lookat = new Vector3(1, 0, 0);
+                        }
+                        if (healer_dir == 1)
+                        {
+                            lookat = new Vector3(-1, 0, 0);
+                        }
+                        if (healer_dir == 2)
+                        {
+                            lookat = new Vector3(0, 0, 1);
+                        }
+                        if (healer_dir == 3)
+                        {
+                            lookat = new Vector3(0, 0, -1);
+                        }
+                        if (healer_dir == 4)
+                        {
+                            lookat = new Vector3(0, 0, 0);
+                        }
+                        if (shortDistance <= 2)
+                        {
+                            lookat = -lookat;
+                        }
+                    }
+                    Quaternion Rot = Quaternion.LookRotation(lookat);
+                    gameObject.transform.localRotation = Rot;
+
+                    cubecol = false;
+                    col = false;
+
+                }
+                Vector3 newVelocity = lookat * HealerSpeed;
+                // 리지드바디의 속도에 newVelocity 할당
+                rb.velocity = newVelocity;
+
             }
-
             return true;
         }
         return false;
@@ -204,6 +301,7 @@ public class HealerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         nTime = 0;
     }
 
