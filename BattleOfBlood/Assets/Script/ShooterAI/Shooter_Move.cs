@@ -51,17 +51,17 @@ public class Shooter_Move : MonoBehaviour
             col = true;
         }
 
-        if (transform.position.x < -15)//절벽 범위 조건문
+        if (transform.position.x < -20)//절벽 범위 조건문
         {
             Vector3 swap3 = transform.position;//벡터 저장
-            swap3.x = -15;//고정 위치 설정
+            swap3.x = -20;//고정 위치 설정
             transform.position = swap3;
             col = true;
         }
-        if (transform.position.x > 15)//절벽 범위 조건문
+        if (transform.position.x > 20)//절벽 범위 조건문
         {
             Vector3 swap4 = transform.position;//벡터 저장
-            swap4.x = 15;//고정 위치 설정
+            swap4.x = 20;//고정 위치 설정
             transform.position = swap4;
             col = true;
         }
@@ -90,7 +90,7 @@ public class Shooter_Move : MonoBehaviour
                 if (z >= 0)
                     shooter_dir = 3;
             }
-            if (cubecol == true)
+            if (cubecol == true || col == true)
                 shooter_dir = Random.Range(0, 4);
             if (Shooter_Move.ShooterHp >= 0 || col == true)
             {

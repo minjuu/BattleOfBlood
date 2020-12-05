@@ -60,6 +60,35 @@ public class Player : MonoBehaviour
             Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
 
+        
+
+        //int count_1 = 0;
+        //for (int i = 0; i < characters.Length; i++)
+        //{
+        //    if (characters[i].tag == "Team") //tag가 Team 일때
+        //    {
+        //        Team_arr[count_1] = characters[i]; //characters배열에 있는 순서대로 재배열하여 저장
+        //        Team_Ap[count_1] = characters_Ap[i];
+        //        count_1++;
+        //    }
+        //}
+
+        //int count_2 = 0;
+        //for (int i = 0; i < characters.Length; i++)
+        //{
+        //    if (characters[i].tag == "Enemy")
+        //    {
+        //        Enemy_arr[count_2] = characters[i];
+        //        Enemy_Ap[count_1] = characters_Ap[i];
+        //        count_2++;
+        //    }
+        //}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        str = "";
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
         {
             for (int i = 0; i < 2; i++)
@@ -122,35 +151,6 @@ public class Player : MonoBehaviour
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
             }
         }
-
-        //int count_1 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Team") //tag가 Team 일때
-        //    {
-        //        Team_arr[count_1] = characters[i]; //characters배열에 있는 순서대로 재배열하여 저장
-        //        Team_Ap[count_1] = characters_Ap[i];
-        //        count_1++;
-        //    }
-        //}
-
-        //int count_2 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Enemy")
-        //    {
-        //        Enemy_arr[count_2] = characters[i];
-        //        Enemy_Ap[count_1] = characters_Ap[i];
-        //        count_2++;
-        //    }
-        //}
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
         if (transform.position.z < -15) //절벽 범위 조건문
         {
             Vector3 swap1 = transform.position; //벡터 저장
@@ -165,16 +165,16 @@ public class Player : MonoBehaviour
             transform.position = swap2;
         }
 
-        if (transform.position.x < -15)//절벽 범위 조건문
+        if (transform.position.x < -20)//절벽 범위 조건문
         {
             Vector3 swap3 = transform.position;//벡터 저장
-            swap3.x = -15;//고정 위치 설정
+            swap3.x = -20;//고정 위치 설정
             transform.position = swap3;
         }
-        if (transform.position.x > 15)//절벽 범위 조건문
+        if (transform.position.x > 20)//절벽 범위 조건문
         {
             Vector3 swap4 = transform.position;//벡터 저장
-            swap4.x = 15;//고정 위치 설정
+            swap4.x = 20;//고정 위치 설정
             transform.position = swap4;
         }
         // 수평축과 수직축의 입력값을 지정하여 저장
