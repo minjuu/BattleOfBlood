@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/lobby.unity
     guid: 6a139bf92c6c25e438b5397a9fbc1761
   - enabled: 1
+    path: Assets/Scenes/Tut1.unity
+    guid: 782a04dae99625149bbb8c7f97e03a80
+  - enabled: 1
+    path: Assets/Scenes/Tut2.unity
+    guid: aa12dd0205ce34143b914ce672a3c5aa
+  - enabled: 1
+    path: Assets/Scenes/Tut3.unity
+    guid: 844fe9e563e772546b3179e38db51792
+  - enabled: 1
+    path: Assets/Scenes/Tut4.unity
+    guid: 28956cf46f47903479ce209a6d237c63
+  - enabled: 1
     path: Assets/Scenes/selectchar.unity
     guid: 4a715ce85fdbc5c4da337b8aaba1f185
   - enabled: 1
