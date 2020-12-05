@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 public class shooterchar : MonoBehaviour
 {
+    // Start is called before the first frame update
     public GameObject character;
     public GameObject enemycharacter1;
     public GameObject enemycharacter2;
     public GameObject enemycharacter3;
     public GameObject enemycharacter4;
-   
+
+
     // Start is called before the first frame update
     public void onStart()
     {
@@ -19,17 +20,25 @@ public class shooterchar : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "selectchar")
         {
             character.gameObject.tag = "Team";
-            enemycharacter1.gameObject.tag="Enemy";
+            enemycharacter1.gameObject.tag = "Enemy";
             enemycharacter2.gameObject.tag = "Enemy";
-            enemycharacter3=null;
-    SceneManager.LoadScene("SampleScene");
+            enemycharacter3 = null;
+            SceneManager.LoadScene("SampleScene");
         }
 
         if (SceneManager.GetActiveScene().name == "selectchar2")
         {
             character.gameObject.tag = "Team";
             SelectMng.selectcount++;
-            GetComponent<Button>().interactable = false;
+
+
+            SceneManager.LoadScene("selectchar3");
+
+        }
+        if (SceneManager.GetActiveScene().name == "selectchar3")
+        {
+            character.gameObject.tag = "Team";
+            SelectMng.selectcount++;
 
             if (SelectMng.selectcount == 2)
             {
@@ -55,10 +64,9 @@ public class shooterchar : MonoBehaviour
                     enemycharacter4.gameObject.tag = "Enemy";
                     SelectMng.enemycount++;
                 }
-              
-                 SceneManager.LoadScene("SampleScene");
+
+                SceneManager.LoadScene("SampleScene");
             }
         }
     }
-
 }

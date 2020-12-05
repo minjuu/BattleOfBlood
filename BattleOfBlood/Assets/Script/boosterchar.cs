@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 public class boosterchar : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,9 +11,9 @@ public class boosterchar : MonoBehaviour
     public GameObject enemycharacter2;
     public GameObject enemycharacter3;
     public GameObject enemycharacter4;
- 
-    // Start is called before the first frame update
 
+
+    // Start is called before the first frame update
     public void onStart()
     {
 
@@ -31,9 +30,17 @@ public class boosterchar : MonoBehaviour
         {
             character.gameObject.tag = "Team";
             SelectMng.selectcount++;
-            GetComponent<Button>().interactable = false;
-            if (SelectMng.selectcount == 2)
-            {
+
+            SceneManager.LoadScene("selectchar3");
+
+        }
+        if (SceneManager.GetActiveScene().name == "selectchar3")
+        {
+            character.gameObject.tag = "Team";
+            SelectMng.selectcount++;
+
+         //   if (SelectMng.selectcount == 2)
+          //  {
 
                 Debug.Log("end");
                 if (enemycharacter1.gameObject.tag != "Team" && SelectMng.enemycount < 3)
@@ -56,9 +63,9 @@ public class boosterchar : MonoBehaviour
                     enemycharacter4.gameObject.tag = "Enemy";
                     SelectMng.enemycount++;
                 }
-               
-                // SceneManager.LoadScene("SampleScene");
-            }
+
+                SceneManager.LoadScene("SampleScene");
+            //}
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SelectMng : MonoBehaviour
 {
-    public static int selectcount = 0;
+    public static int selectcount;
     public static int enemycount = 0;
     public GameObject character1;
     public GameObject character2;
@@ -14,11 +14,14 @@ public class SelectMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        character1.gameObject.tag = "Untagged";
-        character2.gameObject.tag = "Untagged";
-        character3.gameObject.tag = "Untagged";
-        character4.gameObject.tag = "Untagged";
-        character5.gameObject.tag = "Untagged";
+        if (SceneManager.GetActiveScene().name == "selectchar" || SceneManager.GetActiveScene().name == "selectchar2")
+        {
+            character1.gameObject.tag = "Untagged";
+            character2.gameObject.tag = "Untagged";
+            character3.gameObject.tag = "Untagged";
+            character4.gameObject.tag = "Untagged";
+            character5.gameObject.tag = "Untagged";
+        }
     }
 
     // Update is called once per frame

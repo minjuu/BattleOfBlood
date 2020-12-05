@@ -12,8 +12,8 @@ public class healerchar : MonoBehaviour
     public GameObject enemycharacter3;
     public GameObject enemycharacter4;
 
-    // Start is called before the first frame update
 
+    // Start is called before the first frame update
     public void onStart()
     {
 
@@ -30,34 +30,42 @@ public class healerchar : MonoBehaviour
         {
             character.gameObject.tag = "Team";
             SelectMng.selectcount++;
-            GetComponent<Button>().interactable = false;
-            if (SelectMng.selectcount == 2)
-            {
 
-                Debug.Log("end");
-                if (enemycharacter1.gameObject.tag != "Team" && SelectMng.enemycount < 3)
-                {
-                    enemycharacter1.gameObject.tag = "Enemy";
-                    SelectMng.enemycount++;
-                }
-                if (enemycharacter2.gameObject.tag != "Team" && SelectMng.enemycount < 3)
-                {
-                    enemycharacter2.gameObject.tag = "Enemy";
-                    SelectMng.enemycount++;
-                }
-                if (enemycharacter3.gameObject.tag != "Team" && SelectMng.enemycount < 3)
-                {
-                    enemycharacter3.gameObject.tag = "Enemy";
-                    SelectMng.enemycount++;
-                }
-                if (enemycharacter4.gameObject.tag != "Team" && SelectMng.enemycount < 3)
-                {
-                    enemycharacter4.gameObject.tag = "Enemy";
-                    SelectMng.enemycount++;
-                }
-             
-                // SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("selectchar3");
+
+        }
+        if (SceneManager.GetActiveScene().name == "selectchar3")
+        {
+            character.gameObject.tag = "Team";
+            SelectMng.selectcount++;
+
+            //   if (SelectMng.selectcount == 2)
+            //  {
+
+            Debug.Log("end");
+            if (enemycharacter1.gameObject.tag != "Team" && SelectMng.enemycount < 3)
+            {
+                enemycharacter1.gameObject.tag = "Enemy";
+                SelectMng.enemycount++;
             }
+            if (enemycharacter2.gameObject.tag != "Team" && SelectMng.enemycount < 3)
+            {
+                enemycharacter2.gameObject.tag = "Enemy";
+                SelectMng.enemycount++;
+            }
+            if (enemycharacter3.gameObject.tag != "Team" && SelectMng.enemycount < 3)
+            {
+                enemycharacter3.gameObject.tag = "Enemy";
+                SelectMng.enemycount++;
+            }
+            if (enemycharacter4.gameObject.tag != "Team" && SelectMng.enemycount < 3)
+            {
+                enemycharacter4.gameObject.tag = "Enemy";
+                SelectMng.enemycount++;
+            }
+
+            SceneManager.LoadScene("SampleScene");
+            //}
         }
     }
 }
