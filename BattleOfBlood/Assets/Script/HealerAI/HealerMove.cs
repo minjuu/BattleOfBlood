@@ -376,23 +376,23 @@ public class HealerMove : MonoBehaviour
             {
                 if (minHp == Min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 {
-                    Player.PlayerHp += 10;
+                    Player.PlayerHp += 1;
                 }
                 if (minHp == Min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 {
-                    SonnyMove.SonnyHp += 10;
+                    SonnyMove.SonnyHp += 1;
                 }
                 if (minHp == Min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 {
-                    BastionMove.BastionHp += 10;
+                    BastionMove.BastionHp += 1;
                 }
                 if (minHp == Min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 {
-                    Shooter_Move.ShooterHp += 10;
+                    Shooter_Move.ShooterHp += 1;
                 }
                 if (minHp == Min5 && GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
                 {
-                    BoosterMove.BoosterHp += 10;
+                    BoosterMove.BoosterHp += 1;
                 }
                 wtimer = 0;
                 return true;
@@ -420,23 +420,23 @@ public class HealerMove : MonoBehaviour
             {
                 if (minHp == Min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 {
-                    Player.PlayerHp += 10;
+                    Player.PlayerHp += 1;
                 }
                 if (minHp == Min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 {
-                    SonnyMove.SonnyHp += 10;
+                    SonnyMove.SonnyHp += 1;
                 }
                 if (minHp == Min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 {
-                    BastionMove.BastionHp += 10;
+                    BastionMove.BastionHp += 1;
                 }
                 if (minHp == Min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 {
-                    Shooter_Move.ShooterHp += 10;
+                    Shooter_Move.ShooterHp += 1;
                 }
                 if (minHp == Min5 && GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
                 {
-                    BoosterMove.BoosterHp += 10;
+                    BoosterMove.BoosterHp += 1;
                 }
                 wtimer = 0;
                 return true;
@@ -452,7 +452,7 @@ public class HealerMove : MonoBehaviour
         {
             if (HealerHp <= 30)
             {
-                HealerHp += 20;
+                HealerHp += 10;
             }
             return true;
         }

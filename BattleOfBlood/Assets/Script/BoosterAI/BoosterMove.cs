@@ -51,36 +51,36 @@ public class BoosterMove : MonoBehaviour
         {
             if (gameObject.tag == "Team")
             {
-                if (GameObject.Find("Player").gameObject.tag == "Team")
+                if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Sonny").gameObject.tag == "Team")
+                if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                     min2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Bastion").gameObject.tag == "Team")
+                if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                     min3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Shooter").gameObject.tag == "Team")
+                if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                     min4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Healer").gameObject.tag == "Team")
+                if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
                     min5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
 
                 float minDistance = Mathf.Min(min1, min2, min3, min4, min5);
 
-                if (minDistance == min1 && GameObject.Find("Player").gameObject.tag == "Team")
+                if (minDistance == min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Player");
                 }
-                if (minDistance == min2 && GameObject.Find("Sonny").gameObject.tag == "Team")
+                if (minDistance == min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Sonny");
                 }
-                if (minDistance == min3 && GameObject.Find("Bastion").gameObject.tag == "Team")
+                if (minDistance == min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Bastion");
                 }
-                if (minDistance == min4 && GameObject.Find("Shooter").gameObject.tag == "Team")
+                if (minDistance == min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Shooter");
                 }
-                if (minDistance == min5 && GameObject.Find("Healer").gameObject.tag == "Team")
+                if (minDistance == min5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Healer");
                 }
@@ -188,36 +188,36 @@ public class BoosterMove : MonoBehaviour
             //Debug.Log("bbb");
             if (gameObject.tag == "Enemy")
             {
-                if (GameObject.Find("Player").gameObject.tag == "Enemy")
+                if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                     min2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                     min3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                     min4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
-                if (GameObject.Find("Healer").gameObject.tag == "Enemy")
+                if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
                     min5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
 
                 float minDistance = Mathf.Min(min1, min2, min3, min4, min5);
 
-                if (minDistance == min1 && GameObject.Find("Player").gameObject.tag == "Enemy")
+                if (minDistance == min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Player");
                 }
-                if (minDistance == min2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                if (minDistance == min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Sonny");
                 }
-                if (minDistance == min3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                if (minDistance == min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Bastion");
                 }
-                if (minDistance == min4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                if (minDistance == min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Shooter");
                 }
-                if (minDistance == min5 && GameObject.Find("Healer").gameObject.tag == "Enemy")
+                if (minDistance == min5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Healer");
                 }
@@ -364,36 +364,36 @@ public class BoosterMove : MonoBehaviour
     {
         if (gameObject.tag == "Team")
         {
-            if (GameObject.Find("Player").gameObject.tag == "Team")
+            if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 Min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Sonny").gameObject.tag == "Team")
+            if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 Min2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Bastion").gameObject.tag == "Team")
+            if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 Min3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Shooter").gameObject.tag == "Team")
+            if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 Min4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Healer").gameObject.tag == "Team")
+            if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
                 Min5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
 
             float MinDistance = Mathf.Min(Min1, Min2, Min3, Min4, Min5);
 
-            if (MinDistance == Min1 && GameObject.Find("Player").gameObject.tag == "Team")
+            if (MinDistance == Min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
             {
                 ShortEnemy = GameObject.Find("Player");
             }
-            if (MinDistance == Min2 && GameObject.Find("Sonny").gameObject.tag == "Team")
+            if (MinDistance == Min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
             {
                 ShortEnemy = GameObject.Find("Sonny");
             }
-            if (MinDistance == Min3 && GameObject.Find("Bastion").gameObject.tag == "Team")
+            if (MinDistance == Min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
             {
                 ShortEnemy = GameObject.Find("Bastion");
             }
-            if (MinDistance == Min4 && GameObject.Find("Shooter").gameObject.tag == "Team")
+            if (MinDistance == Min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
             {
                 ShortEnemy = GameObject.Find("Shooter");
             }
-            if (MinDistance == Min5 && GameObject.Find("Healer").gameObject.tag == "Team")
+            if (MinDistance == Min5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
             {
                 ShortEnemy = GameObject.Find("Healer");
             }
@@ -402,46 +402,46 @@ public class BoosterMove : MonoBehaviour
 
             if (wtimer < etimer)
             {
-                if (ShortEnemy == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 10f;
                 }
-                if (ShortEnemy == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0.1f;
+                    SonnyMove.SonnySpeed = 20f;
                 }
-                if (ShortEnemy == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0.1f;
                 }
-                if (ShortEnemy == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 10f;
                 }
-                if (ShortEnemy == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0.1f;
                 }
             }
             else if (wtimer < (etimer + 3f))
             {
-                if (ShortEnemy == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 3f;
                 }
-                if (ShortEnemy == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0.03f;
+                    SonnyMove.SonnySpeed = 8f;
                 }
-                if (ShortEnemy == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0.01f;
                 }
-                if (ShortEnemy == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 3f;
                 }
-                if (ShortEnemy == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0.02f;
                 }
@@ -456,36 +456,36 @@ public class BoosterMove : MonoBehaviour
 
         if (gameObject.tag == "Enemy")
         {
-            if (GameObject.Find("Player").gameObject.tag == "Enemy")
+            if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 Min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 Min2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 Min3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 Min4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Healer").gameObject.tag == "Enemy")
+            if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
                 Min5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
 
             float MinDistance = Mathf.Min(Min1, Min2, Min3, Min4, Min5);
 
-            if (MinDistance == Min1 && GameObject.Find("Player").gameObject.tag == "Enemy")
+            if (MinDistance == Min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
             {
                 ShortEnemy = GameObject.Find("Player");
             }
-            if (MinDistance == Min2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            if (MinDistance == Min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
             {
                 ShortEnemy = GameObject.Find("Sonny");
             }
-            if (MinDistance == Min3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            if (MinDistance == Min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
             {
                 ShortEnemy = GameObject.Find("Bastion");
             }
-            if (MinDistance == Min4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            if (MinDistance == Min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
             {
                 ShortEnemy = GameObject.Find("Shooter");
             }
-            if (MinDistance == Min5 && GameObject.Find("Healer").gameObject.tag == "Enemy")
+            if (MinDistance == Min5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
             {
                 ShortEnemy = GameObject.Find("Healer");
             }
@@ -494,46 +494,46 @@ public class BoosterMove : MonoBehaviour
 
             if (wtimer < etimer)
             {
-                if (ShortEnemy == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 10f;
                 }
-                if (ShortEnemy == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0.1f;
+                    SonnyMove.SonnySpeed = 20f;
                 }
-                if (ShortEnemy == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0.1f;
                 }
-                if (ShortEnemy == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 10f;
                 }
-                if (ShortEnemy == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed += 0.1f;
                 }
             }
             else if (wtimer < (etimer + 3f))
             {
-                if (ShortEnemy == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 3f;
                 }
-                if (ShortEnemy == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0.03f;
+                    SonnyMove.SonnySpeed = 8f;
                 }
-                if (ShortEnemy == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0.01f;
                 }
-                if (ShortEnemy == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 3f;
                 }
-                if (ShortEnemy == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0.02f;
                 }
@@ -551,36 +551,36 @@ public class BoosterMove : MonoBehaviour
     {
         if (gameObject.tag == "Team")
         {
-            if (GameObject.Find("Player").gameObject.tag == "Enemy")
+            if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 MMin1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 MMin2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 MMin3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 MMin4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Healer").gameObject.tag == "Enemy")
+            if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
                 MMin5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
 
             float MMinDistance = Mathf.Min(MMin1, MMin2, MMin3, MMin4, MMin5);
 
-            if (MMinDistance == MMin1 && GameObject.Find("Player").gameObject.tag == "Enemy")
+            if (MMinDistance == MMin1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
             {
                 ShortEnemy2 = GameObject.Find("Player");
             }
-            if (MMinDistance == MMin2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            if (MMinDistance == MMin2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
             {
                 ShortEnemy2 = GameObject.Find("Sonny");
             }
-            if (MMinDistance == MMin3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            if (MMinDistance == MMin3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
             {
                 ShortEnemy2 = GameObject.Find("Bastion");
             }
-            if (MMinDistance == MMin4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            if (MMinDistance == MMin4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
             {
                 ShortEnemy2 = GameObject.Find("Shooter");
             }
-            if (MMinDistance == MMin5 && GameObject.Find("Healer").gameObject.tag == "Enemy")
+            if (MMinDistance == MMin5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
             {
                 ShortEnemy2 = GameObject.Find("Healer");
             }
@@ -589,46 +589,46 @@ public class BoosterMove : MonoBehaviour
 
             if (wtimer2 < etimer2)
             {
-                if (ShortEnemy2 == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy2 == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy2 == GameObject.Find("Sonny"))
                 {
                     SonnyMove.SonnySpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0f;
                 }
             }
             else if (wtimer2 < (etimer2 + 3f))
             {
-                if (ShortEnemy2 == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy2 == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 3f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy2 == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0.03f;
+                    SonnyMove.SonnySpeed = 8f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0.01f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 3f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0.02f;
                 }
@@ -642,36 +642,36 @@ public class BoosterMove : MonoBehaviour
 
         if (gameObject.tag == "Enemy")
         {
-            if (GameObject.Find("Player").gameObject.tag == "Team")
+            if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 MMin1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Sonny").gameObject.tag == "Team")
+            if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 MMin2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Bastion").gameObject.tag == "Team")
+            if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 MMin3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Shooter").gameObject.tag == "Team")
+            if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 MMin4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
-            if (GameObject.Find("Healer").gameObject.tag == "Team")
+            if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
                 MMin5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
 
             float MMinDistance = Mathf.Min(MMin1, MMin2, MMin3, MMin4, MMin5);
 
-            if (MMinDistance == MMin1 && GameObject.Find("Player").gameObject.tag == "Team")
+            if (MMinDistance == MMin1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
             {
                 ShortEnemy2 = GameObject.Find("Player");
             }
-            if (MMinDistance == MMin2 && GameObject.Find("Sonny").gameObject.tag == "Team")
+            if (MMinDistance == MMin2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
             {
                 ShortEnemy2 = GameObject.Find("Sonny");
             }
-            if (MMinDistance == MMin3 && GameObject.Find("Bastion").gameObject.tag == "Team")
+            if (MMinDistance == MMin3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
             {
                 ShortEnemy2 = GameObject.Find("Bastion");
             }
-            if (MMinDistance == MMin4 && GameObject.Find("Shooter").gameObject.tag == "Team")
+            if (MMinDistance == MMin4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
             {
                 ShortEnemy2 = GameObject.Find("Shooter");
             }
-            if (MMinDistance == MMin5 && GameObject.Find("Healer").gameObject.tag == "Team")
+            if (MMinDistance == MMin5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
             {
                 ShortEnemy2 = GameObject.Find("Healer");
             }
@@ -680,46 +680,46 @@ public class BoosterMove : MonoBehaviour
 
             if (wtimer2 < etimer2)
             {
-                if (ShortEnemy2 == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy2 == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy2 == GameObject.Find("Sonny"))
                 {
                     SonnyMove.SonnySpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 0f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0f;
                 }
             }
             else if (wtimer2 < (etimer2 + 3f))
             {
-                if (ShortEnemy2 == GameObject.Find("Player"))
+                if (GameObject.Find("Player") != null && ShortEnemy2 == GameObject.Find("Player"))
                 {
                     Player.PlayerSpeed = 3f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Sonny"))
+                if (GameObject.Find("Sonny") != null && ShortEnemy2 == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0.03f;
+                    SonnyMove.SonnySpeed = 8f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Bastion"))
+                if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
                     BastionMove.BastionSpeed = 0.01f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Shooter"))
+                if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
                     Shooter_Move.ShooterSpeed = 3f;
                 }
-                if (ShortEnemy2 == GameObject.Find("Healer"))
+                if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
                     HealerMove.HealerSpeed = 0.02f;
                 }
@@ -735,10 +735,10 @@ public class BoosterMove : MonoBehaviour
 
     public bool BoosterIsDead() // Enemy의 죽음
     {
-        if (BoosterHp <= 0)
+        if (BoosterHp <= 0) // Enemy의 체력이 0이하이면
         {
-            gameObject.active = false;
-            return false;
+            Debug.Log("Dead");
+            return false; // false를 반환하고 노드가 끝난다.
         }
         return true;
     }
@@ -749,7 +749,7 @@ public class BoosterMove : MonoBehaviour
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            Debug.Log("booster큐브 충돌");
+            //Debug.Log("booster큐브 충돌");
         }
     }
     void OnCollisionStay(Collision collision)
@@ -759,7 +759,7 @@ public class BoosterMove : MonoBehaviour
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            Debug.Log("booster큐브 충돌2");
+            //Debug.Log("booster큐브 충돌2");
         }
     }
 }
