@@ -67,13 +67,13 @@ public class Shooter_Move : MonoBehaviour
         }
         //shooter이동
 
-        float gtimer = Time.time;
-        etimer = gtimer + 0.035f;
-        gtimer += Time.deltaTime;
+        //float gtimer = Time.time;
+        //etimer = gtimer + 0.035f;
+        //gtimer += Time.deltaTime;
 
         x = gameObject.transform.position.x - shortEnemy.transform.position.x;
         z = gameObject.transform.position.z - shortEnemy.transform.position.z;
-        if (gtimer > etimer)
+        if (ShooterHp > 0 && nTime % 80 == 0)
         {
 
             if (Mathf.Abs(x) > Mathf.Abs(z))
@@ -92,6 +92,25 @@ public class Shooter_Move : MonoBehaviour
             }
             if (cubecol == true || col == true)
                 shooter_dir = Random.Range(0, 4);
+
+            if (transform.position.z < -15) //절벽 범위 조건문
+            {
+                shooter_dir = 2;
+            }
+
+            if (transform.position.z > 15)//절벽 범위 조건문
+            {
+                shooter_dir = 3;
+            }
+
+            if (transform.position.x < -20)//절벽 범위 조건문
+            {
+                shooter_dir = 0;
+            }
+            if (transform.position.x > 20)//절벽 범위 조건문
+            {
+                shooter_dir = 1;
+            }
             if (Shooter_Move.ShooterHp >= 0 || col == true)
             {
                 if (shooter_dir == 0)

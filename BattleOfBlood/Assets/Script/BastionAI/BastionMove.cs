@@ -98,12 +98,13 @@ public class BastionMove : MonoBehaviour
         }
 
         float gtimer = Time.time;
-        etimer = gtimer + 0.035f;
+        etimer = gtimer + 0.02f;
         gtimer += Time.deltaTime;
 
         x = gameObject.transform.position.x - shortEnemy.transform.position.x;
         z = gameObject.transform.position.z - shortEnemy.transform.position.z;
-        if (gtimer > etimer)
+
+        if (BastionHp > 0 && nTime % 80 == 0)
         {
             if (Mathf.Abs(x) > Mathf.Abs(z))
             {
@@ -119,8 +120,28 @@ public class BastionMove : MonoBehaviour
                 if (z >= 0)
                     bastion_dir = 3;
             }
-            if (cubecol == true)
+            if (cubecol == true || col == true)
                 bastion_dir = Random.Range(0, 4);
+
+            if (transform.position.z < -15) //절벽 범위 조건문
+            {
+                bastion_dir = 2;
+            }
+
+            if (transform.position.z > 15)//절벽 범위 조건문
+            {
+                bastion_dir = 3;
+            }
+
+            if (transform.position.x < -20)//절벽 범위 조건문
+            {
+                bastion_dir = 0;
+            }
+            if (transform.position.x > 20)//절벽 범위 조건문
+            {
+                bastion_dir = 1;
+            }
+
             if (BastionMove.BastionHp >= 0 || col == true)
             {
                 if (bastion_dir == 0)
@@ -231,7 +252,7 @@ public class BastionMove : MonoBehaviour
             }
         }
         return true;*/
-        if (BastionHp <= 0)
+        if (BastionHp <= 10)
         {
             gameObject.active = false;
             return false;
@@ -253,7 +274,7 @@ public class BastionMove : MonoBehaviour
                 water_balloon.transform.parent = null;
 
 
-                if (BastionHp < 30)
+                if (BastionHp < 15)
                     make_wb = true;
 
                 if (make_wb == true)
