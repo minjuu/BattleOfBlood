@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            Team_Hp[i] = 100;
+            Enemy_Hp[i] = 100;
+        }
         rb = GetComponent<Rigidbody>();
 
         PlayerPos = gameObject.transform.position;

@@ -8,7 +8,7 @@ public class SonnyMove : MonoBehaviour
     public static int SonnyHp = 200; //체력
     public static int SonnyAp = 10; //공격력
     public static Vector3 SonnyPos;
-    public static float SonnySpeed = 0.03f;
+    public static float SonnySpeed = 8f;
     public GameObject Ballon;
 
     public static Vector3 GoalPos; // 물풍선 미는 위치
@@ -30,101 +30,108 @@ public class SonnyMove : MonoBehaviour
     Vector3 Dir;
     Vector3 Now;
     public Rigidbody bb_rb;
+
+    public Rigidbody srb;
+
     public bool MoveinMap()
     {
-
-        if (SonnyMove.SonnyHp > 0)
+        if (transform.position.z < -15) //절벽 범위 조건문
         {
-            transform.position += transform.forward * SonnySpeed;
-            if (transform.position.z < -15) //절벽 범위 조건문
+            Vector3 swap1 = transform.position; //벡터 저장
+            swap1.z = -15;                                  //고정 위치 설정
+            transform.position = swap1;
+            coll = true;
+        }
+
+        if (transform.position.z > 15)//절벽 범위 조건문
+        {
+            Vector3 swap2 = transform.position;//벡터 저장
+            swap2.z = 15;//고정 위치 설정
+            transform.position = swap2;
+            coll = true;
+        }
+
+        if (transform.position.x < -20)//절벽 범위 조건문
+        {
+            Vector3 swap3 = transform.position;//벡터 저장
+            swap3.x = -20;//고정 위치 설정
+            transform.position = swap3;
+            coll = true;
+        }
+        if (transform.position.x > 20)//절벽 범위 조건문
+        {
+            Vector3 swap4 = transform.position;//벡터 저장
+            swap4.x = 20;//고정 위치 설정
+            transform.position = swap4;
+            coll = true;
+        }
+        //sonny이동
+
+        float gtimer = Time.time;
+        etimer = gtimer + 0.035f;
+        gtimer += Time.deltaTime;
+
+        x = gameObject.transform.position.x - shortEnemy.transform.position.x;
+        z = gameObject.transform.position.z - shortEnemy.transform.position.z;
+        if (gtimer > etimer)
+        {
+
+            if (Mathf.Abs(x) > Mathf.Abs(z))
             {
-                Vector3 swap1 = transform.position; //벡터 저장
-                swap1.z = -15;                                  //고정 위치 설정
-                transform.position = swap1;
+                if (x < 0)
+                    sonny_dir = 0;
+                if (x >= 0)
+                    sonny_dir = 1;
             }
-
-            if (transform.position.z > 15)//절벽 범위 조건문
+            if (Mathf.Abs(x) < Mathf.Abs(z))
             {
-                Vector3 swap2 = transform.position;//벡터 저장
-                swap2.z = 15;//고정 위치 설정
-                transform.position = swap2;
+                if (z < 0) //적이 슈터보다 z값큼
+                    sonny_dir = 2;
+                if (z >= 0)
+                    sonny_dir = 3;
             }
-
-            if (transform.position.x < -20)//절벽 범위 조건문
+            if (cubecoll == true || coll == true)
+                sonny_dir = Random.Range(0, 4);
+            if (Shooter_Move.ShooterHp >= 0 || coll == true)
             {
-                Vector3 swap3 = transform.position;//벡터 저장
-                swap3.x = -20;//고정 위치 설정
-                transform.position = swap3;
-            }
-            if (transform.position.x > 20)//절벽 범위 조건문
-            {
-                Vector3 swap4 = transform.position;//벡터 저장
-                swap4.x = 20;//고정 위치 설정
-                transform.position = swap4;
-            }
-
-            float gtimer = Time.time;
-            etimer = gtimer + 0.035f;
-            gtimer += Time.deltaTime;
-
-            x = gameObject.transform.position.x - shortEnemy.transform.position.x;
-            z = gameObject.transform.position.z - shortEnemy.transform.position.z;
-
-            if (gtimer > etimer || coll == true)
-            {
-                if (Mathf.Abs(x) < Mathf.Abs(z))
+                if (sonny_dir == 0)
                 {
-                    if (x < 0)
-                        sonny_dir = 0;
-                    if (x >= 0)
-                        sonny_dir = 1;
+                    Goal = new Vector3(1, 0, 0);
                 }
-                if (Mathf.Abs(x) > Mathf.Abs(z))
+                if (sonny_dir == 1)
                 {
-                    if (z < 0) //적이 슈터보다 z값큼
-                        sonny_dir = 2;
-                    if (z >= 0)
-                        sonny_dir = 3;
+                    Goal = new Vector3(-1, 0, 0);
                 }
-                if (cubecoll == true)
-                    sonny_dir = Random.Range(0, 4);
-                if (SonnyMove.SonnyHp >= 50)
+                if (sonny_dir == 2)
                 {
-                    if (sonny_dir == 0)
-                    {
-                        Goal = new Vector3(1, 0, 0);
-                    }
-                    if (sonny_dir == 1)
-                    {
-                        Goal = new Vector3(-1, 0, 0);
-                    }
-                    if (sonny_dir == 2)
-                    {
-                        Goal = new Vector3(0, 0, 1);
-                    }
-                    if (sonny_dir == 3)
-                    {
-                        Goal = new Vector3(0, 0, -1);
-                    }
-                    if (shortDistance <= 2)
-                    {
-                        Goal = -Goal;
-                    }
+                    Goal = new Vector3(0, 0, 1);
                 }
-                Quaternion Rot = Quaternion.LookRotation(Goal);
-                gameObject.transform.localRotation = Rot;
-                Dir = Dir = shortEnemy.transform.position.normalized;
-                Dir.y = 0;
-
-                coll = false;
-                cubecoll = false;
+                if (sonny_dir == 3)
+                {
+                    Goal = new Vector3(0, 0, -1);
+                }
+                if (sonny_dir == 4)
+                {
+                    Goal = new Vector3(0, 0, 0);
+                }
+                if (shortDistance <= 2)
+                {
+                    Goal = -Goal;
+                }
             }
+            Quaternion Rot = Quaternion.LookRotation(Goal);
+            gameObject.transform.localRotation = Rot;
 
+            Dir = (shortEnemy.transform.position - gameObject.transform.position).normalized;
+            Dir.y = 0;
 
-            Debug.Log("MoveMap");
-
+            cubecoll = false;
+            coll = false;
             return true;
         }
+        Vector3 newVelocity = Goal * SonnySpeed;
+        // 리지드바디의 속도에 newVelocity 할당
+        srb.velocity = newVelocity;
         return false;
     }
 
@@ -135,7 +142,7 @@ public class SonnyMove : MonoBehaviour
     {
 
         nTime = 0;
-
+        srb = GetComponent<Rigidbody>();
         ///
 
         coll = false;
@@ -296,7 +303,7 @@ public class SonnyMove : MonoBehaviour
     {
         if (cubecoll == true)
         {
-            Dir = cube_position.normalized;
+            Dir = (cube_position - gameObject.transform.position).normalized;
             Dir.y = 0;
             cubecoll = false;
             return true;
@@ -371,7 +378,7 @@ public class SonnyMove : MonoBehaviour
                     }
                 }
             }*/
-            Debug.Log("Move");
+           
             return true;
 
         }
