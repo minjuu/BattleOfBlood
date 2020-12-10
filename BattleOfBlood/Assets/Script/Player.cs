@@ -17,6 +17,14 @@ public class Player : MonoBehaviour
     public static int[] Team_Hp = new int[3];
     public static int[] Enemy_Hp = new int[3];
 
+    public static bool pl = false;
+    public static bool ba = false;
+    public static bool sn = false;
+    public static bool hl = false;
+    public static bool bo = false;
+    public static bool sh = false;
+
+
     public static List<float> Team_Ap;
     public static List<float> Enemy_Ap;
     public static List<Vector3> Team_Pos;
@@ -26,11 +34,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            Team_Hp[i] = 100;
-            Enemy_Hp[i] = 100;
-        }
         rb = GetComponent<Rigidbody>();
 
         PlayerPos = gameObject.transform.position;
@@ -50,6 +53,12 @@ public class Player : MonoBehaviour
         Team_Ap = new List<float>();
         Enemy_Ap = new List<float>();
 
+        for (int i = 0; i < 3; i++)
+        {
+            Team_Hp[i] = 100;
+            Enemy_Hp[i] = 100;
+        }
+
         for (int i = 0; i < Team_Ap.Count; i++)
         {
             Team_Ap.Add(5.0f); //공격력 임의로 추가
@@ -65,6 +74,81 @@ public class Player : MonoBehaviour
         {
             Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                if (Team_array[i].name == "Player")
+                    pl = true;
+                else if (Team_array[i].name == "Sonny")
+                    sn = true;
+                else if (Team_array[i].name == "Bastion")
+                    ba = true;
+                else if (Team_array[i].name == "Shooter")
+                    sh = true;
+                else if (Team_array[i].name == "Healer")
+                    hl = true;
+                else if (Team_array[i].name == "Booster")
+                    bo = true;
+
+                if (Enemy_array[i].name == "Player")
+                    pl = true;
+                else if (Enemy_array[i].name == "Sonny")
+                    sn = true;
+                else if (Enemy_array[i].name == "Bastion")
+                    ba = true;
+                else if (Enemy_array[i].name == "Shooter")
+                    sh = true;
+                else if (Enemy_array[i].name == "Healer")
+                    hl = true;
+                else if (Enemy_array[i].name == "Booster")
+                    bo = true;
+            }
+
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (Team_array[i].name == "Player")
+                    pl = true;
+                else if (Team_array[i].name == "Sonny")
+                    sn = true;
+                else if (Team_array[i].name == "Bastion")
+                    ba = true;
+                else if (Team_array[i].name == "Shooter")
+                    sh = true;
+                else if (Team_array[i].name == "Healer")
+                    hl = true;
+                else if (Team_array[i].name == "Booster")
+                    bo = true;
+
+                if (Enemy_array[i].name == "Player")
+                    pl = true;
+                else if (Enemy_array[i].name == "Sonny")
+                    sn = true;
+                else if (Enemy_array[i].name == "Bastion")
+                    ba = true;
+                else if (Enemy_array[i].name == "Shooter")
+                    sh = true;
+                else if (Enemy_array[i].name == "Healer")
+                    hl = true;
+                else if (Enemy_array[i].name == "Booster")
+                    bo = true;
+            }
+        }
+
+        if (ba == false)
+            GameObject.Find("Bastion").active = false;
+        if (bo == false)
+            GameObject.Find("Booster").active = false;
+        if (sh == false)
+            GameObject.Find("Shooter").active = false;
+        if (hl == false)
+            GameObject.Find("Healer").active = false;
+        if (sn == false)
+            GameObject.Find("Sonny").active = false;
 
 
 
