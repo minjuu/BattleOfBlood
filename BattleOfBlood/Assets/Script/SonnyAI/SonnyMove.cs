@@ -93,25 +93,25 @@ public class SonnyMove : MonoBehaviour
             if (cubecoll == true || coll == true)
                 sonny_dir = Random.Range(0, 4);
 
-            /*   if (transform.position.z < -15) //절벽 범위 조건문
-               {
-                   sonny_dir = 2;
-               }
+            if (transform.position.z < -15) //절벽 범위 조건문
+            {
+                sonny_dir = 2;
+            }
 
-               if (transform.position.z > 15)//절벽 범위 조건문
-               {
-                   sonny_dir = 3;
-               }
+            if (transform.position.z > 15)//절벽 범위 조건문
+            {
+                sonny_dir = 3;
+            }
 
-               if (transform.position.x < -20)//절벽 범위 조건문
-               {
-                   sonny_dir = 0;
-               }
-               if (transform.position.x > 20)//절벽 범위 조건문
-               {
-                   sonny_dir = 1;
-               }
-            */
+            if (transform.position.x < -20)//절벽 범위 조건문
+            {
+                sonny_dir = 0;
+            }
+            if (transform.position.x > 20)//절벽 범위 조건문
+            {
+                sonny_dir = 1;
+            }
+
             if (SonnyHp >= 0 || coll == true)
             {
                 if (sonny_dir == 0)
@@ -151,6 +151,69 @@ public class SonnyMove : MonoBehaviour
             // 리지드바디의 속도에 newVelocity 할당
             srb.velocity = newVelocity;
             return true;
+        }
+        else if (transform.position.z < -15 || transform.position.z > 15 || transform.position.x < -20 || transform.position.x > 20)
+        {
+
+            if (transform.position.z < -15) //절벽 범위 조건문
+            {
+                sonny_dir = 2;
+            }
+
+            if (transform.position.z > 15)//절벽 범위 조건문
+            {
+                sonny_dir = 3;
+            }
+
+            if (transform.position.x < -20)//절벽 범위 조건문
+            {
+                sonny_dir = 0;
+            }
+            if (transform.position.x > 20)//절벽 범위 조건문
+            {
+                sonny_dir = 1;
+            }
+
+            if (SonnyHp >= 0 || coll == true)
+            {
+                if (sonny_dir == 0)
+                {
+                    Goal = new Vector3(1, 0, 0);
+                }
+                if (sonny_dir == 1)
+                {
+                    Goal = new Vector3(-1, 0, 0);
+                }
+                if (sonny_dir == 2)
+                {
+                    Goal = new Vector3(0, 0, 1);
+                }
+                if (sonny_dir == 3)
+                {
+                    Goal = new Vector3(0, 0, -1);
+                }
+                if (sonny_dir == 4)
+                {
+                    Goal = new Vector3(0, 0, 0);
+                }
+                if (shortDistance <= 2)
+                {
+                    Goal = -Goal;
+                }
+            }
+            Quaternion Rot = Quaternion.LookRotation(Goal);
+            gameObject.transform.localRotation = Rot;
+
+            Dir = (shortEnemy.transform.position - gameObject.transform.position).normalized;
+            Dir.y = 0;
+            cubecoll = false;
+            coll = false;
+
+            Vector3 newVelocity = Goal * SonnySpeed;
+            // 리지드바디의 속도에 newVelocity 할당
+            srb.velocity = newVelocity;
+            return true;
+
         }
         Vector3 newVelocity2 = Goal * SonnySpeed;
         // 리지드바디의 속도에 newVelocity 할당
