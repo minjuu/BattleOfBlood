@@ -13,7 +13,7 @@ public class yes : MonoBehaviour
 
     public void onStart()
     {
-        //SceneManager.LoadScene("Stage2"); //스테이지1 씬 전환
+        SceneManager.LoadScene("Stage2"); //스테이지1 씬 전환
     }
 
     // Update is called once per frame

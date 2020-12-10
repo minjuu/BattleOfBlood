@@ -182,17 +182,17 @@ public class Player : MonoBehaviour
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
         {
             if (Team_Hp[0] <= 0 && Team_Hp[1] <= 0)
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
-            else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0)
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Lose");
+            else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
         }
         //stage2 : 팀원이 다 죽으면 Lose2 씬으로 이동, 적이 다죽으면 Win2 씬으로 이동
         else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
         {
             if (Team_Hp[0] <= 0 && Team_Hp[1] <= 0 && Team_Hp[2] <= 0)
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Win2");
-            else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0 && Enemy_Hp[2] <= 0)
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Lose2");
+            else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0 && Enemy_Hp[2] <= 0)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Win2");
         }
         str = "";
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
