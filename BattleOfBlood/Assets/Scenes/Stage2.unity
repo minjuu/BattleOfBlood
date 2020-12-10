@@ -2084,7 +2084,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
 --- !u!1 &1211437734 stripped
 GameObject:
@@ -2121,6 +2122,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1211437737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211437734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51e73c824e5e214d93240c8e98a11a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterBalloon: {fileID: 1055676447326888723, guid: 290eea4d90e5ce1429b2755073dc39bf, type: 3}
+  rb: {fileID: 1211437736}
+  b_rb: {fileID: 0}
 --- !u!1001 &1240050096
 PrefabInstance:
   m_ObjectHideFlags: 0

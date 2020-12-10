@@ -4,31 +4,8 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-    public static int PlayerHp = 100;
-    public static Vector3 PlayerPos;
-    public static Vector3 PlayerColPos;
-    bool col = false;
     public GameObject WaterBalloon;
-    public static float PlayerSpeed = 3f;
     public Rigidbody rb;
-    public static GameObject[] characters;
-    public static List<GameObject> Team_array;
-    public static List<GameObject> Enemy_array;
-    public static int[] Team_Hp = new int[3];
-    public static int[] Enemy_Hp = new int[3];
-
-    public static bool pl;
-    public static bool ba;
-    public static bool sn;
-    public static bool hl;
-    public static bool bo;
-    public static bool sh;
-    public static int n = 0;
-
-    public static List<float> Team_Ap;
-    public static List<float> Enemy_Ap;
-    public static List<Vector3> Team_Pos;
-    public static List<Vector3> Enemy_Pos;
     public Rigidbody b_rb;
 
     // Start is called before the first frame update
@@ -36,83 +13,52 @@ public class Player2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        PlayerPos = gameObject.transform.position;
+        Player.PlayerPos = gameObject.transform.position;
 
-
-
-        characters = new GameObject[6];
-        characters[0] = GameObject.Find("Player");
-        characters[1] = GameObject.Find("Sonny");
-        characters[2] = GameObject.Find("Bastion");
-        characters[3] = GameObject.Find("Shooter");
-        characters[4] = GameObject.Find("Healer");
-        characters[5] = GameObject.Find("Booster");
-
-        Team_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Team"));
-        Enemy_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
-        Team_Pos = new List<Vector3>();
-        Enemy_Pos = new List<Vector3>();
-        Team_Ap = new List<float>();
-        Enemy_Ap = new List<float>();
+        Player.Team_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Team"));
+        Player.Enemy_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        Player.Team_Pos = new List<Vector3>();
+        Player.Enemy_Pos = new List<Vector3>();
+        Player.Team_Ap = new List<float>();
+        Player.Enemy_Ap = new List<float>();
 
         for (int i = 0; i < 3; i++)
         {
-            Team_Hp[i] = 100;
-            Enemy_Hp[i] = 100;
+            Player.Team_Hp[i] = 100;
+            Player.Enemy_Hp[i] = 100;
         }
 
-        for (int i = 0; i < Team_Ap.Count; i++)
+        for (int i = 0; i < Player.Team_Ap.Count; i++)
         {
-            Team_Ap.Add(5.0f); //공격력 임의로 추가
-            Enemy_Ap.Add(5.0f); //공격력 임의로 추가
+            Player.Team_Ap.Add(5.0f); //공격력 임의로 추가
+            Player.Enemy_Ap.Add(5.0f); //공격력 임의로 추가
         }
 
-        for (int i = 0; i < Team_array.Count; i++)
+        for (int i = 0; i < Player.Team_array.Count; i++)
         {
-            Team_Pos.Add(Team_array[i].transform.position); //우리 팀의 위치를 리스트에 저장
+            Player.Team_Pos.Add(Player.Team_array[i].transform.position); //우리 팀의 위치를 리스트에 저장
         }
 
-        for (int i = 0; i < Enemy_array.Count; i++)
+        for (int i = 0; i < Player.Enemy_array.Count; i++)
         {
-            Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
+            Player.Enemy_Pos.Add(Player.Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
 
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
         {
-            pl = false;
-            ba = false;
-            sn = false;
-            hl = false;
-            bo = false;
-            sh = false;
-            for (int i = 0; i < 2; i++)
-            {
-                if (Team_array[i].name == "Player")
-                    pl = true;
-                else if (Team_array[i].name == "Sonny")
-                    sn = true;
-                else if (Team_array[i].name == "Bastion")
-                    ba = true;
-                else if (Team_array[i].name == "Shooter")
-                    sh = true;
-                else if (Team_array[i].name == "Healer")
-                    hl = true;
-                else if (Team_array[i].name == "Booster")
-                    bo = true;
+            Player.ba = true;
+            Player.bo = true;
+            Player.ba = true;
+            Player.sh = true;
+            Player.hl = true;
 
-                if (Enemy_array[i].name == "Player")
-                    pl = true;
-                else if (Enemy_array[i].name == "Sonny")
-                    sn = true;
-                else if (Enemy_array[i].name == "Bastion")
-                    ba = true;
-                else if (Enemy_array[i].name == "Shooter")
-                    sh = true;
-                else if (Enemy_array[i].name == "Healer")
-                    hl = true;
-                else if (Enemy_array[i].name == "Booster")
-                    bo = true;
-            }
+            GameObject.Find("Player").active = true;
+            GameObject.Find("Bastion").active = true;
+            GameObject.Find("Booster").active = true;
+            GameObject.Find("Shooter").active = true;
+            GameObject.Find("Healer").active = true;
+            GameObject.Find("Sonny").active = true;
+
             Player.PlayerHp = 100;
             Shooter_Move.ShooterHp = 100;
             HealerMove.HealerHp = 100;
@@ -120,19 +66,6 @@ public class Player2 : MonoBehaviour
             BastionMove.BastionHp = 100;
             SonnyMove.SonnyHp = 100;
         }
-
-
-        if (ba == false)
-            GameObject.Find("Bastion").active = false;
-        if (bo == false)
-            GameObject.Find("Booster").active = false;
-        if (sh == false)
-            GameObject.Find("Shooter").active = false;
-        if (hl == false)
-            GameObject.Find("Healer").active = false;
-        if (sn == false)
-            GameObject.Find("Sonny").active = false;
-
 
 
         //int count_1 = 0;
@@ -161,13 +94,13 @@ public class Player2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2" && n == 0)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2" && Player.n == 0)
         {
-            ba = true;
-            bo = true;
-            ba = true;
-            sh = true;
-            hl = true;
+            Player.ba = true;
+            Player.bo = true;
+            Player.ba = true;
+            Player.sh = true;
+            Player.hl = true;
 
             GameObject.Find("Player").active = true;
             GameObject.Find("Bastion").active = true;
@@ -182,7 +115,7 @@ public class Player2 : MonoBehaviour
             BoosterMove.BoosterHp = 100;
             BastionMove.BastionHp = 100;
             SonnyMove.SonnyHp = 100;
-            n++;
+            Player.n++;
         }
 
         if (transform.position.z < -15) //절벽 범위 조건문
@@ -216,8 +149,8 @@ public class Player2 : MonoBehaviour
         float zInput = Input.GetAxis("Vertical");
 
         // 실제 이동 속도를 입력값과 이동 속력을 사용해 결정
-        float xSpeed = xInput * PlayerSpeed;
-        float zSpeed = zInput * PlayerSpeed;
+        float xSpeed = xInput * Player.PlayerSpeed;
+        float zSpeed = zInput * Player.PlayerSpeed;
 
         // Vector3 속도를 (xSpeed, 0, zSpeed)로 생성
         Vector3 newVelocity = new Vector3(xSpeed, 0f, zSpeed);

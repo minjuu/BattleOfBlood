@@ -64,7 +64,7 @@ public class healerchar : MonoBehaviour
                 SelectMng.enemycount++;
             }
 
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Stage2");
             //}
         }
     }

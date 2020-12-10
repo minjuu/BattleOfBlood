@@ -64,7 +64,7 @@ public class boosterchar : MonoBehaviour
                     SelectMng.enemycount++;
                 }
 
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Stage2");
             //}
         }
     }
