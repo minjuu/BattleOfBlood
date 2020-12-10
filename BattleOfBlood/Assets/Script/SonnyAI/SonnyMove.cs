@@ -32,7 +32,7 @@ public class SonnyMove : MonoBehaviour
     public Rigidbody bb_rb;
     public bool MoveinMap()
     {
-        
+
         if (SonnyMove.SonnyHp > 0)
         {
             transform.position += transform.forward * SonnySpeed;
@@ -41,7 +41,6 @@ public class SonnyMove : MonoBehaviour
                 Vector3 swap1 = transform.position; //벡터 저장
                 swap1.z = -15;                                  //고정 위치 설정
                 transform.position = swap1;
-               
             }
 
             if (transform.position.z > 15)//절벽 범위 조건문
@@ -49,29 +48,27 @@ public class SonnyMove : MonoBehaviour
                 Vector3 swap2 = transform.position;//벡터 저장
                 swap2.z = 15;//고정 위치 설정
                 transform.position = swap2;
-              
             }
 
-            if (transform.position.x < -15)//절벽 범위 조건문
+            if (transform.position.x < -20)//절벽 범위 조건문
             {
                 Vector3 swap3 = transform.position;//벡터 저장
-                swap3.x = -15;//고정 위치 설정
+                swap3.x = -20;//고정 위치 설정
                 transform.position = swap3;
-               
             }
-            if (transform.position.x > 15)//절벽 범위 조건문
+            if (transform.position.x > 20)//절벽 범위 조건문
             {
                 Vector3 swap4 = transform.position;//벡터 저장
-                swap4.x = 15;//고정 위치 설정
+                swap4.x = 20;//고정 위치 설정
                 transform.position = swap4;
             }
-           
-        float gtimer = Time.time;
-        etimer = gtimer + 0.035f;
-        gtimer += Time.deltaTime;
 
-        x = gameObject.transform.position.x - shortEnemy.transform.position.x;
-        z = gameObject.transform.position.z - shortEnemy.transform.position.z;
+            float gtimer = Time.time;
+            etimer = gtimer + 0.035f;
+            gtimer += Time.deltaTime;
+
+            x = gameObject.transform.position.x - shortEnemy.transform.position.x;
+            z = gameObject.transform.position.z - shortEnemy.transform.position.z;
 
             if (gtimer > etimer || coll == true)
             {
@@ -152,7 +149,7 @@ public class SonnyMove : MonoBehaviour
         nTime++;
         Now = transform.position;
         Now.y = 0.3f;
-        transform.position=Now;
+        transform.position = Now;
     }
     public bool SonnyIsDead()
     {
@@ -188,12 +185,12 @@ public class SonnyMove : MonoBehaviour
                 bb_rb.isKinematic = false; //////////////
                 ballon.transform.parent = null; ////////////
                 ballon.gameObject.tag = "SonnyBalloon"; /////////
-                Vector3 bPos; 
-              
+                Vector3 bPos;
+
                 bPos = transform.position;
                 bPos.y = 0.8f;
                 ballon.transform.position = bPos;
-               
+
             }
             return true;
         }
@@ -201,17 +198,17 @@ public class SonnyMove : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        int m_idx=0;
-        if (col.gameObject.tag == "Balloon" || col.gameObject.tag== "SonnyBalloon")
+        int m_idx = 0;
+        if (col.gameObject.tag == "Balloon" || col.gameObject.tag == "SonnyBalloon")
         {
             col.gameObject.tag = "SonnyBalloon";
-         
+
             if (gameObject.tag == "Team")
             {
                 float e_min = 1000000;
                 GameObject[] e_Array = GameObject.FindGameObjectsWithTag("Enemy");
                 for (int i = 0; i < e_Array.Length; i++)
-                { 
+                {
                     if ((e_Array[i].transform.position - gameObject.transform.position).magnitude < e_min)
                     {
                         e_min = (e_Array[i].transform.position - gameObject.transform.position).magnitude;
@@ -220,8 +217,8 @@ public class SonnyMove : MonoBehaviour
                 }
                 GoalPos.y = 0.8f;
                 GoalPos = (e_Array[m_idx].transform.position - transform.position).normalized;
-               
-               // GoalPos.Normalize();
+
+                // GoalPos.Normalize();
 
             }
             else if (gameObject.tag == "Enemy")
@@ -237,16 +234,16 @@ public class SonnyMove : MonoBehaviour
                     }
                 }
                 // GoalPos = transform.position - e_Array[m_idx].transform.position;
-                 GoalPos.y = 0.8f;
+                GoalPos.y = 0.8f;
                 GoalPos = (e_Array[m_idx].transform.position - transform.position).normalized;
-                
+
                 //GoalPos.Normalize();
             }
             BalloonMove.Sonnykick = true; //물풍선 충돌시 물풍선 목표 지점까지 이동시키는 BallonMove내 코드 실행
         }
 
         coll = true;
-      
+
 
 
     }
@@ -271,7 +268,7 @@ public class SonnyMove : MonoBehaviour
                     }
                 }
 
-               
+
             }
             else
             {
@@ -287,7 +284,7 @@ public class SonnyMove : MonoBehaviour
                         GoalPos = (shortEnemy.transform.position - transform.position).normalized;
                     }
                 }
-                
+
             }
             return true;
         }
@@ -373,9 +370,9 @@ public class SonnyMove : MonoBehaviour
                     }
                 }
             }*/
-                Debug.Log("Move");
-                return true;
-            
+            Debug.Log("Move");
+            return true;
+
         }
         return false;
     }

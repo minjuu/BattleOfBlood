@@ -6,7 +6,7 @@ public class Shooter_Move : MonoBehaviour
 {
     public static float ShooterSpeed = 3f;
     public static int ShooterHp = 100;
-    public static int ShooterAp = 100;
+    public static int ShooterAp = 10;
     public static int bulletTime = 100;
     public static string ShooterTag;
     GameObject[] teamObject;
@@ -75,7 +75,7 @@ public class Shooter_Move : MonoBehaviour
         z = gameObject.transform.position.z - shortEnemy.transform.position.z;
         if (gtimer > etimer)
         {
-            
+
             if (Mathf.Abs(x) > Mathf.Abs(z))
             {
                 if (x < 0)
@@ -175,7 +175,7 @@ public class Shooter_Move : MonoBehaviour
 
     public bool ChangeGun() //물총장전
     {
-        if (Shooter_Move.ShooterHp > 0) 
+        if (Shooter_Move.ShooterHp > 0)
         {
             if (shortEnemy.name == "Shooter")
             {

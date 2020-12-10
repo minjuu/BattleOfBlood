@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
             Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
 
-        
+
 
         //int count_1 = 0;
         //for (int i = 0; i < characters.Length; i++)
@@ -212,16 +212,17 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
             GameObject balloon = GameObject.Instantiate(WaterBalloon)
                as GameObject;
             b_rb = balloon.GetComponent<Rigidbody>();
             b_rb.isKinematic = false;
             Vector3 v = transform.position;
+            v.x = Mathf.Round(v.x);
             v.y = 0.8f;
+            v.z = Mathf.Round(v.z);
             balloon.transform.position = v;
-
         }
+
     }
     void OnCollisionEnter(Collision collision)
     {
