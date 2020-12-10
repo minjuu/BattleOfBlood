@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\bastionchar.cs" />
     <Compile Include="Assets\Script\ShooterAI\Bullet_Move.cs" />
     <Compile Include="Assets\Script\Water.cs" />
+    <Compile Include="Assets\Script\SceneButton\gameover.cs" />
     <Compile Include="Assets\Script\quitbtn.cs" />
     <Compile Include="Assets\Script\BalloonMove.cs" />
     <Compile Include="Assets\Script\BastionAI\BastionMove.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="Assets\Script\Tut.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_Move.cs" />
     <Compile Include="Assets\Script\boosterchar.cs" />
-    <Compile Include="Assets\Script\SceneButton\gameover.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

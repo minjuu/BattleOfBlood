@@ -67,13 +67,13 @@ public class SonnyMove : MonoBehaviour
         }
         //sonny이동
 
-        float gtimer = Time.time;
-        etimer = gtimer + 0.035f;
-        gtimer += Time.deltaTime;
+        // float gtimer = Time.time;
+        // etimer = gtimer + 0.035f;
+        // gtimer += Time.deltaTime;
 
         x = gameObject.transform.position.x - shortEnemy.transform.position.x;
         z = gameObject.transform.position.z - shortEnemy.transform.position.z;
-        if (gtimer > etimer)
+        if (SonnyHp > 0 && nTime % 80 == 0)
         {
 
             if (Mathf.Abs(x) > Mathf.Abs(z))
@@ -93,6 +93,25 @@ public class SonnyMove : MonoBehaviour
             if (cubecoll == true || coll == true)
                 sonny_dir = Random.Range(0, 4);
 
+            /*   if (transform.position.z < -15) //절벽 범위 조건문
+               {
+                   sonny_dir = 2;
+               }
+
+               if (transform.position.z > 15)//절벽 범위 조건문
+               {
+                   sonny_dir = 3;
+               }
+
+               if (transform.position.x < -20)//절벽 범위 조건문
+               {
+                   sonny_dir = 0;
+               }
+               if (transform.position.x > 20)//절벽 범위 조건문
+               {
+                   sonny_dir = 1;
+               }
+            */
             if (SonnyHp >= 0 || coll == true)
             {
                 if (sonny_dir == 0)
@@ -125,18 +144,19 @@ public class SonnyMove : MonoBehaviour
 
             Dir = (shortEnemy.transform.position - gameObject.transform.position).normalized;
             Dir.y = 0;
-
             cubecoll = false;
             coll = false;
+
+            Vector3 newVelocity = Goal * SonnySpeed;
+            // 리지드바디의 속도에 newVelocity 할당
+            srb.velocity = newVelocity;
             return true;
         }
-        Vector3 newVelocity = Goal * SonnySpeed;
+        Vector3 newVelocity2 = Goal * SonnySpeed;
         // 리지드바디의 속도에 newVelocity 할당
-        srb.velocity = newVelocity;
+        srb.velocity = newVelocity2;
         return false;
     }
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -148,7 +168,6 @@ public class SonnyMove : MonoBehaviour
 
         coll = false;
 
-        ///
     }
 
     // Update is called once per frame
@@ -244,11 +263,14 @@ public class SonnyMove : MonoBehaviour
         }
 
         coll = true;
-
+        if (col.collider.CompareTag("Cube"))
+        {
+            cube_position = col.transform.position;
+            cubecoll = true;
+        }
 
 
     }
-
 
     public bool DetectPosi() //적 위치 감지
     {
