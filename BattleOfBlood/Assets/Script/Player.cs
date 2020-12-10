@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
         else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
         {
             if (Team_Hp[0] <= 0 && Team_Hp[1] <= 0 && Team_Hp[2] <= 0)
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Lose2");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Lose");
             else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0 && Enemy_Hp[2] <= 0)
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Win2");
         }
@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
                     if (Shooter_Move.ShooterHp <= 0)
                         Shooter_Move.ShooterHp = 0;
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
-                    Enemy_Hp[i] = SonnyMove.SonnyHp;
+                    Enemy_Hp[i] = Shooter_Move.ShooterHp;
                 }
                 else if (Enemy_array[i].name == "Healer")
                 {
@@ -359,7 +359,7 @@ public class Player : MonoBehaviour
                     if (Shooter_Move.ShooterHp <= 0)
                         Shooter_Move.ShooterHp = 0;
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
-                    Enemy_Hp[i] = SonnyMove.SonnyHp;
+                    Enemy_Hp[i] = Shooter_Move.ShooterHp;
                 }
                 else if (Enemy_array[i].name == "Healer")
                 {

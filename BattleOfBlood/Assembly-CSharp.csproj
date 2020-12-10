@@ -55,7 +55,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Prefab\Camera1.cs" />
+    <Compile Include="Assets\Script\Camera1.cs" />
     <Compile Include="Assets\Script\mat.cs" />
     <Compile Include="Assets\Script\bastionchar.cs" />
     <Compile Include="Assets\Script\ShooterAI\Bullet_Move.cs" />
@@ -66,7 +66,7 @@
     <Compile Include="Assets\Script\BoosterAI\Booster_BT.cs" />
     <Compile Include="Assets\Script\SonnyAI\SonnyAI.cs" />
     <Compile Include="Assets\Script\shooterchar.cs" />
-    <Compile Include="Assets\Prefab\CameraManage.cs" />
+    <Compile Include="Assets\Script\CameraManage.cs" />
     <Compile Include="Assets\Script\SonnyAI\Sonny_BT.cs" />
     <Compile Include="Assets\Script\BoosterAI\Booster_AI.cs" />
     <Compile Include="Assets\Script\selectchar.cs" />
@@ -93,6 +93,7 @@
     <Compile Include="Assets\Script\Tut.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_Move.cs" />
     <Compile Include="Assets\Script\boosterchar.cs" />
+    <Compile Include="Assets\Script\SceneButton\gameover.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

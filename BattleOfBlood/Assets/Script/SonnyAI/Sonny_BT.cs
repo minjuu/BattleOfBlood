@@ -45,33 +45,6 @@ public class SonnyOnAttack : Node
     }
 }
 
-public class FindingGoalPos : Node
-{
-    public SonnyMove Enemy
-    {
-        set { _Enemy = value; }
-    }
-    private SonnyMove _Enemy;
-    public override bool Invoke()
-    {
-        return _Enemy.FindingGoalPos();
-
-    }
-}
-
-public class FindBalloon : Node
-{
-    public SonnyMove Enemy
-    {
-        set { _Enemy = value; }
-    }
-    private SonnyMove _Enemy;
-    public override bool Invoke()
-    {
-        return _Enemy.FindBalloon();
-
-    }
-}
 public class Is_Collision : Node       //IsCollision 노드 추가함
 {
     public SonnyMove Enemy           //노드 내용

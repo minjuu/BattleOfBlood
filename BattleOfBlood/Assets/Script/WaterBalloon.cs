@@ -10,14 +10,17 @@ public class WaterBalloon : MonoBehaviour
     public GameObject water = null;
     Vector3 water_pos;
 
-    float btimer_1 = 0.01f;
-    float btimer_2 = 0.0f;
     public Vector3 Dir;//
+
+    public Vector3 pos;
+    public bool stop;
+
     // Start is called before the first frame update
     void Start()
     {
         float wtimer = 0;
-        etimer = wtimer+2;
+        etimer = wtimer + 2;
+        stop = false;
     }
 
     // Update is called once per frame
@@ -28,12 +31,12 @@ public class WaterBalloon : MonoBehaviour
     {
         if (gameObject.tag == "Bastion_balloon") //바스티온에서 나온 물풍선의 경우
         {
-            gameObject.transform.position += Dir * 0.05f; //날라가다가 멈춰야하나?
-            if (Time.time > btimer_2)
+            if (stop == false)
             {
-                btimer_2 = Time.time + btimer_1;
-                //멈춘다면 멈추기 코드 넣기
+                gameObject.transform.position += Dir * 0.05f;
             }
+            else
+                transform.position = pos;
         }
 
 
@@ -47,6 +50,15 @@ public class WaterBalloon : MonoBehaviour
             water_pos.y = 0.35f; // 구멍의 x 위치 = 아이템 공의 x 위치
             Water.transform.position = water_pos; // Water 오브젝트의 위치 저장
             Water.transform.parent = null;  //위치 독립
+        }
+    }
+    private void OnTriggerStay(Collider collision)
+    {
+
+        if (collision.gameObject.tag == "Cube")
+        {
+            pos = transform.position;
+            stop = true;
         }
     }
 }

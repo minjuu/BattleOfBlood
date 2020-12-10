@@ -86,7 +86,7 @@ public class HealerMove : MonoBehaviour
                     shortEnemy = GameObject.Find("Booster");
                     shortDistance = Vector3.Distance(GameObject.Find("Booster").transform.position, gameObject.transform.position);
                 }
-                Debug.Log(MinHp);
+                //Debug.Log(MinHp);
                 if (transform.position.z < -15) //절벽 범위 조건문
                 {
                     Vector3 swap1 = transform.position; //벡터 저장
@@ -461,10 +461,10 @@ public class HealerMove : MonoBehaviour
 
     public bool HealerIsDead() // Enemy의 죽음
     {
-        if (HealerHp <= 0) // Enemy의 체력이 0이하이면
+        if (HealerHp <= 0)
         {
-            Debug.Log("Dead");
-            return false; // false를 반환하고 노드가 끝난다.
+            gameObject.active = false;
+            return false;
         }
         return true;
     }

@@ -735,10 +735,10 @@ public class BoosterMove : MonoBehaviour
 
     public bool BoosterIsDead() // Enemy의 죽음
     {
-        if (BoosterHp <= 0) // Enemy의 체력이 0이하이면
+        if (BoosterHp <= 0)
         {
-            Debug.Log("Dead");
-            return false; // false를 반환하고 노드가 끝난다.
+            gameObject.active = false;
+            return false;
         }
         return true;
     }
