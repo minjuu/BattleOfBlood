@@ -46,8 +46,6 @@ public class Healer_AI : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        Destroy(gameObject, 0.0f);
-        Debug.Log("behavior process exit");
     }
 
     // Update is called once per frame

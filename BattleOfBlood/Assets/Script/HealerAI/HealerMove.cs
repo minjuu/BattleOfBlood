@@ -338,6 +338,7 @@ public class HealerMove : MonoBehaviour
         Min3 = 100000;
         Min4 = 100000;
         Min5 = 100000;
+        shortEnemy = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -453,10 +454,10 @@ public class HealerMove : MonoBehaviour
 
     public bool HealerIsDead() // Enemy의 죽음
     {
-        if (HealerHp <= 0) // Enemy의 체력이 0이하이면
+        if (HealerHp <= 0)
         {
-            Debug.Log("Dead");
-            return false; // false를 반환하고 노드가 끝난다.
+            gameObject.active = false;
+            return false;
         }
         return true;
     }

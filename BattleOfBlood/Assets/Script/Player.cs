@@ -14,8 +14,9 @@ public class Player : MonoBehaviour
     public static GameObject[] characters;
     public static List<GameObject> Team_array;
     public static List<GameObject> Enemy_array;
-    public static List<float> Team_Hp;
-    public static List<float> Enemy_Hp;
+    public static int[] Team_Hp = new int[3];
+    public static int[] Enemy_Hp = new int[3];
+
     public static List<float> Team_Ap;
     public static List<float> Enemy_Ap;
     public static List<Vector3> Team_Pos;
@@ -88,36 +89,88 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //stage1 : 팀원이 다 죽으면 Lose 씬으로 이동 , 적이 다 죽으면 Win 씬으로 이동
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            if (Team_Hp[0] <= 0 && Team_Hp[1] <= 0)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Win");
+            else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Lose");
+        }
+        //stage2 : 팀원이 다 죽으면 Lose2 씬으로 이동, 적이 다죽으면 Win2 씬으로 이동
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
+        {
+            if (Team_Hp[0] <= 0 && Team_Hp[1] <= 0 && Team_Hp[2] <= 0)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Win2");
+            else if (Enemy_Hp[0] <= 0 && Enemy_Hp[1] <= 0 && Enemy_Hp[2] <= 0)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Lose2");
+        }
         str = "";
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
         {
             for (int i = 0; i < 2; i++)
             {
                 if (Team_array[i].name == "Player")
+                {
                     str += "Player HP: " + Player.PlayerHp + "% \n";
+                    Team_Hp[i] = Player.PlayerHp;
+                }
                 else if (Team_array[i].name == "Sonny")
+                {
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                    Team_Hp[i] = SonnyMove.SonnyHp;
+                }
                 else if (Team_array[i].name == "Bastion")
+                {
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                    Team_Hp[i] = BastionMove.BastionHp;
+                }
                 else if (Team_array[i].name == "Shooter")
+                {
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                    Team_Hp[i] = Shooter_Move.ShooterHp;
+                }
                 else if (Team_array[i].name == "Healer")
+                {
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                    Team_Hp[i] = HealerMove.HealerHp;
+                }
                 else if (Team_array[i].name == "Booster")
+                {
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                    Team_Hp[i] = BoosterMove.BoosterHp;
+                }
 
                 if (Enemy_array[i].name == "Player")
+                {
                     str += "Player HP: " + Player.PlayerHp + "% \n";
+                    Enemy_Hp[i] = Player.PlayerHp;
+                }
                 else if (Enemy_array[i].name == "Sonny")
+                {
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                    Enemy_Hp[i] = SonnyMove.SonnyHp;
+                }
                 else if (Enemy_array[i].name == "Bastion")
+                {
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                    Enemy_Hp[i] = BastionMove.BastionHp;
+                }
                 else if (Enemy_array[i].name == "Shooter")
+                {
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                    Enemy_Hp[i] = SonnyMove.SonnyHp;
+                }
                 else if (Enemy_array[i].name == "Healer")
+                {
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                    Enemy_Hp[i] = HealerMove.HealerHp;
+                }
                 else if (Enemy_array[i].name == "Booster")
+                {
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                    Enemy_Hp[i] = BoosterMove.BoosterHp;
+                }
             }
         }
         else
@@ -125,32 +178,69 @@ public class Player : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 if (Team_array[i].name == "Player")
+                {
                     str += "Player HP: " + Player.PlayerHp + "% \n";
-                else if (Team_array[i].name == "Bastion")
+                    Team_Hp[i] = Player.PlayerHp;
+                }
+                else if (Team_array[i].name == "Sonny")
+                {
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                    Team_Hp[i] = SonnyMove.SonnyHp;
+                }
                 else if (Team_array[i].name == "Bastion")
+                {
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                    Team_Hp[i] = BastionMove.BastionHp;
+                }
                 else if (Team_array[i].name == "Shooter")
+                {
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                    Team_Hp[i] = Shooter_Move.ShooterHp;
+                }
                 else if (Team_array[i].name == "Healer")
+                {
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                    Team_Hp[i] = HealerMove.HealerHp;
+                }
                 else if (Team_array[i].name == "Booster")
+                {
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                    Team_Hp[i] = BoosterMove.BoosterHp;
+                }
 
                 if (Enemy_array[i].name == "Player")
+                {
                     str += "Player HP: " + Player.PlayerHp + "% \n";
-                else if (Enemy_array[i].name == "Bastion")
+                    Enemy_Hp[i] = Player.PlayerHp;
+                }
+                else if (Enemy_array[i].name == "Sonny")
+                {
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                    Enemy_Hp[i] = SonnyMove.SonnyHp;
+                }
                 else if (Enemy_array[i].name == "Bastion")
+                {
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                    Enemy_Hp[i] = BastionMove.BastionHp;
+                }
                 else if (Enemy_array[i].name == "Shooter")
+                {
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                    Enemy_Hp[i] = SonnyMove.SonnyHp;
+                }
                 else if (Enemy_array[i].name == "Healer")
+                {
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                    Enemy_Hp[i] = HealerMove.HealerHp;
+                }
                 else if (Enemy_array[i].name == "Booster")
+                {
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                    Enemy_Hp[i] = BoosterMove.BoosterHp;
+                }
             }
         }
+
         if (transform.position.z < -15) //절벽 범위 조건문
         {
             Vector3 swap1 = transform.position; //벡터 저장
@@ -222,6 +312,8 @@ public class Player : MonoBehaviour
             v.z = Mathf.Round(v.z);
             balloon.transform.position = v;
         }
+
+
 
     }
     void OnCollisionEnter(Collision collision)

@@ -237,10 +237,9 @@ public class Shooter_Move : MonoBehaviour
     }
     public bool IsDead()
     {
-        if (Shooter_Move.ShooterHp <= 0)
+        if (ShooterHp <= 0)
         {
-            Debug.Log("Shooter is Dead");
-            Destroy(gameObject, 0f);
+            gameObject.active = false;
             return false;
         }
         return true;

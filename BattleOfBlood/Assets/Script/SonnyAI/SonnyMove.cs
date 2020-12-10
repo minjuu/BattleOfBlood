@@ -153,12 +153,13 @@ public class SonnyMove : MonoBehaviour
     }
     public bool SonnyIsDead()
     {
-        if (SonnyMove.SonnyHp <= 0)
+        if (SonnyHp <= 0)
         {
-            Destroy(gameObject, 0f);
+            gameObject.active = false;
             return false;
         }
         return true;
+
     }
 
     public bool FindingGoalPos()

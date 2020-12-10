@@ -63,10 +63,6 @@ public class BastionMove : MonoBehaviour
         cubecol = false;
         make_wb = false;
 
-        if (gameObject.tag == "Team")
-            Player.Team_Hp.Add(BastionHp);
-        else if (gameObject.tag == "Enemy")
-            Player.Enemy_Hp.Add(BastionHp);
     }
     public bool BastionMoveFollowTarget()
     {
@@ -220,7 +216,7 @@ public class BastionMove : MonoBehaviour
         nTime++;
     }
     public bool BastionIsDead()
-    {
+    {/*
         if (BastionHp < 10)
         {
             BastionHp = 0;
@@ -233,6 +229,12 @@ public class BastionMove : MonoBehaviour
                 else
                     gameObject.SetActive(false);
             }
+        }
+        return true;*/
+        if (BastionHp <= 0)
+        {
+            gameObject.active = false;
+            return false;
         }
         return true;
     }
