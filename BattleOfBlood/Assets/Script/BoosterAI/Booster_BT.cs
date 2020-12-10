@@ -16,19 +16,6 @@ public class MoveBooster : Node
         return _Booster.MoveBooster();
     }
 }
-public class BoosterObstacleDetect : Node
-{
-    public BoosterMove Booster
-    {
-        set { _Booster = value; }
-    }
-
-    private BoosterMove _Booster;
-    public override bool Invoke()
-    {
-        return _Booster.BoosterObstacleDetect();
-    }
-}
 
 public class BoosterTeamPosDetect : Node
 {

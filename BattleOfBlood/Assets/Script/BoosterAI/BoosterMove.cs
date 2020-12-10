@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoosterMove : MonoBehaviour
 {
-    public static float BoosterSpeed = 0.05f;
+    public static float BoosterSpeed = 0.03f;
     public static int BoosterHp = 100;
 
     public GameObject Prefab_bullet;
@@ -331,7 +331,7 @@ public class BoosterMove : MonoBehaviour
         etimer = wtimer + 3f;
         etimer2 = wtimer2 + 3f;
         gtimer3 = 0;
-        etimer3 = gtimer3 + 0.1f;
+        etimer3 = gtimer3 + 1f;
 
         Pos = gameObject.transform.position;
 
@@ -358,12 +358,6 @@ public class BoosterMove : MonoBehaviour
     void Update()
     {
         nTime++;
-    }
-
-    public bool BoosterObstacleDetect()
-    {
-
-        return false;
     }
 
     public bool BoosterTeamPosDetect()
@@ -449,7 +443,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (ShortEnemy == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.05f;
+                    HealerMove.HealerSpeed = 0.02f;
                 }
             }
             else
@@ -541,7 +535,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (ShortEnemy == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.05f;
+                    HealerMove.HealerSpeed = 0.02f;
                 }
             }
             else
@@ -636,7 +630,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.05f;
+                    HealerMove.HealerSpeed = 0.02f;
                 }
             }
             else
@@ -727,7 +721,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.05f;
+                    HealerMove.HealerSpeed = 0.02f;
                 }
             }
             else
@@ -755,7 +749,17 @@ public class BoosterMove : MonoBehaviour
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            //Debug.Log("booster큐브 충돌");
+            Debug.Log("booster큐브 충돌");
+        }
+    }
+    void OnCollisionStay(Collision collision)
+    {
+        col = true;
+        if (collision.collider.CompareTag("Cube"))
+        {
+            cube_position = collision.transform.position;
+            cubecol = true;
+            Debug.Log("booster큐브 충돌2");
         }
     }
 }

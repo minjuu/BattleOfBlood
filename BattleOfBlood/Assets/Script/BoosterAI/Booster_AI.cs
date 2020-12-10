@@ -10,7 +10,6 @@ public class Booster_AI : MonoBehaviour
     private Sequence seqDead = new Sequence();
 
     private MoveBooster moveBooster = new MoveBooster();    // MoveFollowTarget 클래스 변수를 생성
-    private BoosterObstacleDetect boosterobstacleDetect = new BoosterObstacleDetect();
     private BoosterTeamPosDetect boosterTeamPosDetect = new BoosterTeamPosDetect();
     private BoosterEnemyPosDetect boosterEnemyPosDetect = new BoosterEnemyPosDetect();
     private BoosterIsDead boosterIsDead = new BoosterIsDead();         // IsDead 클래스 변수를 생성
@@ -27,13 +26,11 @@ public class Booster_AI : MonoBehaviour
         selector.AddChild(seqMoving); // seqMovingAttack 노드를 selector의 자식 노드로 연결
 
         moveBooster.Booster = m_Booster;      // m_Enemy를 넣어 초기화시킴
-        boosterobstacleDetect.Booster = m_Booster;
         boosterTeamPosDetect.Booster = m_Booster;
         boosterEnemyPosDetect.Booster = m_Booster;
         boosterIsDead.Booster = m_Booster;
 
         seqMoving.AddChild(moveBooster);    //seqMovingAttack 노드에 클래스 변수들을 자식으로 추가       
-        seqMoving.AddChild(boosterobstacleDetect);
         seqMoving.AddChild(boosterTeamPosDetect);
         seqMoving.AddChild(boosterEnemyPosDetect);
 

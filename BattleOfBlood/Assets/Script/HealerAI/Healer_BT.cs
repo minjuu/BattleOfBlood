@@ -17,21 +17,6 @@ public class MoveHealer : Node
     }
 }
 
-public class HealerObstacleDetect : Node     // revival 클래스 생성
-{
-    public HealerMove Healer
-    {
-        set { _Healer = value; }
-    }
-
-    private HealerMove _Healer;
-
-    public override bool Invoke()
-    {
-        return _Healer.HealerObstacleDetect();
-    }
-}
-
 public class HealerTeamHpDetect : Node     // revival 클래스 생성
 {
     public HealerMove Healer

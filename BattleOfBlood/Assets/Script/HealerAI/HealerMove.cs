@@ -138,7 +138,7 @@ public class HealerMove : MonoBehaviour
                     if (cubecol == true)
                     {
                         healer_dir = Random.Range(0, 4);
-                        Debug.Log("healer cubecol");
+                        //Debug.Log("healer cubecol");
                     }
                     if (HealerHp >= 0 || col == true)
                     {
@@ -216,7 +216,6 @@ public class HealerMove : MonoBehaviour
                 }
 
                 shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
-                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
 
                 if (transform.position.z < -15) //절벽 범위 조건문
                 {
@@ -271,7 +270,10 @@ public class HealerMove : MonoBehaviour
                             healer_dir = 3;
                     }
                     if (cubecol == true)
+                    {
+                        Debug.Log("cubecol healer");
                         healer_dir = Random.Range(0, 4);
+                    }
                     if (HealerHp >= 0 || col == true)
                     {
                         if (healer_dir == 0)
@@ -342,11 +344,6 @@ public class HealerMove : MonoBehaviour
     void Update()
     {
         nTime++;
-    }
-
-    public bool HealerObstacleDetect()
-    {
-        return false;
     }
 
     public bool HealerTeamHpDetect()      // Team 체력 감지
@@ -472,7 +469,18 @@ public class HealerMove : MonoBehaviour
         {
             cube_position = collision.transform.position;
             cubecol = true;
-            Debug.Log("healer큐브 충돌");
+            //Debug.Log("healer큐브 충돌");
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        col = true;
+        if (collision.collider.CompareTag("Cube"))
+        {
+            cube_position = collision.transform.position;
+            cubecol = true;
+            //Debug.Log("healer큐브 충돌2");
         }
     }
 
