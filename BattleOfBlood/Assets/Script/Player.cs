@@ -201,62 +201,86 @@ public class Player : MonoBehaviour
             {
                 if (Team_array[i].name == "Player")
                 {
+                    if (Player.PlayerHp <= 0)
+                        Player.PlayerHp = 0;
                     str += "Player HP: " + Player.PlayerHp + "% \n";
                     Team_Hp[i] = Player.PlayerHp;
                 }
                 else if (Team_array[i].name == "Sonny")
                 {
+                    if (SonnyMove.SonnyHp <= 0)
+                        SonnyMove.SonnyHp = 0;
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
                     Team_Hp[i] = SonnyMove.SonnyHp;
                 }
                 else if (Team_array[i].name == "Bastion")
                 {
+                    if (BastionMove.BastionHp <= 0)
+                        BastionMove.BastionHp = 0;
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
                     Team_Hp[i] = BastionMove.BastionHp;
                 }
                 else if (Team_array[i].name == "Shooter")
                 {
+                    if (Shooter_Move.ShooterHp <= 0)
+                        Shooter_Move.ShooterHp = 0;
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
                     Team_Hp[i] = Shooter_Move.ShooterHp;
                 }
                 else if (Team_array[i].name == "Healer")
                 {
+                    if (HealerMove.HealerHp <= 0)
+                        HealerMove.HealerHp = 0;
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
                     Team_Hp[i] = HealerMove.HealerHp;
                 }
                 else if (Team_array[i].name == "Booster")
                 {
+                    if (BoosterMove.BoosterHp <= 0)
+                        BoosterMove.BoosterHp = 0;
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
                     Team_Hp[i] = BoosterMove.BoosterHp;
                 }
 
                 if (Enemy_array[i].name == "Player")
                 {
+                    if (Player.PlayerHp <= 0)
+                        Player.PlayerHp = 0;
                     str += "Player HP: " + Player.PlayerHp + "% \n";
                     Enemy_Hp[i] = Player.PlayerHp;
                 }
                 else if (Enemy_array[i].name == "Sonny")
                 {
+                    if (SonnyMove.SonnyHp <= 0)
+                        SonnyMove.SonnyHp = 0;
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
                     Enemy_Hp[i] = SonnyMove.SonnyHp;
                 }
                 else if (Enemy_array[i].name == "Bastion")
                 {
+                    if (BastionMove.BastionHp <= 0)
+                        BastionMove.BastionHp = 0;
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
                     Enemy_Hp[i] = BastionMove.BastionHp;
                 }
                 else if (Enemy_array[i].name == "Shooter")
                 {
+                    if (Shooter_Move.ShooterHp <= 0)
+                        Shooter_Move.ShooterHp = 0;
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
                     Enemy_Hp[i] = SonnyMove.SonnyHp;
                 }
                 else if (Enemy_array[i].name == "Healer")
                 {
+                    if (HealerMove.HealerHp <= 0)
+                        HealerMove.HealerHp = 0;
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
                     Enemy_Hp[i] = HealerMove.HealerHp;
                 }
                 else if (Enemy_array[i].name == "Booster")
                 {
+                    if (BoosterMove.BoosterHp <= 0)
+                        BoosterMove.BoosterHp = 0;
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
                     Enemy_Hp[i] = BoosterMove.BoosterHp;
                 }
@@ -268,65 +292,90 @@ public class Player : MonoBehaviour
             {
                 if (Team_array[i].name == "Player")
                 {
+                    if (Player.PlayerHp <= 0)
+                        Player.PlayerHp = 0;
                     str += "Player HP: " + Player.PlayerHp + "% \n";
                     Team_Hp[i] = Player.PlayerHp;
                 }
                 else if (Team_array[i].name == "Sonny")
                 {
+                    if (SonnyMove.SonnyHp <= 0)
+                        SonnyMove.SonnyHp = 0;
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
                     Team_Hp[i] = SonnyMove.SonnyHp;
                 }
                 else if (Team_array[i].name == "Bastion")
                 {
+                    if (BastionMove.BastionHp <= 0)
+                        BastionMove.BastionHp = 0;
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
                     Team_Hp[i] = BastionMove.BastionHp;
                 }
                 else if (Team_array[i].name == "Shooter")
                 {
+                    if (Shooter_Move.ShooterHp <= 0)
+                        Shooter_Move.ShooterHp = 0;
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
                     Team_Hp[i] = Shooter_Move.ShooterHp;
                 }
                 else if (Team_array[i].name == "Healer")
                 {
+                    if (HealerMove.HealerHp <= 0)
+                        HealerMove.HealerHp = 0;
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
                     Team_Hp[i] = HealerMove.HealerHp;
                 }
                 else if (Team_array[i].name == "Booster")
                 {
+                    if (BoosterMove.BoosterHp <= 0)
+                        BoosterMove.BoosterHp = 0;
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
                     Team_Hp[i] = BoosterMove.BoosterHp;
                 }
 
                 if (Enemy_array[i].name == "Player")
                 {
+                    if (Player.PlayerHp <= 0)
+                        Player.PlayerHp = 0;
                     str += "Player HP: " + Player.PlayerHp + "% \n";
                     Enemy_Hp[i] = Player.PlayerHp;
                 }
                 else if (Enemy_array[i].name == "Sonny")
                 {
+                    if (SonnyMove.SonnyHp <= 0)
+                        SonnyMove.SonnyHp = 0;
                     str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
                     Enemy_Hp[i] = SonnyMove.SonnyHp;
                 }
                 else if (Enemy_array[i].name == "Bastion")
                 {
+                    if (BastionMove.BastionHp <= 0)
+                        BastionMove.BastionHp = 0;
                     str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
                     Enemy_Hp[i] = BastionMove.BastionHp;
                 }
                 else if (Enemy_array[i].name == "Shooter")
                 {
+                    if (Shooter_Move.ShooterHp <= 0)
+                        Shooter_Move.ShooterHp = 0;
                     str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
                     Enemy_Hp[i] = SonnyMove.SonnyHp;
                 }
                 else if (Enemy_array[i].name == "Healer")
                 {
+                    if (HealerMove.HealerHp <= 0)
+                        HealerMove.HealerHp = 0;
                     str += "Healer HP: " + HealerMove.HealerHp + "% \n";
                     Enemy_Hp[i] = HealerMove.HealerHp;
                 }
                 else if (Enemy_array[i].name == "Booster")
                 {
+                    if (BoosterMove.BoosterHp <= 0)
+                        BoosterMove.BoosterHp = 0;
                     str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
                     Enemy_Hp[i] = BoosterMove.BoosterHp;
                 }
+
             }
         }
 

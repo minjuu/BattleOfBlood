@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealerMove : MonoBehaviour
 {
-    public static float HealerSpeed = 0.02f;
+    public static float HealerSpeed = 0.01f;
     public static int HealerHp = 100;
     public static int SonnyHp = 100;
 
@@ -34,7 +34,6 @@ public class HealerMove : MonoBehaviour
 
     float min1, min2, min3, min4, min5;
     float Min1, Min2, Min3, Min4, Min5;
-    public GameObject ShortEnemy;
 
     public static int healer_dir = -1;
     private float x;
@@ -47,42 +46,47 @@ public class HealerMove : MonoBehaviour
         {
             if (gameObject.tag == "Team")
             {
-                if (GameObject.Find("Player").gameObject.tag == "Team")
+                shortEnemy = GameObject.Find("Player");
+
+                if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                     min1 = Player.PlayerHp;
-                if (GameObject.Find("Sonny").gameObject.tag == "Team")
+                if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                     min2 = SonnyMove.SonnyHp;
-                if (GameObject.Find("Bastion").gameObject.tag == "Team")
+                if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                     min3 = BastionMove.BastionHp;
-                if (GameObject.Find("Shooter").gameObject.tag == "Team")
+                if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                     min4 = Shooter_Move.ShooterHp;
-                if (GameObject.Find("Booster").gameObject.tag == "Team")
+                if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
                     min5 = BoosterMove.BoosterHp;
 
                 float MinHp = Mathf.Min(min1, min2, min3, min4, min5);
 
-                if (MinHp == min1 && GameObject.Find("Player").gameObject.tag == "Team")
+                if (MinHp == min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Player");
+                    shortDistance = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min2 && GameObject.Find("Sonny").gameObject.tag == "Team")
+                if (MinHp == min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Sonny");
+                    shortDistance = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min3 && GameObject.Find("Bastion").gameObject.tag == "Team")
+                if (MinHp == min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Bastion");
+                    shortDistance = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min4 && GameObject.Find("Shooter").gameObject.tag == "Team")
+                if (MinHp == min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Shooter");
+                    shortDistance = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min5 && GameObject.Find("Booster").gameObject.tag == "Team")
+                if (MinHp == min5 && GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
                 {
                     shortEnemy = GameObject.Find("Booster");
+                    shortDistance = Vector3.Distance(GameObject.Find("Booster").transform.position, gameObject.transform.position);
                 }
-
-                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
-
+                Debug.Log(MinHp);
                 if (transform.position.z < -15) //절벽 범위 조건문
                 {
                     Vector3 swap1 = transform.position; //벡터 저장
@@ -120,7 +124,7 @@ public class HealerMove : MonoBehaviour
                 z = gameObject.transform.position.z - shortEnemy.transform.position.z;
                 if (gtimer3 > etimer3)
                 {
-                    Debug.Log("xxxx");
+                    //Debug.Log("xxxx");
                     if (Mathf.Abs(x) > Mathf.Abs(z))
                     {
                         if (x < 0)
@@ -177,45 +181,48 @@ public class HealerMove : MonoBehaviour
                 transform.position += lookat * HealerSpeed;
                 // 리지드바디의 속도에 newVelocity 할당
             }
-            Debug.Log("yyy");
+            //Debug.Log("yyy");
 
             if (gameObject.tag == "Enemy")
             {
-                if (GameObject.Find("Player").gameObject.tag == "Enemy")
+                if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                     min1 = Player.PlayerHp;
-                if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                     min2 = SonnyMove.SonnyHp;
-                if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                     min3 = BastionMove.BastionHp;
-                if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                     min4 = Shooter_Move.ShooterHp;
-                if (GameObject.Find("Booster").gameObject.tag == "Enemy")
+                if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
                     min5 = BoosterMove.BoosterHp;
 
                 float MinHp = Mathf.Min(min1, min2, min3, min4, min5);
 
-                if (MinHp == min1 && GameObject.Find("Player").gameObject.tag == "Enemy")
+                if (MinHp == min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Player");
+                    shortDistance = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                if (MinHp == min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Sonny");
+                    shortDistance = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                if (MinHp == min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Bastion");
+                    shortDistance = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                if (MinHp == min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Shooter");
+                    shortDistance = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
                 }
-                if (MinHp == min5 && GameObject.Find("Booster").gameObject.tag == "Enemy")
+                if (MinHp == min5 && GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
                 {
                     shortEnemy = GameObject.Find("Booster");
+                    shortDistance = Vector3.Distance(GameObject.Find("Booster").transform.position, gameObject.transform.position);
                 }
-
-                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
 
                 if (transform.position.z < -15) //절벽 범위 조건문
                 {
@@ -338,7 +345,7 @@ public class HealerMove : MonoBehaviour
         Min3 = 100000;
         Min4 = 100000;
         Min5 = 100000;
-        shortEnemy = GameObject.Find("Player");
+
     }
 
     // Update is called once per frame
@@ -351,15 +358,15 @@ public class HealerMove : MonoBehaviour
     {
         if (gameObject.tag == "Team")
         {
-            if (GameObject.Find("Player").gameObject.tag == "Team")
+            if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 Min1 = Player.PlayerHp;
-            if (GameObject.Find("Sonny").gameObject.tag == "Team")
+            if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 Min2 = SonnyMove.SonnyHp;
-            if (GameObject.Find("Bastion").gameObject.tag == "Team")
+            if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 Min3 = BastionMove.BastionHp;
-            if (GameObject.Find("Shooter").gameObject.tag == "Team")
+            if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 Min4 = Shooter_Move.ShooterHp;
-            if (GameObject.Find("Booster").gameObject.tag == "Team")
+            if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
                 Min5 = BoosterMove.BoosterHp;
 
             float minHp = Mathf.Min(Min1, Min2, Min3, Min4, Min5);
@@ -367,23 +374,23 @@ public class HealerMove : MonoBehaviour
 
             if (wtimer > etimer)
             {
-                if (minHp == Min1 && GameObject.Find("Player").gameObject.tag == "Team")
+                if (minHp == Min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 {
                     Player.PlayerHp += 10;
                 }
-                if (minHp == Min2 && GameObject.Find("Sonny").gameObject.tag == "Team")
+                if (minHp == Min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
                 {
                     SonnyMove.SonnyHp += 10;
                 }
-                if (minHp == Min3 && GameObject.Find("Bastion").gameObject.tag == "Team")
+                if (minHp == Min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
                 {
                     BastionMove.BastionHp += 10;
                 }
-                if (minHp == Min4 && GameObject.Find("Shooter").gameObject.tag == "Team")
+                if (minHp == Min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
                 {
                     Shooter_Move.ShooterHp += 10;
                 }
-                if (minHp == Min5 && GameObject.Find("Booster").gameObject.tag == "Team")
+                if (minHp == Min5 && GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
                 {
                     BoosterMove.BoosterHp += 10;
                 }
@@ -395,15 +402,15 @@ public class HealerMove : MonoBehaviour
 
         if (gameObject.tag == "Enemy")
         {
-            if (GameObject.Find("Player").gameObject.tag == "Enemy")
+            if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 Min1 = Player.PlayerHp;
-            if (GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 Min2 = SonnyMove.SonnyHp;
-            if (GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 Min3 = BastionMove.BastionHp;
-            if (GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 Min4 = Shooter_Move.ShooterHp;
-            if (GameObject.Find("Booster").gameObject.tag == "Enemy")
+            if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
                 Min5 = BoosterMove.BoosterHp;
 
             float minHp = Mathf.Min(Min1, Min2, Min3, Min4, Min5);
@@ -411,23 +418,23 @@ public class HealerMove : MonoBehaviour
 
             if (wtimer > etimer)
             {
-                if (minHp == Min1 && GameObject.Find("Player").gameObject.tag == "Enemy")
+                if (minHp == Min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 {
                     Player.PlayerHp += 10;
                 }
-                if (minHp == Min2 && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                if (minHp == Min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
                 {
                     SonnyMove.SonnyHp += 10;
                 }
-                if (minHp == Min3 && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                if (minHp == Min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
                 {
                     BastionMove.BastionHp += 10;
                 }
-                if (minHp == Min4 && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                if (minHp == Min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
                 {
                     Shooter_Move.ShooterHp += 10;
                 }
-                if (minHp == Min5 && GameObject.Find("Booster").gameObject.tag == "Enemy")
+                if (minHp == Min5 && GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
                 {
                     BoosterMove.BoosterHp += 10;
                 }
@@ -454,10 +461,10 @@ public class HealerMove : MonoBehaviour
 
     public bool HealerIsDead() // Enemy의 죽음
     {
-        if (HealerHp <= 0)
+        if (HealerHp <= 0) // Enemy의 체력이 0이하이면
         {
-            gameObject.active = false;
-            return false;
+            Debug.Log("Dead");
+            return false; // false를 반환하고 노드가 끝난다.
         }
         return true;
     }
