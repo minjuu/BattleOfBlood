@@ -17,13 +17,13 @@ public class Player : MonoBehaviour
     public static int[] Team_Hp = new int[3];
     public static int[] Enemy_Hp = new int[3];
 
-    public static bool pl = false;
-    public static bool ba = false;
-    public static bool sn = false;
-    public static bool hl = false;
-    public static bool bo = false;
-    public static bool sh = false;
-
+    public static bool pl;
+    public static bool ba;
+    public static bool sn;
+    public static bool hl;
+    public static bool bo;
+    public static bool sh;
+    public static int n = 0;
 
     public static List<float> Team_Ap;
     public static List<float> Enemy_Ap;
@@ -38,7 +38,9 @@ public class Player : MonoBehaviour
 
         PlayerPos = gameObject.transform.position;
 
-        characters = new GameObject[6];
+        
+
+    characters = new GameObject[6];
         characters[0] = GameObject.Find("Player");
         characters[1] = GameObject.Find("Sonny");
         characters[2] = GameObject.Find("Bastion");
@@ -77,6 +79,12 @@ public class Player : MonoBehaviour
 
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
         {
+            pl = false;
+            ba = false;
+            sn = false;
+            hl = false;
+            bo = false;
+            sh = false;
             for (int i = 0; i < 2; i++)
             {
                 if (Team_array[i].name == "Player")
@@ -105,39 +113,14 @@ public class Player : MonoBehaviour
                 else if (Enemy_array[i].name == "Booster")
                     bo = true;
             }
-
+            Player.PlayerHp = 100;
+            Shooter_Move.ShooterHp = 100;
+            HealerMove.HealerHp = 100;
+            BoosterMove.BoosterHp = 100;
+            BastionMove.BastionHp = 100;
+            SonnyMove.SonnyHp = 100;
         }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (Team_array[i].name == "Player")
-                    pl = true;
-                else if (Team_array[i].name == "Sonny")
-                    sn = true;
-                else if (Team_array[i].name == "Bastion")
-                    ba = true;
-                else if (Team_array[i].name == "Shooter")
-                    sh = true;
-                else if (Team_array[i].name == "Healer")
-                    hl = true;
-                else if (Team_array[i].name == "Booster")
-                    bo = true;
-
-                if (Enemy_array[i].name == "Player")
-                    pl = true;
-                else if (Enemy_array[i].name == "Sonny")
-                    sn = true;
-                else if (Enemy_array[i].name == "Bastion")
-                    ba = true;
-                else if (Enemy_array[i].name == "Shooter")
-                    sh = true;
-                else if (Enemy_array[i].name == "Healer")
-                    hl = true;
-                else if (Enemy_array[i].name == "Booster")
-                    bo = true;
-            }
-        }
+        
 
         if (ba == false)
             GameObject.Find("Bastion").active = false;
@@ -178,7 +161,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2" && n == 0)
+        {
+            ba = true;
+            bo = true;
+            ba = true;
+            sh = true;
+            hl = true;
+
+            GameObject.Find("Player").active = true;
+            GameObject.Find("Bastion").active = true;
+            GameObject.Find("Booster").active = true;
+            GameObject.Find("Shooter").active = true;
+            GameObject.Find("Healer").active = true;
+            GameObject.Find("Sonny").active = true;
+
+            Player.PlayerHp = 100;
+            Shooter_Move.ShooterHp = 100;
+            HealerMove.HealerHp = 100;
+            BoosterMove.BoosterHp = 100;
+            BastionMove.BastionHp = 100;
+            SonnyMove.SonnyHp = 100;
+            n++;
+        }
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {

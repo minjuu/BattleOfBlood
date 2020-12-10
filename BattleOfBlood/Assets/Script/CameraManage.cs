@@ -152,7 +152,7 @@ public class CameraManage : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (Player.Team_array[i].name == "Player")
                 {
@@ -270,8 +270,8 @@ public class CameraManage : MonoBehaviour
             text2 = "Team : " + Player.Team_array[0].name + ", " + Player.Team_array[1].name + "\n"
                    + "Enemy : " + Player.Enemy_array[0].name + ", " + Player.Enemy_array[1].name;
         else
-            text2 = "Team : " + Player.Team_array[0].name + ", " + Player.Team_array[1].name + ", " + Player.Team_array[2].name + ", " + Player.Team_array[3] + "\n"
-                   + "Enemy : " + Player.Enemy_array[0].name + ", " + Player.Enemy_array[1].name + ", " + Player.Enemy_array[2].name + ", " + Player.Enemy_array[3] + "\n";
+            text2 = "Team : " + Player.Team_array[0].name + ", " + Player.Team_array[1].name + ", " + Player.Team_array[2].name +"\n"
+                   + "Enemy : " + Player.Enemy_array[0].name + ", " + Player.Enemy_array[1].name + ", " + Player.Enemy_array[2].name + ", " + "\n";
 
         GUI.Label(rect, text, style);
         GUI.Label(rect2, text2, style2);

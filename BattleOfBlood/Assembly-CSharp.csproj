@@ -94,6 +94,7 @@
     <Compile Include="Assets\Script\Tut.cs" />
     <Compile Include="Assets\Script\ShooterAI\Shooter_Move.cs" />
     <Compile Include="Assets\Script\boosterchar.cs" />
+    <Compile Include="Assets\Script\Player2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

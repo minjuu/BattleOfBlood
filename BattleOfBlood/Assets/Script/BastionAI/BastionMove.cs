@@ -254,6 +254,7 @@ public class BastionMove : MonoBehaviour
         return true;*/
         if (BastionHp <= 10)
         {
+            BastionHp = 0;
             gameObject.active = false;
             return false;
         }
