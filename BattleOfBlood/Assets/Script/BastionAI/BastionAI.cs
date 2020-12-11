@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class BastionAI : MonoBehaviour
 {
     private Sequence root = new Sequence();
@@ -16,6 +17,8 @@ public class BastionAI : MonoBehaviour
 
     private BastionMove m_Enemy;
     private IEnumerator behaviorProcess;
+
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,33 @@ public class BastionAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+             
 
+        if (SceneManager.GetActiveScene().name == "Stage2" && count == 0)
+        {
+
+             Debug.Log("Start Tree2");
+            m_Enemy = gameObject.GetComponent<BastionMove>();
+            root.AddChild(selector);
+            selector.AddChild(seqDead);
+            selector.AddChild(seqMovingAttack);
+
+            moveForTarget.Enemy = m_Enemy;
+            bastionfindEnemy.Enemy = m_Enemy;
+            m_OnAttack.Enemy = m_Enemy;
+            isBastion_Col.Enemy = m_Enemy;
+            m_IsDead.Enemy = m_Enemy;
+
+            seqMovingAttack.AddChild(moveForTarget);
+            seqMovingAttack.AddChild(m_OnAttack);
+            seqMovingAttack.AddChild(bastionfindEnemy);
+            seqMovingAttack.AddChild(isBastion_Col);
+            seqDead.AddChild(m_IsDead);
+
+            behaviorProcess = BehaviorProcess();
+            StartCoroutine(behaviorProcess);
+
+            count++;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SonnyAI : MonoBehaviour
 {
@@ -17,9 +18,12 @@ public class SonnyAI : MonoBehaviour
 
     private SonnyMove m_Sonny;
     private IEnumerator behaviorProcess;
+
+    int count=0;
     // Start is called before the first frame update
     void Start()
     {
+        
         Debug.Log("Start Tree");
         m_Sonny = gameObject.GetComponent<SonnyMove>();
         root.AddChild(selector);
@@ -28,10 +32,9 @@ public class SonnyAI : MonoBehaviour
 
         moveinmap.Enemy = m_Sonny;
         m_OnAttack.Enemy = m_Sonny;
-        m_IsDead.Enemy = m_Sonny;
         isCollision.Enemy = m_Sonny;
         detectPos.Enemy = m_Sonny;
-
+        m_IsDead.Enemy = m_Sonny;
 
         seqMovingAttack.AddChild(m_OnAttack);
 
@@ -54,6 +57,32 @@ public class SonnyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Stage2" && count == 0)
+        {
+            Debug.Log("Start Tree2");
+            m_Sonny = gameObject.GetComponent<SonnyMove>();
+            root.AddChild(selector);
+            selector.AddChild(seqDead);
+            selector.AddChild(seqMovingAttack);
 
+            moveinmap.Enemy = m_Sonny;
+            m_OnAttack.Enemy = m_Sonny;
+            isCollision.Enemy = m_Sonny;
+            detectPos.Enemy = m_Sonny;
+            m_IsDead.Enemy = m_Sonny;
+
+            seqMovingAttack.AddChild(m_OnAttack);
+
+            seqMovingAttack.AddChild(moveinmap);
+            seqMovingAttack.AddChild(isCollision); //IsCollision 자식 노드 추가
+            seqMovingAttack.AddChild(detectPos);
+
+            seqDead.AddChild(m_IsDead);
+
+            behaviorProcess = BehaviorProcess();
+            StartCoroutine(behaviorProcess);
+
+            count++;
+        }
     }
 }

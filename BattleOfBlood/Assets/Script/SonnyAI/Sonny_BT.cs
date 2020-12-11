@@ -18,7 +18,6 @@ public class MoveinMap : Node
     }
 }
 
-
 public class SonnyIsDead : Node
 {
     public SonnyMove Enemy

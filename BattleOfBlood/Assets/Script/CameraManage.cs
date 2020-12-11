@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class CameraManage : MonoBehaviour
 {
     public Camera mainCamera;
@@ -40,10 +41,18 @@ public class CameraManage : MonoBehaviour
             Player.Enemy_Hp[i] = 100;
         }
 
+
         mainCamera.enabled = true;
         subCamera.enabled = false;
+        if (SceneManager.GetActiveScene().name == "Stage2")
+        {
+            GameObject.Find("Char").transform.Find("Booster").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Sonny").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Bastion").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Shooter").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Healer").gameObject.SetActive(true);
+        }
 
-        
 
 
         if (SelectMng.booster1 == "Team")

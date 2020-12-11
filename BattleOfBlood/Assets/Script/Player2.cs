@@ -38,12 +38,12 @@ public class Player2 : MonoBehaviour
             Player.sh = true;
             Player.hl = true;
 
-            GameObject.Find("Player").active = true;
-            GameObject.Find("Bastion").active = true;
-            GameObject.Find("Booster").active = true;
-            GameObject.Find("Shooter").active = true;
-            GameObject.Find("Healer").active = true;
-            GameObject.Find("Sonny").active = true;
+           // GameObject.Find("Player").active = true;
+           // GameObject.Find("Bastion").active = true;
+           // GameObject.Find("Booster").active = true;
+            //GameObject.Find("Shooter").active = true;
+            //GameObject.Find("Healer").active = true;
+            //GameObject.Find("Sonny").active = true;
 
             
         }
