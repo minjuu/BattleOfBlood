@@ -35,6 +35,7 @@ public class Shooter_Move : MonoBehaviour
 
     public bool ShooterMove()
     {
+        Debug.Log("moveShooter");
         if (transform.position.z < -15) //절벽 범위 조건문
         {
             Vector3 swap1 = transform.position; //벡터 저장

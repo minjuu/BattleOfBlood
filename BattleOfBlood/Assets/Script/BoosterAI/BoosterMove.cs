@@ -44,13 +44,17 @@ public class BoosterMove : MonoBehaviour
 
     Vector3 Pos;
 
+
     // Start is called before the first frame update
     public bool MoveBooster()
     {
+        Debug.Log("movebooster");
         if (BoosterHp > 0)
         {
             if (gameObject.tag == "Team")
             {
+                shortEnemy = GameObject.Find("Player");
+
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
@@ -188,6 +192,8 @@ public class BoosterMove : MonoBehaviour
             //Debug.Log("bbb");
             if (gameObject.tag == "Enemy")
             {
+                shortEnemy = GameObject.Find("Player");
+
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
@@ -591,23 +597,23 @@ public class BoosterMove : MonoBehaviour
             {
                 if (GameObject.Find("Player") != null && ShortEnemy2 == GameObject.Find("Player"))
                 {
-                    Player.PlayerSpeed = 0f;
+                    Player.PlayerSpeed = 1.5f;
                 }
                 if (GameObject.Find("Sonny") != null && ShortEnemy2 == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0f;
+                    SonnyMove.SonnySpeed = 4f;
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0f;
+                    BastionMove.BastionSpeed = 0.005f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
-                    Shooter_Move.ShooterSpeed = 0f;
+                    Shooter_Move.ShooterSpeed = 1.5f;
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0f;
+                    HealerMove.HealerSpeed = 0.01f;
                 }
             }
             else if (wtimer2 < (etimer2 + 3f))
@@ -682,23 +688,23 @@ public class BoosterMove : MonoBehaviour
             {
                 if (GameObject.Find("Player") != null && ShortEnemy2 == GameObject.Find("Player"))
                 {
-                    Player.PlayerSpeed = 0f;
+                    Player.PlayerSpeed = 1.5f;
                 }
                 if (GameObject.Find("Sonny") != null && ShortEnemy2 == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 0f;
+                    SonnyMove.SonnySpeed = 4f;
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0f;
+                    BastionMove.BastionSpeed = 0.005f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
-                    Shooter_Move.ShooterSpeed = 0f;
+                    Shooter_Move.ShooterSpeed = 1.5f;
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0f;
+                    HealerMove.HealerSpeed = 0.01f;
                 }
             }
             else if (wtimer2 < (etimer2 + 3f))

@@ -31,6 +31,7 @@ public class HealerMove : MonoBehaviour
     float etimer2;
     float gtimer3;
     float etimer3;
+    int count;
 
     float min1, min2, min3, min4, min5;
     float Min1, Min2, Min3, Min4, Min5;
@@ -42,6 +43,7 @@ public class HealerMove : MonoBehaviour
 
     public bool MoveHealer()
     {
+        Debug.Log("movehealer");
         if (HealerHp > 0)
         {
             if (gameObject.tag == "Team")
@@ -86,7 +88,7 @@ public class HealerMove : MonoBehaviour
                     shortEnemy = GameObject.Find("Booster");
                     shortDistance = Vector3.Distance(GameObject.Find("Booster").transform.position, gameObject.transform.position);
                 }
-                //Debug.Log(MinHp);
+
                 if (transform.position.z < -15) //절벽 범위 조건문
                 {
                     Vector3 swap1 = transform.position; //벡터 저장
@@ -124,7 +126,7 @@ public class HealerMove : MonoBehaviour
                 z = gameObject.transform.position.z - shortEnemy.transform.position.z;
                 if (gtimer3 > etimer3)
                 {
-                    //Debug.Log("xxxx");
+                    
                     if (Mathf.Abs(x) > Mathf.Abs(z))
                     {
                         if (x < 0)
@@ -142,8 +144,10 @@ public class HealerMove : MonoBehaviour
                     if (cubecol == true)
                     {
                         healer_dir = Random.Range(0, 4);
-                        //Debug.Log("healer cubecol");
                     }
+                    if (cubecol == true || col == true)
+                        healer_dir = Random.Range(0, 4);
+
                     if (HealerHp >= 0 || col == true)
                     {
                         if (healer_dir == 0)
@@ -185,6 +189,8 @@ public class HealerMove : MonoBehaviour
 
             if (gameObject.tag == "Enemy")
             {
+                shortEnemy = GameObject.Find("Player");
+
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                     min1 = Player.PlayerHp;
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
@@ -330,9 +336,10 @@ public class HealerMove : MonoBehaviour
         wtimer = 0.0f;
         etimer = wtimer + 5f;
         wtimer2 = 0.0f;
-        etimer = wtimer + 10f;
+        etimer = wtimer + 1000f;
         gtimer3 = 0;
         etimer3 = gtimer3 + 1f;
+        count = 0;
 
         min1 = 100000;
         min2 = 100000;
@@ -447,12 +454,12 @@ public class HealerMove : MonoBehaviour
 
     public bool HealerMyHpDetect()    // 자기 체력 감지
     {
-        wtimer2 += Time.deltaTime;
-        if (wtimer2 > etimer2)
+        if (count < 1)
         {
-            if (HealerHp <= 30)
+            if (HealerHp <= 10)
             {
                 HealerHp += 10;
+                count++;
             }
             return true;
         }

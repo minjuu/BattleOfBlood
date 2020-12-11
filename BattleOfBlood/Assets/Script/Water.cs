@@ -50,7 +50,7 @@ public class Water : MonoBehaviour
         }
         if (col.gameObject.name == "Bastion")
         {
-            BastionMove.BastionHp -= 10;
+            BastionMove.BastionHp -= 5;
         }
         if (col.gameObject.name == "Healer")
         {

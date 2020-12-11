@@ -66,57 +66,11 @@ public class Player2 : MonoBehaviour
             BastionMove.BastionHp = 100;
             SonnyMove.SonnyHp = 100;
         }
-
-
-        //int count_1 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Team") //tag가 Team 일때
-        //    {
-        //        Team_arr[count_1] = characters[i]; //characters배열에 있는 순서대로 재배열하여 저장
-        //        Team_Ap[count_1] = characters_Ap[i];
-        //        count_1++;
-        //    }
-        //}
-
-        //int count_2 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Enemy")
-        //    {
-        //        Enemy_arr[count_2] = characters[i];
-        //        Enemy_Ap[count_1] = characters_Ap[i];
-        //        count_2++;
-        //    }
-        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2" && Player.n == 0)
-        {
-            Player.ba = true;
-            Player.bo = true;
-            Player.ba = true;
-            Player.sh = true;
-            Player.hl = true;
-
-            GameObject.Find("Player").active = true;
-            GameObject.Find("Bastion").active = true;
-            GameObject.Find("Booster").active = true;
-            GameObject.Find("Shooter").active = true;
-            GameObject.Find("Healer").active = true;
-            GameObject.Find("Sonny").active = true;
-
-            Player.PlayerHp = 100;
-            Shooter_Move.ShooterHp = 100;
-            HealerMove.HealerHp = 100;
-            BoosterMove.BoosterHp = 100;
-            BastionMove.BastionHp = 100;
-            SonnyMove.SonnyHp = 100;
-            Player.n++;
-        }
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {
