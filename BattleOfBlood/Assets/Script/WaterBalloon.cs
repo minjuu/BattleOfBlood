@@ -33,7 +33,7 @@ public class WaterBalloon : MonoBehaviour
         {
             if (stop == false)
             {
-                gameObject.transform.position += Dir * 0.05f;
+                gameObject.transform.position += Dir * 0.08f;
             }
             else
                 transform.position = pos;

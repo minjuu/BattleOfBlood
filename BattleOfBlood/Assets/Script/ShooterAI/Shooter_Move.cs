@@ -35,7 +35,7 @@ public class Shooter_Move : MonoBehaviour
     float min1, min2, min3, min4, min5;
     public bool ShooterMove()
     {
-        
+
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {
@@ -248,27 +248,27 @@ public class Shooter_Move : MonoBehaviour
         {
             if (shortEnemy.name == "Shooter")
             {
-                Shooter_Move.ShooterAp = 10;
+                Shooter_Move.ShooterAp = 5;
                 bulletTime = 100;
             }
             if (shortEnemy.name == "Healer")
             {
-                Shooter_Move.ShooterAp = 6;
-                bulletTime = 50;
+                Shooter_Move.ShooterAp = 3;
+                bulletTime = 100;
             }
             if (shortEnemy.name == "Bastion")
             {
-                Shooter_Move.ShooterAp = 10;
+                Shooter_Move.ShooterAp = 5;
                 bulletTime = 100;
             }
             if (shortEnemy.name == "Booster")
             {
-                Shooter_Move.ShooterAp = 6;
-                bulletTime = 50;
+                Shooter_Move.ShooterAp = 3;
+                bulletTime = 100;
             }
             if (shortEnemy.name == "Player")
             {
-                Shooter_Move.ShooterAp = 10;
+                Shooter_Move.ShooterAp = 5;
                 bulletTime = 100;
             }
             return true;
@@ -343,6 +343,17 @@ public class Shooter_Move : MonoBehaviour
         {
             cube_position = collision.transform.position;
             cubecol = true;
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        col = true;
+        if (collision.collider.CompareTag("Cube"))
+        {
+            cube_position = collision.transform.position;
+            cubecol = true;
+            //Debug.Log("booster큐브 충돌2");
         }
     }
 }

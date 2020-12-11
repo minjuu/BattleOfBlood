@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoosterMove : MonoBehaviour
 {
-    public static float BoosterSpeed = 0.03f;
+    public static float BoosterSpeed = 0.01f;
     public static int BoosterHp = 100;
 
     public GameObject Prefab_bullet;
@@ -354,10 +354,10 @@ public class BoosterMove : MonoBehaviour
         nTime = 0;
         wtimer = 0;
         wtimer2 = 0;
-        etimer = wtimer + 10f;
-        etimer2 = wtimer2 + 10f;
+        etimer = wtimer + 1f;
+        etimer2 = wtimer2 + 1f;
         gtimer3 = 0;
-        etimer3 = gtimer3 + 1f;
+        etimer3 = gtimer3 + 5f;
 
         Pos = gameObject.transform.position;
 
@@ -430,26 +430,26 @@ public class BoosterMove : MonoBehaviour
             {
                 if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
-                    Player.PlayerSpeed = 10f;
+                    Player.PlayerSpeed = 6f;
                 }
                 if (GameObject.Find("Sonny") != null && ShortEnemy == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 20f;
+                    SonnyMove.SonnySpeed = 15f;
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.1f;
+                    BastionMove.BastionSpeed = 15f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
-                    Shooter_Move.ShooterSpeed = 10f;
+                    Shooter_Move.ShooterSpeed = 6f;
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.1f;
+                    HealerMove.HealerSpeed = 0.02f;
                 }
             }
-            else if (wtimer < (etimer + 3f))
+            else if (wtimer < (etimer + 10f))
             {
                 if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
@@ -461,7 +461,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.01f;
+                    BastionMove.BastionSpeed = 8f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
@@ -469,7 +469,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.02f;
+                    HealerMove.HealerSpeed = 0.01f;
                 }
             }
             else
@@ -522,26 +522,26 @@ public class BoosterMove : MonoBehaviour
             {
                 if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
-                    Player.PlayerSpeed = 10f;
+                    Player.PlayerSpeed = 6f;
                 }
                 if (GameObject.Find("Sonny") != null && ShortEnemy == GameObject.Find("Sonny"))
                 {
-                    SonnyMove.SonnySpeed = 20f;
+                    SonnyMove.SonnySpeed = 15f;
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.1f;
+                    BastionMove.BastionSpeed = 15f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
-                    Shooter_Move.ShooterSpeed = 10f;
+                    Shooter_Move.ShooterSpeed = 6f;
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed += 0.1f;
+                    HealerMove.HealerSpeed += 0.02f;
                 }
             }
-            else if (wtimer < (etimer + 3f))
+            else if (wtimer < (etimer + 10f))
             {
                 if (GameObject.Find("Player") != null && ShortEnemy == GameObject.Find("Player"))
                 {
@@ -553,7 +553,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.01f;
+                    BastionMove.BastionSpeed = 8f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy == GameObject.Find("Shooter"))
                 {
@@ -561,7 +561,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.02f;
+                    HealerMove.HealerSpeed = 0.01f;
                 }
             }
             else
@@ -625,7 +625,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.005f;
+                    BastionMove.BastionSpeed = 4f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
@@ -633,7 +633,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.01f;
+                    HealerMove.HealerSpeed = 0.005f;
                 }
             }
             else if (wtimer2 < (etimer2 + 3f))
@@ -648,7 +648,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.01f;
+                    BastionMove.BastionSpeed = 8f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
@@ -656,7 +656,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.02f;
+                    HealerMove.HealerSpeed = 0.01f;
                 }
             }
             else
@@ -716,7 +716,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.005f;
+                    BastionMove.BastionSpeed = 4f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
@@ -724,7 +724,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.01f;
+                    HealerMove.HealerSpeed = 0.005f;
                 }
             }
             else if (wtimer2 < (etimer2 + 3f))
@@ -739,7 +739,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Bastion") != null && ShortEnemy2 == GameObject.Find("Bastion"))
                 {
-                    BastionMove.BastionSpeed = 0.01f;
+                    BastionMove.BastionSpeed = 8f;
                 }
                 if (GameObject.Find("Shooter") != null && ShortEnemy2 == GameObject.Find("Shooter"))
                 {
@@ -747,7 +747,7 @@ public class BoosterMove : MonoBehaviour
                 }
                 if (GameObject.Find("Healer") != null && ShortEnemy2 == GameObject.Find("Healer"))
                 {
-                    HealerMove.HealerSpeed = 0.02f;
+                    HealerMove.HealerSpeed = 0.01f;
                 }
             }
             else

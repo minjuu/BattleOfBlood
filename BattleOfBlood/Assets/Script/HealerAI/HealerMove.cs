@@ -334,11 +334,11 @@ public class HealerMove : MonoBehaviour
     {
         nTime = 0;
         wtimer = 0.0f;
-        etimer = wtimer + 5f;
+        etimer = wtimer + 1f;
         wtimer2 = 0.0f;
         etimer = wtimer + 1000f;
         gtimer3 = 0;
-        etimer3 = gtimer3 + 1f;
+        etimer3 = gtimer3 + 5f;
         count = 0;
 
         min1 = 100000;

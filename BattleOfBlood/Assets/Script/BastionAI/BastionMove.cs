@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BastionMove : MonoBehaviour
 {
-    public static float BastionSpeed = 15f;
+    public static float BastionSpeed = 10f;
     public static int BastionHp = 100;
     public static int BastionAp = 10;
 
@@ -74,7 +74,7 @@ public class BastionMove : MonoBehaviour
     }
     public bool BastionMoveFollowTarget()
     {
-
+        Debug.Log("bastionMove");
         if (transform.position.z < -15) //절벽 범위 조건문
         {
             Vector3 swap1 = transform.position; //벡터 저장
@@ -188,9 +188,72 @@ public class BastionMove : MonoBehaviour
             col = false;
             return true;
         }
-        Vector3 newVelocity = b_lookat * BastionSpeed;
+        else if (transform.position.z < -15 || transform.position.z > 15 || transform.position.x < -20 || transform.position.x > 20)
+        {
+
+            if (transform.position.z < -15) //절벽 범위 조건문
+            {
+                bastion_dir = 2;
+            }
+
+            if (transform.position.z > 15)//절벽 범위 조건문
+            {
+                bastion_dir = 3;
+            }
+
+            if (transform.position.x < -20)//절벽 범위 조건문
+            {
+                bastion_dir = 0;
+            }
+            if (transform.position.x > 20)//절벽 범위 조건문
+            {
+                bastion_dir = 1;
+            }
+
+            if (BastionHp >= 0 || col == true)
+            {
+                if (bastion_dir == 0)
+                {
+                    b_lookat = new Vector3(1, 0, 0);
+                }
+                if (bastion_dir == 1)
+                {
+                    b_lookat = new Vector3(-1, 0, 0);
+                }
+                if (bastion_dir == 2)
+                {
+                    b_lookat = new Vector3(0, 0, 1);
+                }
+                if (bastion_dir == 3)
+                {
+                    b_lookat = new Vector3(0, 0, -1);
+                }
+                if (bastion_dir == 4)
+                {
+                    b_lookat = new Vector3(0, 0, 0);
+                }
+                if (shortDistance <= 2)
+                {
+                    b_lookat = -b_lookat;
+                }
+            }
+            Quaternion Rot = Quaternion.LookRotation(b_lookat);
+            gameObject.transform.localRotation = Rot;
+
+            Dir = (shortEnemy.transform.position - gameObject.transform.position).normalized;
+            Dir.y = 0;
+            cubecol = false;
+            col = false;
+
+            Vector3 newVelocity = b_lookat * BastionSpeed;
+            // 리지드바디의 속도에 newVelocity 할당
+            Bastion_rigid.velocity = newVelocity;
+            return true;
+
+        }
+        Vector3 newVelocity2 = b_lookat * BastionSpeed;
         // 리지드바디의 속도에 newVelocity 할당
-        Bastion_rigid.velocity = newVelocity;
+        Bastion_rigid.velocity = newVelocity2;
         return false;
     }
 
@@ -314,7 +377,7 @@ public class BastionMove : MonoBehaviour
             }
         }
         return true;*/
-        if (BastionHp >= 5 && BastionHp <=20)
+        if (BastionHp >= 5 && BastionHp <= 20)
         {
             //어떻게 만들지
             GameObject water_balloon1 = GameObject.Instantiate(Prefab_balloon) as GameObject;

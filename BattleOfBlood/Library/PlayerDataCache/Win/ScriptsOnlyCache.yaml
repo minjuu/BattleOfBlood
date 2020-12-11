@@ -1253,7 +1253,7 @@ ScriptsOnlyBuild:
     className: healerchar
   - hash:
       serializedVersion: 2
-      Hash: b5c6bc53ee4d17f04dc6ce40f537722a
+      Hash: bfc2fb2a8524b358189f40b6509c4562
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SonnyMove
@@ -1469,7 +1469,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: c6686ebe7f8c2ab55d7dd85c0edf1c76
+      Hash: f2381165b24aae4fb50dce0c35715306
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Shooter_Move
@@ -1530,4 +1530,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Win.unity
   - Assets/Scenes/Lose.unity
   - Assets/Scenes/Win2.unity
-  playerPath: "C:/Users/toshi/Desktop/\uC0C8 \uD3F4\uB354 (7)/BattleOfBlood.exe"
+  playerPath: "C:/Users/\uAE40\uC5F0\uD76C/Documents/GitHub/BattleOfBlood/BattleOfBlood/build/BattleOfBlood.exe"
