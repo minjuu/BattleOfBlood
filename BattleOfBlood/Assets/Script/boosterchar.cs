@@ -25,8 +25,8 @@ public class boosterchar : MonoBehaviour
             enemycharacter3 = null;
 
             SelectMng.booster1 = "Team";
-            SelectMng.shooter1 = "Team";
-            SelectMng.sonny1 = "Team";
+            SelectMng.shooter1 = "Enemy";
+            SelectMng.sonny1 = "Enemy";
             SelectMng.bastion1 = "";
             SceneManager.LoadScene("SampleScene");
         }

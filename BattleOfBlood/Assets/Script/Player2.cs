@@ -153,7 +153,7 @@ public class Player2 : MonoBehaviour
     {
         if (collision.collider.CompareTag("Cube"))
         {
-            Debug.Log("충돌");
+            //Debug.Log("충돌");
         }
     }
 

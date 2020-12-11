@@ -51,7 +51,7 @@ public class bastionchar : MonoBehaviour
             //   if (SelectMng.selectcount == 2)
             //  {
 
-            Debug.Log("end");
+            //Debug.Log("end");
             if (enemycharacter1.gameObject.tag != "Team" && SelectMng.enemycount < 3)
             {
                 enemycharacter1.gameObject.tag = "Enemy";

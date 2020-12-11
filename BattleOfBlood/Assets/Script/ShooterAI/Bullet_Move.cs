@@ -27,7 +27,7 @@ public class Bullet_Move : MonoBehaviour
         }
         if (col.gameObject.tag != Shooter_Move.ShooterTag)
         {
-             Debug.Log("물총 충돌");
+             //Debug.Log("물총 충돌");
             if (col.gameObject.name == "Healer")
                 HealerMove.HealerHp -= Shooter_Move.ShooterAp;
             if (col.gameObject.name == "Sonny")
