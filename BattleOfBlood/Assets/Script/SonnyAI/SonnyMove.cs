@@ -24,7 +24,7 @@ public class SonnyMove : MonoBehaviour
     public static int sonny_dir = -1;
     public static Vector3 Goal;
     private float shortDistance;
-    public static GameObject shortEnemy; //슈터와 가장 가까운 적
+    public GameObject shortEnemy; //슈터와 가장 가까운 적
     public static bool cubecoll;
     int sd_1 = 0;
     Vector3 Dir;
@@ -35,10 +35,26 @@ public class SonnyMove : MonoBehaviour
 
     float min1, min2, min3, min4, min5;
 
-    public bool MoveinMap()
+
+    // Start is called before the first frame update
+    void Start()
     {
         shortEnemy = GameObject.Find("Player");
+        nTime = 0;
+        srb = GetComponent<Rigidbody>();
+        min1 = 100000;
+        min2 = 100000;
+        min3 = 100000;
+        min4 = 100000;
+        min5 = 100000;
 
+
+        coll = false;
+
+    }
+
+    public bool MoveinMap()
+    {
         if (transform.position.z < -15) //절벽 범위 조건문
         {
             Vector3 swap1 = transform.position; //벡터 저장
@@ -225,22 +241,6 @@ public class SonnyMove : MonoBehaviour
         return false;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        nTime = 0;
-        srb = GetComponent<Rigidbody>();
-        min1 = 100000;
-        min2 = 100000;
-        min3 = 100000;
-        min4 = 100000;
-        min5 = 100000;
-        ///
-
-        coll = false;
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -350,8 +350,6 @@ public class SonnyMove : MonoBehaviour
         {
             if (gameObject.tag == "Team")
             {
-                shortEnemy = GameObject.Find("Player");
-
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
@@ -394,8 +392,6 @@ public class SonnyMove : MonoBehaviour
             }
             else
             {
-                shortEnemy = GameObject.Find("Player");
-
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")

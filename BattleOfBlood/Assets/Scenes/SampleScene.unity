@@ -502,6 +502,10 @@ PrefabInstance:
       propertyPath: srb
       value: 
       objectReference: {fileID: 1113561716}
+    - target: {fileID: 4793268389112455628, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
+      propertyPath: shortEnemy
+      value: 
+      objectReference: {fileID: 753764618}
     - target: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
       propertyPath: m_Name
       value: Sonny
@@ -2509,7 +2513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab_balloon: {fileID: 1055676447326888723, guid: 290eea4d90e5ce1429b2755073dc39bf, type: 3}
   Bastion_rigid: {fileID: 1384122889}
-  shortEnemy: {fileID: 0}
+  shortEnemy: {fileID: 753764618}
 --- !u!114 &1384122888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3105,6 +3109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab_bullet: {fileID: 5424896736308788606, guid: e54611b4f74d93741823c38c821ddd9e, type: 3}
+  shortEnemy: {fileID: 753764618}
   rb: {fileID: 0}
 --- !u!114 &1749407305
 MonoBehaviour:

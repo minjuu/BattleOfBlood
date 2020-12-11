@@ -13,7 +13,7 @@ public class Shooter_Move : MonoBehaviour
     GameObject[] enemyObject;
 
     public GameObject Prefab_bullet;
-    public static GameObject shortEnemy; //슈터와 가장 가까운 적
+    public GameObject shortEnemy; //슈터와 가장 가까운 적
     public static Vector3 Goal;
     Vector3 Dir;
     Vector3 lookat;
@@ -162,8 +162,6 @@ public class Shooter_Move : MonoBehaviour
         {
             if (gameObject.tag == "Team")
             {
-                shortEnemy = GameObject.Find("Player");
-
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
@@ -202,8 +200,6 @@ public class Shooter_Move : MonoBehaviour
             }
             else
             {
-                shortEnemy = GameObject.Find("Player");
-
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")

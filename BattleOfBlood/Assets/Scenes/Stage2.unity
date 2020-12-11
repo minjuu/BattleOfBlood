@@ -490,7 +490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2445766178686230618, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2445766178686230618, guid: 029b9835343f79e4aae4cf63694f7678, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab_balloon: {fileID: 1055676447326888723, guid: 290eea4d90e5ce1429b2755073dc39bf, type: 3}
   Bastion_rigid: {fileID: 174093088}
-  shortEnemy: {fileID: 0}
+  shortEnemy: {fileID: 1211437734}
 --- !u!136 &174093087
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1520,6 +1520,10 @@ PrefabInstance:
       propertyPath: srb
       value: 
       objectReference: {fileID: 808353182}
+    - target: {fileID: 4793268389112455628, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
+      propertyPath: shortEnemy
+      value: 
+      objectReference: {fileID: 1211437734}
     - target: {fileID: 8040639706050048229, guid: beafd02ecb03a3f4b846a785907ee796, type: 3}
       propertyPath: m_Name
       value: Sonny
@@ -2080,7 +2084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6273956640279298811, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6273956640279298811, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2933,11 +2937,10 @@ Transform:
   - {fileID: 2046699458}
   - {fileID: 808353184}
   - {fileID: 1773076576}
-  - {fileID: 1904526843}
   - {fileID: 1957237045}
   - {fileID: 174093089}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1773076568
 PrefabInstance:
@@ -3031,6 +3034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab_bullet: {fileID: 5424896736308788606, guid: e54611b4f74d93741823c38c821ddd9e, type: 3}
+  shortEnemy: {fileID: 1211437734}
   rb: {fileID: 0}
 --- !u!136 &1773076573
 CapsuleCollider:
@@ -3220,19 +3224,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1767688131}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.41021
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5509
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3266,6 +3270,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139191944070597762, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
       propertyPath: m_Name
       value: Camera
@@ -3275,11 +3287,6 @@ PrefabInstance:
 --- !u!20 &1904526842 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3973734989387472913, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
-  m_PrefabInstance: {fileID: 1904526841}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1904526843 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5330037753956556914, guid: d091e17668cc71b4f8a0d8fe6b95b5c6, type: 3}
   m_PrefabInstance: {fileID: 1904526841}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1908367840
@@ -3319,7 +3326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9139632251051091888, guid: dc91ececd4e27ca4c9b2b23daffe9385, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9139632251051091888, guid: dc91ececd4e27ca4c9b2b23daffe9385, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3502,7 +3509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6206743720605069696, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6206743720605069696, guid: 4fe4a4253786645489b485b34f04b1e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

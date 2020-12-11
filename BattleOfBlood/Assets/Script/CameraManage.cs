@@ -381,34 +381,34 @@ public class CameraManage : MonoBehaviour
             text2 = "Team : ";
 
             if (char1 != null)
-                text2 += "Player, ";
+                text2 += "Player ";
             if (char2 != null)
-                text2 += "Sonny, ";
+                text2 += "Sonny ";
             if (char3 != null)
-                text2 += "Bastion, ";
+                text2 += "Bastion ";
             if (char4 != null)
-                text2 += "Shooter, ";
+                text2 += "Shooter ";
             if (char5 != null)
-                text2 += "Healer, ";
+                text2 += "Healer ";
             if (char6 != null)
-                text2 += "Booster, ";
+                text2 += "Booster ";
 
             text2 += "\n";
 
             text2 += "Enemy : ";
 
             if (Char1 != null)
-                text2 += "Player, ";
+                text2 += "Player ";
             if (Char2 != null)
-                text2 += "Sonny, ";
+                text2 += "Sonny ";
             if (Char3 != null)
-                text2 += "Bastion, ";
+                text2 += "Bastion ";
             if (Char4 != null)
-                text2 += "Shooter, ";
+                text2 += "Shooter ";
             if (Char5 != null)
-                text2 += "Healer, ";
+                text2 += "Healer ";
             if (Char6 != null)
-                text2 += "Booster, ";
+                text2 += "Booster ";
 
             text2 += "\n";
         }
@@ -417,33 +417,33 @@ public class CameraManage : MonoBehaviour
             text2 = "Team : ";
 
             if (char1 != null)
-                text2 += "Player, ";
+                text2 += "Player ";
             if (char2 != null)
-                text2 += "Sonny, ";
+                text2 += "Sonny ";
             if (char3 != null)
-                text2 += "Bastion, ";
+                text2 += "Bastion ";
             if (char4 != null)
-                text2 += "Shooter, ";
+                text2 += "Shooter ";
             if (char5 != null)
-                text2 += "Healer, ";
+                text2 += "Healer ";
             if (char6 != null)
-                text2 += "Booster, ";
+                text2 += "Booster ";
 
             text2 += "\n";
             text2 += "Enemy : ";
 
             if (Char1 != null)
-                text2 += "Player, ";
+                text2 += "Player ";
             if (Char2 != null)
-                text2 += "Sonny, ";
+                text2 += "Sonny ";
             if (Char3 != null)
-                text2 += "Bastion, ";
+                text2 += "Bastion ";
             if (Char4 != null)
-                text2 += "Shooter, ";
+                text2 += "Shooter ";
             if (Char5 != null)
-                text2 += "Healer, ";
+                text2 += "Healer ";
             if (Char6 != null)
-                text2 += "Booster, ";
+                text2 += "Booster ";
 
             text2 += "\n";
         }

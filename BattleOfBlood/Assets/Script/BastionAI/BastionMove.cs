@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BastionMove : MonoBehaviour
 {
-    public static float BastionSpeed = 8f;
+    public static float BastionSpeed = 15f;
     public static int BastionHp = 100;
     public static int BastionAp = 10;
 
@@ -70,11 +70,10 @@ public class BastionMove : MonoBehaviour
         min3 = 100000;
         min4 = 100000;
         min5 = 100000;
-
+        shortEnemy = GameObject.Find("Player");
     }
     public bool BastionMoveFollowTarget()
     {
-        shortEnemy = GameObject.Find("Player");
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {
@@ -241,8 +240,6 @@ public class BastionMove : MonoBehaviour
             }
             else
             {
-                shortEnemy = GameObject.Find("Player");
-
                 if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                     min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
                 if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
@@ -317,8 +314,65 @@ public class BastionMove : MonoBehaviour
             }
         }
         return true;*/
-        if (BastionHp <= 10)
+        if (BastionHp >= 5 && BastionHp <=20)
         {
+            //어떻게 만들지
+            GameObject water_balloon1 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon1.x = transform.position.x + 1;
+            balloon1.y = transform.position.y;
+            balloon1.z = transform.position.z;
+            water_balloon1.transform.parent = null;
+            water_balloon1.transform.position = balloon1;
+
+            GameObject water_balloon2 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon2.x = transform.position.x + 1;
+            balloon2.y = transform.position.y;
+            balloon2.z = transform.position.z + 1;
+            water_balloon2.transform.parent = null;
+            water_balloon2.transform.position = balloon2;
+
+            GameObject water_balloon3 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon3.x = transform.position.x;
+            balloon3.y = transform.position.y;
+            balloon3.z = transform.position.z + 1;
+            water_balloon3.transform.parent = null;
+            water_balloon3.transform.position = balloon3;
+
+            GameObject water_balloon4 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon4.x = transform.position.x - 1;
+            balloon4.y = transform.position.y;
+            balloon4.z = transform.position.z + 1;
+            water_balloon4.transform.parent = null;
+            water_balloon4.transform.position = balloon4;
+
+            GameObject water_balloon5 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon5.x = transform.position.x - 1;
+            balloon5.y = transform.position.y;
+            balloon5.z = transform.position.z;
+            water_balloon5.transform.parent = null;
+            water_balloon5.transform.position = balloon5;
+
+            GameObject water_balloon6 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon6.x = transform.position.x - 1;
+            balloon6.y = transform.position.y;
+            balloon6.z = transform.position.z - 1;
+            water_balloon6.transform.parent = null;
+            water_balloon6.transform.position = balloon6;
+
+            GameObject water_balloon7 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon7.x = transform.position.x;
+            balloon7.y = transform.position.y;
+            balloon7.z = transform.position.z - 1;
+            water_balloon7.transform.parent = null;
+            water_balloon7.transform.position = balloon7;
+
+            GameObject water_balloon8 = GameObject.Instantiate(Prefab_balloon) as GameObject;
+            balloon8.x = transform.position.x + 1;
+            balloon8.y = transform.position.y;
+            balloon8.z = transform.position.z - 1;
+            water_balloon8.transform.parent = null;
+            water_balloon8.transform.position = balloon8;
+
             BastionHp = 0;
             gameObject.active = false;
             return false;
@@ -339,72 +393,6 @@ public class BastionMove : MonoBehaviour
                 water_balloon.transform.position = transform.position;
                 water_balloon.transform.parent = null;
 
-
-                if (BastionHp < 15)
-                    make_wb = true;
-
-                if (make_wb == true)
-                {
-                    TimeLeft = 2.0f;
-                    //어떻게 만들지
-                    GameObject water_balloon1 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon1.x = transform.position.x + 1;
-                    balloon1.y = transform.position.y;
-                    balloon1.z = transform.position.z;
-                    water_balloon1.transform.parent = null;
-                    water_balloon1.transform.position = balloon1;
-
-                    GameObject water_balloon2 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon2.x = transform.position.x + 1;
-                    balloon2.y = transform.position.y;
-                    balloon2.z = transform.position.z + 1;
-                    water_balloon2.transform.parent = null;
-                    water_balloon2.transform.position = balloon2;
-
-                    GameObject water_balloon3 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon3.x = transform.position.x;
-                    balloon3.y = transform.position.y;
-                    balloon3.z = transform.position.z + 1;
-                    water_balloon3.transform.parent = null;
-                    water_balloon3.transform.position = balloon3;
-
-                    GameObject water_balloon4 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon4.x = transform.position.x - 1;
-                    balloon4.y = transform.position.y;
-                    balloon4.z = transform.position.z + 1;
-                    water_balloon4.transform.parent = null;
-                    water_balloon4.transform.position = balloon4;
-
-                    GameObject water_balloon5 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon5.x = transform.position.x - 1;
-                    balloon5.y = transform.position.y;
-                    balloon5.z = transform.position.z;
-                    water_balloon5.transform.parent = null;
-                    water_balloon5.transform.position = balloon5;
-
-                    GameObject water_balloon6 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon6.x = transform.position.x - 1;
-                    balloon6.y = transform.position.y;
-                    balloon6.z = transform.position.z - 1;
-                    water_balloon6.transform.parent = null;
-                    water_balloon6.transform.position = balloon6;
-
-                    GameObject water_balloon7 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon7.x = transform.position.x;
-                    balloon7.y = transform.position.y;
-                    balloon7.z = transform.position.z - 1;
-                    water_balloon7.transform.parent = null;
-                    water_balloon7.transform.position = balloon7;
-
-                    GameObject water_balloon8 = GameObject.Instantiate(Prefab_balloon) as GameObject;
-                    balloon8.x = transform.position.x + 1;
-                    balloon8.y = transform.position.y;
-                    balloon8.z = transform.position.z - 1;
-                    water_balloon8.transform.parent = null;
-                    water_balloon8.transform.position = balloon8;
-
-                    make_wb = false;
-                }
             }
             return true;
         }
