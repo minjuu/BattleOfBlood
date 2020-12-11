@@ -48,7 +48,6 @@ public class BoosterMove : MonoBehaviour
     // Start is called before the first frame update
     public bool MoveBooster()
     {
-        Debug.Log("movebooster");
         if (BoosterHp > 0)
         {
             if (gameObject.tag == "Team")

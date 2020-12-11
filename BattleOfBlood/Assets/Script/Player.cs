@@ -46,6 +46,32 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         PlayerPos = gameObject.transform.position;
 
+        if(SelectMng.booster1 == "Team")
+            GameObject.Find("Booster").tag = "Team";
+        else if(SelectMng.booster1 == "Enemy")
+            GameObject.Find("Booster").tag = "Enemy";
+
+        if (SelectMng.bastion1 == "Team")
+            GameObject.Find("Bastion").tag = "Team";
+        else if (SelectMng.bastion1 == "Enemy")
+            GameObject.Find("Bastion").tag = "Enemy";
+
+        if (SelectMng.healer1 == "Team")
+            GameObject.Find("Healer").tag = "Team";
+        else if (SelectMng.healer1 == "Enemy")
+            GameObject.Find("Healer").tag = "Enemy";
+
+        if (SelectMng.sonny1 == "Team")
+            GameObject.Find("Sonny").tag = "Team";
+        else if (SelectMng.sonny1 == "Enemy")
+            GameObject.Find("Sonny").tag = "Enemy";
+
+        if (SelectMng.shooter1 == "Team")
+            GameObject.Find("Shooter").tag = "Team";
+        else if (SelectMng.shooter1 == "Enemy")
+            GameObject.Find("Shooter").tag = "Enemy";
+
+
         if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
             char1 = GameObject.Find("Player");
         if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")

@@ -43,7 +43,6 @@ public class HealerMove : MonoBehaviour
 
     public bool MoveHealer()
     {
-        Debug.Log("movehealer");
         if (HealerHp > 0)
         {
             if (gameObject.tag == "Team")

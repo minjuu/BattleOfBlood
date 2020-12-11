@@ -23,12 +23,18 @@ public class sonnychar : MonoBehaviour
             enemycharacter1.gameObject.tag = "Enemy";
             enemycharacter2.gameObject.tag = "Enemy";
             enemycharacter3 = null;
+
+            SelectMng.sonny1 = "Team";
+            SelectMng.bastion1 = "Enemy";
+            SelectMng.shooter1 = "Enemy";
+            SelectMng.healer1 = "";
             SceneManager.LoadScene("SampleScene");
         }
 
         if (SceneManager.GetActiveScene().name == "selectchar2")
         {
             character.gameObject.tag = "Team";
+            SelectMng.sonny1 = "Team";
             SelectMng.selectcount++;
 
             SceneManager.LoadScene("selectchar3");
@@ -37,6 +43,7 @@ public class sonnychar : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "selectchar3")
         {
             character.gameObject.tag = "Team";
+            SelectMng.sonny1 = "Team";
             SelectMng.selectcount++;
 
             //   if (SelectMng.selectcount == 2)
@@ -46,21 +53,26 @@ public class sonnychar : MonoBehaviour
             if (enemycharacter1.gameObject.tag != "Team" && SelectMng.enemycount < 3)
             {
                 enemycharacter1.gameObject.tag = "Enemy";
+                SelectMng.bastion1 = "Enemy";
                 SelectMng.enemycount++;
             }
             if (enemycharacter2.gameObject.tag != "Team" && SelectMng.enemycount < 3)
             {
                 enemycharacter2.gameObject.tag = "Enemy";
+
+                SelectMng.shooter1 = "Enemy";
                 SelectMng.enemycount++;
             }
             if (enemycharacter3.gameObject.tag != "Team" && SelectMng.enemycount < 3)
             {
                 enemycharacter3.gameObject.tag = "Enemy";
+                SelectMng.healer1 = "Enemy";
                 SelectMng.enemycount++;
             }
             if (enemycharacter4.gameObject.tag != "Team" && SelectMng.enemycount < 3)
             {
                 enemycharacter4.gameObject.tag = "Enemy";
+                SelectMng.booster1 = "Enemy";
                 SelectMng.enemycount++;
             }
 

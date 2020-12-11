@@ -30,6 +30,31 @@ public class CameraManage : MonoBehaviour
         mainCamera.enabled = true;
         subCamera.enabled = false;
 
+        if (SelectMng.booster1 == "Team")
+            GameObject.Find("Booster").tag = "Team";
+        else if (SelectMng.booster1 == "Enemy")
+            GameObject.Find("Booster").tag = "Enemy";
+
+        if (SelectMng.bastion1 == "Team")
+            GameObject.Find("Bastion").tag = "Team";
+        else if (SelectMng.bastion1 == "Enemy")
+            GameObject.Find("Bastion").tag = "Enemy";
+
+        if (SelectMng.healer1 == "Team")
+            GameObject.Find("Healer").tag = "Team";
+        else if (SelectMng.healer1 == "Enemy")
+            GameObject.Find("Healer").tag = "Enemy";
+
+        if (SelectMng.sonny1 == "Team")
+            GameObject.Find("Sonny").tag = "Team";
+        else if (SelectMng.sonny1 == "Enemy")
+            GameObject.Find("Sonny").tag = "Enemy";
+
+        if (SelectMng.shooter1 == "Team")
+            GameObject.Find("Shooter").tag = "Team";
+        else if (SelectMng.shooter1 == "Enemy")
+            GameObject.Find("Shooter").tag = "Enemy";
+
         if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
             char1 = GameObject.Find("Player");
         if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
@@ -398,7 +423,6 @@ public class CameraManage : MonoBehaviour
             text2 += "\n";
         }
 
-        text2 = char1.tag + char2.tag + char3.tag + char4.tag + char5.tag + char6.tag + "\n" + Char1.tag + Char2.tag + Char3.tag + Char4.tag + Char5.tag + Char6.tag;
         GUI.Label(rect, text, style);
         GUI.Label(rect2, text2, style2);
     }
