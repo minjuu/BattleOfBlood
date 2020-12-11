@@ -53,19 +53,19 @@ public class boosterchar : MonoBehaviour
                 if (enemycharacter1.gameObject.tag != "Team" && SelectMng.enemycount < 3)
                 {
                     enemycharacter1.gameObject.tag = "Enemy";
-                    SelectMng.shooter1 = "Enemy";
+                    SelectMng.bastion1 = "Enemy";
                     SelectMng.enemycount++;
                 }
                 if (enemycharacter2.gameObject.tag != "Team" && SelectMng.enemycount < 3)
                 {
                     enemycharacter2.gameObject.tag = "Enemy";
-                    SelectMng.sonny1 = "Enemy";
+                    SelectMng.shooter1 = "Enemy";
                     SelectMng.enemycount++;
                 }
                 if (enemycharacter3.gameObject.tag != "Team" && SelectMng.enemycount < 3)
                 {
                     enemycharacter3.gameObject.tag = "Enemy";
-                    SelectMng.bastion1 = "Enemy";
+                    SelectMng.sonny1 = "Enemy";
                     SelectMng.enemycount++;
                 }
                 if (enemycharacter4.gameObject.tag != "Team" && SelectMng.enemycount < 3)

@@ -34,7 +34,7 @@ public class Player2 : MonoBehaviour
 
             Player.ba = true;
             Player.bo = true;
-            Player.ba = true;
+            Player.sn = true;
             Player.sh = true;
             Player.hl = true;
 
