@@ -145,7 +145,7 @@ public class HealerMove : MonoBehaviour
                     {
                         healer_dir = Random.Range(0, 4);
                     }
-                    if (cubecol == true || col == true)
+                    if (MinHp == 0)
                         healer_dir = Random.Range(0, 4);
 
                     if (HealerHp >= 0 || col == true)
@@ -284,9 +284,10 @@ public class HealerMove : MonoBehaviour
                     }
                     if (cubecol == true)
                     {
-                        Debug.Log("cubecol healer");
                         healer_dir = Random.Range(0, 4);
                     }
+                    if (MinHp == 0)
+                        healer_dir = Random.Range(0, 4);
                     if (HealerHp >= 0 || col == true)
                     {
                         if (healer_dir == 0)

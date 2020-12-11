@@ -147,8 +147,18 @@ public class BoosterMove : MonoBehaviour
 
                     if (cubecol == true)
                     {
-                        Debug.Log("cubecol");
                         booster_dir = Random.Range(0, 4);
+                    }
+
+                    if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+                    {
+                        if (Player.Team_Hp[0] + Player.Team_Hp[1] == BoosterHp)
+                            booster_dir = Random.Range(0, 4);
+                    }
+                    else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
+                    {
+                        if (Player.Team_Hp[0] + Player.Team_Hp[1] + Player.Team_Hp[2] == BoosterHp)
+                            booster_dir = Random.Range(0, 4);
                     }
 
                     if (BoosterHp >= 0 || col == true)
@@ -285,6 +295,17 @@ public class BoosterMove : MonoBehaviour
                     if (cubecol == true)
                         booster_dir = Random.Range(0, 4);
 
+                    if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+                    {
+                        if (Player.Team_Hp[0] + Player.Team_Hp[1] == BoosterHp)
+                            booster_dir = Random.Range(0, 4);
+                    }
+                    else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
+                    {
+                        if (Player.Team_Hp[0] + Player.Team_Hp[1] + Player.Team_Hp[2] == BoosterHp)
+                            booster_dir = Random.Range(0, 4);
+                    }
+
                     if (BoosterHp >= 0 || col == true)
                     {
                         if (booster_dir == 0)
@@ -334,8 +355,8 @@ public class BoosterMove : MonoBehaviour
         nTime = 0;
         wtimer = 0;
         wtimer2 = 0;
-        etimer = wtimer + 3f;
-        etimer2 = wtimer2 + 3f;
+        etimer = wtimer + 10f;
+        etimer2 = wtimer2 + 10f;
         gtimer3 = 0;
         etimer3 = gtimer3 + 1f;
 
