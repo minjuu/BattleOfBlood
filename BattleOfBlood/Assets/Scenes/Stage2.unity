@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab_balloon: {fileID: 1055676447326888723, guid: 290eea4d90e5ce1429b2755073dc39bf, type: 3}
-  Bastion_rigid: {fileID: 0}
+  Bastion_rigid: {fileID: 174093088}
   shortEnemy: {fileID: 0}
 --- !u!136 &174093087
 CapsuleCollider:
@@ -2663,6 +2663,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1908367841}
   subCamera: {fileID: 1904526842}
+  char1: {fileID: 0}
+  char2: {fileID: 0}
+  char3: {fileID: 0}
+  char4: {fileID: 0}
+  char5: {fileID: 0}
+  char6: {fileID: 0}
+  Char1: {fileID: 0}
+  Char2: {fileID: 0}
+  Char3: {fileID: 0}
+  Char4: {fileID: 0}
+  Char5: {fileID: 0}
+  Char6: {fileID: 0}
 --- !u!4 &1545928907
 Transform:
   m_ObjectHideFlags: 0

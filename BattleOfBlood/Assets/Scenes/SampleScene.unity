@@ -2508,7 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab_balloon: {fileID: 1055676447326888723, guid: 290eea4d90e5ce1429b2755073dc39bf, type: 3}
-  Bastion_rigid: {fileID: 0}
+  Bastion_rigid: {fileID: 1384122889}
   shortEnemy: {fileID: 0}
 --- !u!114 &1384122888
 MonoBehaviour:
