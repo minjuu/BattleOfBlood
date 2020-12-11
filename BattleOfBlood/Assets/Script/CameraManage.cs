@@ -7,6 +7,20 @@ public class CameraManage : MonoBehaviour
     public Camera mainCamera;
     public Camera subCamera;
 
+    public GameObject char1;
+    public GameObject char2;
+    public GameObject char3;
+    public GameObject char4;
+    public GameObject char5;
+    public GameObject char6;
+
+    public GameObject Char1;
+    public GameObject Char2;
+    public GameObject Char3;
+    public GameObject Char4;
+    public GameObject Char5;
+    public GameObject Char6;
+
     public static string str;
 
 
@@ -15,6 +29,33 @@ public class CameraManage : MonoBehaviour
     {
         mainCamera.enabled = true;
         subCamera.enabled = false;
+
+        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
+            char1 = GameObject.Find("Player");
+        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
+            char2 = GameObject.Find("Sonny");
+        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
+            char3 = GameObject.Find("Bastion");
+        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
+            char4 = GameObject.Find("Shooter");
+        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
+            char5 = GameObject.Find("Healer");
+        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
+            char6 = GameObject.Find("Booster");
+
+        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
+            Char1 = GameObject.Find("Player");
+        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            Char2 = GameObject.Find("Sonny");
+        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            Char3 = GameObject.Find("Bastion");
+        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            Char4 = GameObject.Find("Shooter");
+        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
+            Char5 = GameObject.Find("Healer");
+        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
+            Char6 = GameObject.Find("Booster");
+
     }
 
 
@@ -61,185 +102,204 @@ public class CameraManage : MonoBehaviour
         str = "";
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
         {
-            for (int i = 0; i < 2; i++)
+            int i = 0;
+            if (char1 != null && char1.tag == "Team")
             {
-                if (Player.Team_array[i].name == "Player")
-                {
-                    if (Player.PlayerHp <= 0)
-                        Player.PlayerHp = 0;
-                    str += "Player HP: " + Player.PlayerHp + "% \n";
-                    Player.Team_Hp[i] = Player.PlayerHp;
-                }
-                else if (Player.Team_array[i].name == "Sonny")
-                {
-                    if (SonnyMove.SonnyHp <= 0)
-                        SonnyMove.SonnyHp = 0;
-                    str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
-                    Player.Team_Hp[i] = SonnyMove.SonnyHp;
-                }
-                else if (Player.Team_array[i].name == "Bastion")
-                {
-                    if (BastionMove.BastionHp <= 0)
-                        BastionMove.BastionHp = 0;
-                    str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
-                    Player.Team_Hp[i] = BastionMove.BastionHp;
-                }
-                else if (Player.Team_array[i].name == "Shooter")
-                {
-                    if (Shooter_Move.ShooterHp <= 0)
-                        Shooter_Move.ShooterHp = 0;
-                    str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
-                    Player.Team_Hp[i] = Shooter_Move.ShooterHp;
-                }
-                else if (Player.Team_array[i].name == "Healer")
-                {
-                    if (HealerMove.HealerHp <= 0)
-                        HealerMove.HealerHp = 0;
-                    str += "Healer HP: " + HealerMove.HealerHp + "% \n";
-                    Player.Team_Hp[i] = HealerMove.HealerHp;
-                }
-                else if (Player.Team_array[i].name == "Booster")
-                {
-                    if (BoosterMove.BoosterHp <= 0)
-                        BoosterMove.BoosterHp = 0;
-                    str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
-                    Player.Team_Hp[i] = BoosterMove.BoosterHp;
-                }
-
-                if (Player.Enemy_array[i].name == "Player")
-                {
-                    if (Player.PlayerHp <= 0)
-                        Player.PlayerHp = 0;
-                    str += "Player HP: " + Player.PlayerHp + "% \n";
-                    Player.Enemy_Hp[i] = Player.PlayerHp;
-                }
-                else if (Player.Enemy_array[i].name == "Sonny")
-                {
-                    if (SonnyMove.SonnyHp <= 0)
-                        SonnyMove.SonnyHp = 0;
-                    str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
-                    Player.Enemy_Hp[i] = SonnyMove.SonnyHp;
-                }
-                else if (Player.Enemy_array[i].name == "Bastion")
-                {
-                    if (BastionMove.BastionHp <= 0)
-                        BastionMove.BastionHp = 0;
-                    str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
-                    Player.Enemy_Hp[i] = BastionMove.BastionHp;
-                }
-                else if (Player.Enemy_array[i].name == "Shooter")
-                {
-                    if (Shooter_Move.ShooterHp <= 0)
-                        Shooter_Move.ShooterHp = 0;
-                    str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
-                    Player.Enemy_Hp[i] = Shooter_Move.ShooterHp;
-                }
-                else if (Player.Enemy_array[i].name == "Healer")
-                {
-                    if (HealerMove.HealerHp <= 0)
-                        HealerMove.HealerHp = 0;
-                    str += "Healer HP: " + HealerMove.HealerHp + "% \n";
-                    Player.Enemy_Hp[i] = HealerMove.HealerHp;
-                }
-                else if (Player.Enemy_array[i].name == "Booster")
-                {
-                    if (BoosterMove.BoosterHp <= 0)
-                        BoosterMove.BoosterHp = 0;
-                    str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
-                    Player.Enemy_Hp[i] = BoosterMove.BoosterHp;
-                }
+                if (Player.PlayerHp <= 0)
+                    Player.PlayerHp = 0;
+                str += "Player HP: " + Player.PlayerHp + "% \n";
+                Player.Team_Hp[i] = Player.PlayerHp;
+                i++;
+            }
+            if (char2 != null && char2.tag == "Team")
+            {
+                if (SonnyMove.SonnyHp <= 0)
+                    SonnyMove.SonnyHp = 0;
+                str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                Player.Team_Hp[i] = SonnyMove.SonnyHp;
+                i++;
+            }
+            if (char3 != null && char3.tag == "Team")
+            {
+                if (BastionMove.BastionHp <= 0)
+                    BastionMove.BastionHp = 0;
+                str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                Player.Team_Hp[i] = BastionMove.BastionHp;
+                i++;
+            }
+            if (char4 != null && char4.tag == "Team")
+            {
+                if (Shooter_Move.ShooterHp <= 0)
+                    Shooter_Move.ShooterHp = 0;
+                str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                Player.Team_Hp[i] = Shooter_Move.ShooterHp;
+                i++;
+            }
+            if (char5 != null && char5.tag == "Team")
+            {
+                if (HealerMove.HealerHp <= 0)
+                    HealerMove.HealerHp = 0;
+                str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                Player.Team_Hp[i] = HealerMove.HealerHp;
+                i++;
+            }
+            if (char6 != null && char6.tag == "Team")
+            {
+                if (BoosterMove.BoosterHp <= 0)
+                    BoosterMove.BoosterHp = 0;
+                str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                Player.Team_Hp[i] = BoosterMove.BoosterHp;
+                i++;
+            }
+            i = 0;
+            if (Char1 != null && Char1.tag == "Enemy")
+            {
+                if (Player.PlayerHp <= 0)
+                    Player.PlayerHp = 0;
+                str += "Player HP: " + Player.PlayerHp + "% \n";
+                Player.Enemy_Hp[i] = Player.PlayerHp;
+                i++;
+            }
+            if (Char2 != null && Char2.tag == "Enemy")
+            {
+                if (SonnyMove.SonnyHp <= 0)
+                    SonnyMove.SonnyHp = 0;
+                str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                Player.Enemy_Hp[i] = SonnyMove.SonnyHp;
+                i++;
+            }
+            if (Char3 != null && Char3.tag == "Enemy")
+            {
+                if (BastionMove.BastionHp <= 0)
+                    BastionMove.BastionHp = 0;
+                str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                Player.Enemy_Hp[i] = BastionMove.BastionHp;
+                i++;
+            }
+            if (Char4 != null && Char4.tag == "Enemy")
+            {
+                if (Shooter_Move.ShooterHp <= 0)
+                    Shooter_Move.ShooterHp = 0;
+                str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                Player.Enemy_Hp[i] = Shooter_Move.ShooterHp;
+                i++;
+            }
+            if (Char5 != null && Char5.tag == "Enemy")
+            {
+                if (HealerMove.HealerHp <= 0)
+                    HealerMove.HealerHp = 0;
+                str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                Player.Enemy_Hp[i] = HealerMove.HealerHp;
+                i++;
+            }
+            if (Char6 != null && Char6.tag == "Enemy")
+            {
+                if (BoosterMove.BoosterHp <= 0)
+                    BoosterMove.BoosterHp = 0;
+                str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                Player.Enemy_Hp[i] = BoosterMove.BoosterHp;
+                i++;
             }
         }
         else
         {
-            for (int i = 0; i < 3; i++)
+            int i = 0;
+            if (char1 != null && char1.tag == "Team")
             {
-                if (Player.Team_array[i].name == "Player")
-                {
-                    if (Player.PlayerHp <= 0)
-                        Player.PlayerHp = 0;
-                    str += "Player HP: " + Player.PlayerHp + "% \n";
-                    Player.Team_Hp[i] = Player.PlayerHp;
-                }
-                else if (Player.Team_array[i].name == "Sonny")
-                {
-                    if (SonnyMove.SonnyHp <= 0)
-                        SonnyMove.SonnyHp = 0;
-                    str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
-                    Player.Team_Hp[i] = SonnyMove.SonnyHp;
-                }
-                else if (Player.Team_array[i].name == "Bastion")
-                {
-                    if (BastionMove.BastionHp <= 0)
-                        BastionMove.BastionHp = 0;
-                    str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
-                    Player.Team_Hp[i] = BastionMove.BastionHp;
-                }
-                else if (Player.Team_array[i].name == "Shooter")
-                {
-                    if (Shooter_Move.ShooterHp <= 0)
-                        Shooter_Move.ShooterHp = 0;
-                    str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
-                    Player.Team_Hp[i] = Shooter_Move.ShooterHp;
-                }
-                else if (Player.Team_array[i].name == "Healer")
-                {
-                    if (HealerMove.HealerHp <= 0)
-                        HealerMove.HealerHp = 0;
-                    str += "Healer HP: " + HealerMove.HealerHp + "% \n";
-                    Player.Team_Hp[i] = HealerMove.HealerHp;
-                }
-                else if (Player.Team_array[i].name == "Booster")
-                {
-                    if (BoosterMove.BoosterHp <= 0)
-                        BoosterMove.BoosterHp = 0;
-                    str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
-                    Player.Team_Hp[i] = BoosterMove.BoosterHp;
-                }
-
-                if (Player.Enemy_array[i].name == "Player")
-                {
-                    if (Player.PlayerHp <= 0)
-                        Player.PlayerHp = 0;
-                    str += "Player HP: " + Player.PlayerHp + "% \n";
-                    Player.Enemy_Hp[i] = Player.PlayerHp;
-                }
-                else if (Player.Enemy_array[i].name == "Sonny")
-                {
-                    if (SonnyMove.SonnyHp <= 0)
-                        SonnyMove.SonnyHp = 0;
-                    str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
-                    Player.Enemy_Hp[i] = SonnyMove.SonnyHp;
-                }
-                else if (Player.Enemy_array[i].name == "Bastion")
-                {
-                    if (BastionMove.BastionHp <= 0)
-                        BastionMove.BastionHp = 0;
-                    str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
-                    Player.Enemy_Hp[i] = BastionMove.BastionHp;
-                }
-                else if (Player.Enemy_array[i].name == "Shooter")
-                {
-                    if (Shooter_Move.ShooterHp <= 0)
-                        Shooter_Move.ShooterHp = 0;
-                    str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
-                    Player.Enemy_Hp[i] = Shooter_Move.ShooterHp;
-                }
-                else if (Player.Enemy_array[i].name == "Healer")
-                {
-                    if (HealerMove.HealerHp <= 0)
-                        HealerMove.HealerHp = 0;
-                    str += "Healer HP: " + HealerMove.HealerHp + "% \n";
-                    Player.Enemy_Hp[i] = HealerMove.HealerHp;
-                }
-                else if (Player.Enemy_array[i].name == "Booster")
-                {
-                    if (BoosterMove.BoosterHp <= 0)
-                        BoosterMove.BoosterHp = 0;
-                    str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
-                    Player.Enemy_Hp[i] = BoosterMove.BoosterHp;
-                }
-
+                if (Player.PlayerHp <= 0)
+                    Player.PlayerHp = 0;
+                str += "Player HP: " + Player.PlayerHp + "% \n";
+                Player.Team_Hp[i] = Player.PlayerHp;
+                i++;
+            }
+            if (char2 != null && char2.tag == "Team")
+            {
+                if (SonnyMove.SonnyHp <= 0)
+                    SonnyMove.SonnyHp = 0;
+                str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                Player.Team_Hp[i] = SonnyMove.SonnyHp;
+                i++;
+            }
+            if (char3 != null && char3.tag == "Team")
+            {
+                if (BastionMove.BastionHp <= 0)
+                    BastionMove.BastionHp = 0;
+                str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                Player.Team_Hp[i] = BastionMove.BastionHp;
+                i++;
+            }
+            if (char4 != null && char4.tag == "Team")
+            {
+                if (Shooter_Move.ShooterHp <= 0)
+                    Shooter_Move.ShooterHp = 0;
+                str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                Player.Team_Hp[i] = Shooter_Move.ShooterHp;
+                i++;
+            }
+            if (char5 != null && char5.tag == "Team")
+            {
+                if (HealerMove.HealerHp <= 0)
+                    HealerMove.HealerHp = 0;
+                str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                Player.Team_Hp[i] = HealerMove.HealerHp;
+                i++;
+            }
+            if (char6 != null && char6.tag == "Team")
+            {
+                if (BoosterMove.BoosterHp <= 0)
+                    BoosterMove.BoosterHp = 0;
+                str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                Player.Team_Hp[i] = BoosterMove.BoosterHp;
+                i++;
+            }
+            i = 0;
+            if (Char1 != null && Char1.tag == "Enemy")
+            {
+                if (Player.PlayerHp <= 0)
+                    Player.PlayerHp = 0;
+                str += "Player HP: " + Player.PlayerHp + "% \n";
+                Player.Enemy_Hp[i] = Player.PlayerHp;
+                i++;
+            }
+            if (Char2 != null && Char2.tag == "Enemy")
+            {
+                if (SonnyMove.SonnyHp <= 0)
+                    SonnyMove.SonnyHp = 0;
+                str += "Sonny HP: " + SonnyMove.SonnyHp + "% \n";
+                Player.Enemy_Hp[i] = SonnyMove.SonnyHp;
+                i++;
+            }
+            if (Char3 != null && Char3.tag == "Enemy")
+            {
+                if (BastionMove.BastionHp <= 0)
+                    BastionMove.BastionHp = 0;
+                str += "Bastion HP: " + BastionMove.BastionHp + "% \n";
+                Player.Enemy_Hp[i] = BastionMove.BastionHp;
+                i++;
+            }
+            if (Char4 != null && Char4.tag == "Enemy")
+            {
+                if (Shooter_Move.ShooterHp <= 0)
+                    Shooter_Move.ShooterHp = 0;
+                str += "Shooter HP: " + Shooter_Move.ShooterHp + "% \n";
+                Player.Enemy_Hp[i] = Shooter_Move.ShooterHp;
+                i++;
+            }
+            if (Char5 != null && Char5.tag == "Enemy")
+            {
+                if (HealerMove.HealerHp <= 0)
+                    HealerMove.HealerHp = 0;
+                str += "Healer HP: " + HealerMove.HealerHp + "% \n";
+                Player.Enemy_Hp[i] = HealerMove.HealerHp;
+                i++;
+            }
+            if (Char6 != null && Char6.tag == "Enemy")
+            {
+                if (BoosterMove.BoosterHp <= 0)
+                    BoosterMove.BoosterHp = 0;
+                str += "Booster HP: " + BoosterMove.BoosterHp + "% \n";
+                Player.Enemy_Hp[i] = BoosterMove.BoosterHp;
+                i++;
             }
         }
     }
@@ -262,17 +322,83 @@ public class CameraManage : MonoBehaviour
         style.normal.textColor = Color.white;
         style2.normal.textColor = Color.white;
         string text;
-
         text = str;
 
         string text2 = "";
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
-            text2 = "Team : " + Player.Team_array[0].name + ", " + Player.Team_array[1].name + "\n"
-                   + "Enemy : " + Player.Enemy_array[0].name + ", " + Player.Enemy_array[1].name;
-        else
-            text2 = "Team : " + Player.Team_array[0].name + ", " + Player.Team_array[1].name + ", " + Player.Team_array[2].name +"\n"
-                   + "Enemy : " + Player.Enemy_array[0].name + ", " + Player.Enemy_array[1].name + ", " + Player.Enemy_array[2].name + ", " + "\n";
 
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            text2 = "Team : ";
+
+            if (char1 != null)
+                text2 += "Player, ";
+            if (char2 != null)
+                text2 += "Sonny, ";
+            if (char3 != null)
+                text2 += "Bastion, ";
+            if (char4 != null)
+                text2 += "Shooter, ";
+            if (char5 != null)
+                text2 += "Healer, ";
+            if (char6 != null)
+                text2 += "Booster, ";
+
+            text2 += "\n";
+
+            text2 += "Enemy : ";
+
+            if (Char1 != null)
+                text2 += "Player, ";
+            if (Char2 != null)
+                text2 += "Sonny, ";
+            if (Char3 != null)
+                text2 += "Bastion, ";
+            if (Char4 != null)
+                text2 += "Shooter, ";
+            if (Char5 != null)
+                text2 += "Healer, ";
+            if (Char6 != null)
+                text2 += "Booster, ";
+
+            text2 += "\n";
+        }
+        else
+        {
+            text2 = "Team : ";
+
+            if (char1 != null)
+                text2 += "Player, ";
+            if (char2 != null)
+                text2 += "Sonny, ";
+            if (char3 != null)
+                text2 += "Bastion, ";
+            if (char4 != null)
+                text2 += "Shooter, ";
+            if (char5 != null)
+                text2 += "Healer, ";
+            if (char6 != null)
+                text2 += "Booster, ";
+
+            text2 += "\n";
+            text2 += "Enemy : ";
+
+            if (Char1 != null)
+                text2 += "Player, ";
+            if (Char2 != null)
+                text2 += "Sonny, ";
+            if (Char3 != null)
+                text2 += "Bastion, ";
+            if (Char4 != null)
+                text2 += "Shooter, ";
+            if (Char5 != null)
+                text2 += "Healer, ";
+            if (Char6 != null)
+                text2 += "Booster, ";
+
+            text2 += "\n";
+        }
+
+        text2 = char1.tag + char2.tag + char3.tag + char4.tag + char5.tag + char6.tag + "\n" + Char1.tag + Char2.tag + Char3.tag + Char4.tag + Char5.tag + Char6.tag;
         GUI.Label(rect, text, style);
         GUI.Label(rect2, text2, style2);
     }

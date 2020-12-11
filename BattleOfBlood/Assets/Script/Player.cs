@@ -12,8 +12,7 @@ public class Player : MonoBehaviour
     public static float PlayerSpeed = 3f;
     public Rigidbody rb;
     public static GameObject[] characters;
-    public static List<GameObject> Team_array;
-    public static List<GameObject> Enemy_array;
+
     public static int[] Team_Hp = new int[3];
     public static int[] Enemy_Hp = new int[3];
 
@@ -25,56 +24,59 @@ public class Player : MonoBehaviour
     public static bool sh;
     public static int n = 0;
 
-    public static List<float> Team_Ap;
-    public static List<float> Enemy_Ap;
-    public static List<Vector3> Team_Pos;
-    public static List<Vector3> Enemy_Pos;
+    public GameObject char1;
+    public GameObject char2;
+    public GameObject char3;
+    public GameObject char4;
+    public GameObject char5;
+    public GameObject char6;
+
+    public GameObject Char1;
+    public GameObject Char2;
+    public GameObject Char3;
+    public GameObject Char4;
+    public GameObject Char5;
+    public GameObject Char6;
+
     public Rigidbody b_rb;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         PlayerPos = gameObject.transform.position;
 
-        
+        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
+            char1 = GameObject.Find("Player");
+        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
+            char2 = GameObject.Find("Sonny");
+        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
+            char3 = GameObject.Find("Bastion");
+        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
+            char4 = GameObject.Find("Shooter");
+        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
+            char5 = GameObject.Find("Healer");
+        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
+            char6 = GameObject.Find("Booster");
 
-        characters = new GameObject[6];
-        characters[0] = GameObject.Find("Player");
-        characters[1] = GameObject.Find("Sonny");
-        characters[2] = GameObject.Find("Bastion");
-        characters[3] = GameObject.Find("Shooter");
-        characters[4] = GameObject.Find("Healer");
-        characters[5] = GameObject.Find("Booster");
+        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
+            Char1 = GameObject.Find("Player");
+        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+            Char2 = GameObject.Find("Sonny");
+        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+            Char3 = GameObject.Find("Bastion");
+        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+            Char4 = GameObject.Find("Shooter");
+        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
+            Char5 = GameObject.Find("Healer");
+        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
+            Char6 = GameObject.Find("Booster");
 
-        Team_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Team"));
-        Enemy_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
-        Team_Pos = new List<Vector3>();
-        Enemy_Pos = new List<Vector3>();
-        Team_Ap = new List<float>();
-        Enemy_Ap = new List<float>();
 
         for (int i = 0; i < 2; i++)
         {
             Team_Hp[i] = 100;
             Enemy_Hp[i] = 100;
-        }
-
-        for (int i = 0; i < Team_Ap.Count; i++)
-        {
-            Team_Ap.Add(5.0f); //공격력 임의로 추가
-            Enemy_Ap.Add(5.0f); //공격력 임의로 추가
-        }
-
-        for (int i = 0; i < Team_array.Count; i++)
-        {
-            Team_Pos.Add(Team_array[i].transform.position); //우리 팀의 위치를 리스트에 저장
-        }
-
-        for (int i = 0; i < Enemy_array.Count; i++)
-        {
-            Enemy_Pos.Add(Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
 
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
@@ -85,34 +87,33 @@ public class Player : MonoBehaviour
             hl = false;
             bo = false;
             sh = false;
-            for (int i = 0; i < 2; i++)
-            {
-                if (Team_array[i].name == "Player")
-                    pl = true;
-                else if (Team_array[i].name == "Sonny")
-                    sn = true;
-                else if (Team_array[i].name == "Bastion")
-                    ba = true;
-                else if (Team_array[i].name == "Shooter")
-                    sh = true;
-                else if (Team_array[i].name == "Healer")
-                    hl = true;
-                else if (Team_array[i].name == "Booster")
-                    bo = true;
 
-                if (Enemy_array[i].name == "Player")
-                    pl = true;
-                else if (Enemy_array[i].name == "Sonny")
-                    sn = true;
-                else if (Enemy_array[i].name == "Bastion")
-                    ba = true;
-                else if (Enemy_array[i].name == "Shooter")
-                    sh = true;
-                else if (Enemy_array[i].name == "Healer")
-                    hl = true;
-                else if (Enemy_array[i].name == "Booster")
-                    bo = true;
-            }
+            if (char1 != null && char1.tag == "Team")
+                pl = true;
+            if (char2 != null && char2.tag == "Team")
+                sn = true;
+            if (char3 != null && char3.tag == "Team")
+                ba = true;
+            if (char4 != null && char4.tag == "Team")
+                sh = true;
+            if (char5 != null && char5.tag == "Team")
+                hl = true;
+            if (char6 != null && char6.tag == "Team")
+                bo = true;
+
+            if (Char1 != null && Char1.tag == "Enemy")
+                pl = true;
+            if (Char2 != null && Char2.tag == "Enemy")
+                sn = true;
+            if (Char3 != null && Char3.tag == "Enemy")
+                ba = true;
+            if (Char4 != null && Char4.tag == "Enemy")
+                sh = true;
+            if (Char5 != null && Char5.tag == "Enemy")
+                hl = true;
+            if (Char6 != null && Char6.tag == "Enemy")
+                bo = true;
+
             Player.PlayerHp = 100;
             Shooter_Move.ShooterHp = 100;
             HealerMove.HealerHp = 100;

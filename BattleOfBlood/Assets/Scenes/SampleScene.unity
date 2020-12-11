@@ -1629,6 +1629,54 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 753764622}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: char1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: Char1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: char2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: char3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: char4
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: char5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: char6
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: Char2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: Char3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: Char4
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: Char5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803436812980472080, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
+      propertyPath: Char6
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6273956640279142043, guid: a3d458d216680e24f9fcf795b241d0ce, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2593,6 +2641,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 59336263}
   subCamera: {fileID: 1351059552}
+  char1: {fileID: 0}
+  char2: {fileID: 0}
+  char3: {fileID: 0}
+  char4: {fileID: 0}
+  char5: {fileID: 0}
+  char6: {fileID: 0}
+  Char1: {fileID: 0}
+  Char2: {fileID: 0}
+  Char3: {fileID: 0}
+  Char4: {fileID: 0}
+  Char5: {fileID: 0}
+  Char6: {fileID: 0}
 --- !u!4 &1434224520
 Transform:
   m_ObjectHideFlags: 0

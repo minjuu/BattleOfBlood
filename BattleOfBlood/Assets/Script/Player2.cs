@@ -15,33 +15,10 @@ public class Player2 : MonoBehaviour
 
         Player.PlayerPos = gameObject.transform.position;
 
-        Player.Team_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Team"));
-        Player.Enemy_array = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
-        Player.Team_Pos = new List<Vector3>();
-        Player.Enemy_Pos = new List<Vector3>();
-        Player.Team_Ap = new List<float>();
-        Player.Enemy_Ap = new List<float>();
-
         for (int i = 0; i < 3; i++)
         {
             Player.Team_Hp[i] = 100;
             Player.Enemy_Hp[i] = 100;
-        }
-
-        for (int i = 0; i < Player.Team_Ap.Count; i++)
-        {
-            Player.Team_Ap.Add(5.0f); //공격력 임의로 추가
-            Player.Enemy_Ap.Add(5.0f); //공격력 임의로 추가
-        }
-
-        for (int i = 0; i < Player.Team_array.Count; i++)
-        {
-            Player.Team_Pos.Add(Player.Team_array[i].transform.position); //우리 팀의 위치를 리스트에 저장
-        }
-
-        for (int i = 0; i < Player.Enemy_array.Count; i++)
-        {
-            Player.Enemy_Pos.Add(Player.Enemy_array[i].transform.position); //상대 팀의 위치를 리스트에 저장
         }
 
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
