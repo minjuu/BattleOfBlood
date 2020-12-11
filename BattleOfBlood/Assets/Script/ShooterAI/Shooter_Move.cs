@@ -33,10 +33,9 @@ public class Shooter_Move : MonoBehaviour
     private float x;
     private float z;
     float min1, min2, min3, min4, min5;
-
     public bool ShooterMove()
     {
-        shortEnemy = GameObject.Find("Player");
+        
 
         if (transform.position.z < -15) //절벽 범위 조건문
         {
@@ -300,6 +299,7 @@ public class Shooter_Move : MonoBehaviour
         col = false;
         cubecol = false;
         ShooterTag = gameObject.tag;
+        shortEnemy = GameObject.Find("Player");
 
         min1 = 100000;
         min2 = 100000;

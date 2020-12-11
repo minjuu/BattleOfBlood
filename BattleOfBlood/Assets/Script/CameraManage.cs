@@ -27,8 +27,24 @@ public class CameraManage : MonoBehaviour
 
     void Start()
     {
+        Player.PlayerHp = 100;
+        Shooter_Move.ShooterHp = 100;
+        HealerMove.HealerHp = 100;
+        BoosterMove.BoosterHp = 100;
+        BastionMove.BastionHp = 100;
+        SonnyMove.SonnyHp = 100;
+
+        for (int i = 0; i < 3; i++)
+        {
+            Player.Team_Hp[i] = 100;
+            Player.Enemy_Hp[i] = 100;
+        }
+
         mainCamera.enabled = true;
         subCamera.enabled = false;
+
+        
+
 
         if (SelectMng.booster1 == "Team")
             GameObject.Find("Booster").tag = "Team";

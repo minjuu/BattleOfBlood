@@ -11,6 +11,42 @@ public class Player2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
+        {
+            Player.PlayerHp = 100;
+            Shooter_Move.ShooterHp = 100;
+            HealerMove.HealerHp = 100;
+            BoosterMove.BoosterHp = 100;
+            BastionMove.BastionHp = 100;
+            SonnyMove.SonnyHp = 100;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Player.Team_Hp[i] = 100;
+                Player.Enemy_Hp[i] = 100;
+            }
+
+            GameObject.Find("Char").transform.Find("Booster").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Sonny").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Bastion").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Shooter").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Healer").gameObject.SetActive(true);
+
+            Player.ba = true;
+            Player.bo = true;
+            Player.ba = true;
+            Player.sh = true;
+            Player.hl = true;
+
+            GameObject.Find("Player").active = true;
+            GameObject.Find("Bastion").active = true;
+            GameObject.Find("Booster").active = true;
+            GameObject.Find("Shooter").active = true;
+            GameObject.Find("Healer").active = true;
+            GameObject.Find("Sonny").active = true;
+
+            
+        }
         rb = GetComponent<Rigidbody>();
 
         Player.PlayerPos = gameObject.transform.position;
@@ -40,34 +76,9 @@ public class Player2 : MonoBehaviour
         else if (SelectMng.shooter1 == "Enemy")
             GameObject.Find("Shooter").tag = "Enemy";
 
-        for (int i = 0; i < 3; i++)
-        {
-            Player.Team_Hp[i] = 100;
-            Player.Enemy_Hp[i] = 100;
-        }
+        
 
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
-        {
-            Player.ba = true;
-            Player.bo = true;
-            Player.ba = true;
-            Player.sh = true;
-            Player.hl = true;
-
-            GameObject.Find("Player").active = true;
-            GameObject.Find("Bastion").active = true;
-            GameObject.Find("Booster").active = true;
-            GameObject.Find("Shooter").active = true;
-            GameObject.Find("Healer").active = true;
-            GameObject.Find("Sonny").active = true;
-
-            Player.PlayerHp = 100;
-            Shooter_Move.ShooterHp = 100;
-            HealerMove.HealerHp = 100;
-            BoosterMove.BoosterHp = 100;
-            BastionMove.BastionHp = 100;
-            SonnyMove.SonnyHp = 100;
-        }
+        
     }
 
     // Update is called once per frame
