@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
         
 
-    characters = new GameObject[6];
+        characters = new GameObject[6];
         characters[0] = GameObject.Find("Player");
         characters[1] = GameObject.Find("Sonny");
         characters[2] = GameObject.Find("Bastion");
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         Team_Ap = new List<float>();
         Enemy_Ap = new List<float>();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             Team_Hp[i] = 100;
             Enemy_Hp[i] = 100;

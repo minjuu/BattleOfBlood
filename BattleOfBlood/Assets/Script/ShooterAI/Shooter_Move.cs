@@ -32,6 +32,7 @@ public class Shooter_Move : MonoBehaviour
     int sd_1 = 0;
     private float x;
     private float z;
+    float min1, min2, min3, min4, min5;
 
     public bool ShooterMove()
     {
@@ -159,34 +160,86 @@ public class Shooter_Move : MonoBehaviour
     {
         if (Shooter_Move.ShooterHp > 0)
         {
-            if (gameObject.tag == "Enemy")
+            if (gameObject.tag == "Team")
             {
-                shortDistance = Vector3.Distance(Player.Team_array[0].transform.position, gameObject.transform.position);
-                for (sd_1 = 0; sd_1 < Player.Team_array.Count; sd_1++)
+                shortEnemy = GameObject.Find("Player");
+
+                if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
+                    min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                    min2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                    min3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                    min4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
+                    min5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
+
+                float minDistance = Mathf.Min(min1, min2, min3, min4, min5);
+
+                if (minDistance == min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
                 {
-                    float distance = Vector3.Distance(Player.Team_array[sd_1].transform.position, gameObject.transform.position);
-                    if (distance <= shortDistance)
-                    {
-                        shortDistance = distance;
-                        shortEnemy = Player.Team_array[sd_1];
-                    }
+                    shortEnemy = GameObject.Find("Player");
+                }
+                if (minDistance == min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+                {
+                    shortEnemy = GameObject.Find("Sonny");
+                }
+                if (minDistance == min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+                {
+                    shortEnemy = GameObject.Find("Bastion");
+                }
+                if (minDistance == min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+                {
+                    shortEnemy = GameObject.Find("Shooter");
+                }
+                if (minDistance == min5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
+                {
+                    shortEnemy = GameObject.Find("Healer");
                 }
 
-                Debug.Log("가까운 TeamEnemy: " + shortEnemy.name + "\ndir : " + Dir);
+                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
             }
             else
             {
-                shortDistance = Vector3.Distance(Player.Enemy_array[0].transform.position, gameObject.transform.position);
-                for (sd_1 = 0; sd_1 < Player.Enemy_array.Count; sd_1++)
+                shortEnemy = GameObject.Find("Player");
+
+                if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
+                    min1 = Vector3.Distance(GameObject.Find("Player").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
+                    min2 = Vector3.Distance(GameObject.Find("Sonny").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
+                    min3 = Vector3.Distance(GameObject.Find("Bastion").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
+                    min4 = Vector3.Distance(GameObject.Find("Shooter").transform.position, gameObject.transform.position);
+                if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
+                    min5 = Vector3.Distance(GameObject.Find("Healer").transform.position, gameObject.transform.position);
+
+                float minDistance = Mathf.Min(min1, min2, min3, min4, min5);
+
+                if (minDistance == min1 && GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
                 {
-                    float distance = Vector3.Distance(Player.Enemy_array[sd_1].transform.position, gameObject.transform.position);
-                    if (distance <= shortDistance)
-                    {
-                        shortDistance = distance;
-                        shortEnemy = Player.Enemy_array[sd_1];
-                    }
+                    shortEnemy = GameObject.Find("Player");
                 }
-                Debug.Log("가까운 EnemyEnemy: " + shortEnemy.name + "\ndir : " + Dir);
+                if (minDistance == min2 && GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
+                {
+                    shortEnemy = GameObject.Find("Sonny");
+                }
+                if (minDistance == min3 && GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
+                {
+                    shortEnemy = GameObject.Find("Bastion");
+                }
+                if (minDistance == min4 && GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
+                {
+                    shortEnemy = GameObject.Find("Shooter");
+                }
+                if (minDistance == min5 && GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
+                {
+                    shortEnemy = GameObject.Find("Healer");
+                }
+
+                shortDistance = Vector3.Distance(shortEnemy.transform.position, gameObject.transform.position);
+
             }
             return true;
         }
@@ -247,6 +300,12 @@ public class Shooter_Move : MonoBehaviour
         col = false;
         cubecol = false;
         ShooterTag = gameObject.tag;
+
+        min1 = 100000;
+        min2 = 100000;
+        min3 = 100000;
+        min4 = 100000;
+        min5 = 100000;
     }
 
     // Update is called once per frame
