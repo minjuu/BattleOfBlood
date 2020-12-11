@@ -2,23 +2,23 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
-public abstract class Node
+public abstract class Node  //추상 클래스 노드
 {
-    public abstract bool Invoke();
+    public abstract bool Invoke();  //인보크
 }
 public class CompositeNode : Node
 {
-    public override bool Invoke()
+    public override bool Invoke()  //인보크
     {
         throw new NotImplementedException();
     }
 
-    public void AddChild(Node node)
+    public void AddChild(Node node)   //자식 노드 생성
     {
-        childrens.Push(node);
+        childrens.Push(node);         //자식 노드 푸쉬 
     }
 
-    public Stack<Node> GetChildrens()
+    public Stack<Node> GetChildrens()    //자식 get
     {
         return childrens;
     }
@@ -29,7 +29,7 @@ public class Selector : CompositeNode
 {
     public override bool Invoke()
     {
-        foreach (var node in GetChildrens())
+        foreach (var node in GetChildrens())  //getchildren
         {
             if (node.Invoke())
             {
@@ -41,7 +41,7 @@ public class Selector : CompositeNode
     }
 }
 
-public class Sequence : CompositeNode
+public class Sequence : CompositeNode   //시퀀스
 {
     public override bool Invoke()
     {
@@ -57,7 +57,7 @@ public class Sequence : CompositeNode
     }
 }
 
-public class ShooterMove : Node
+public class ShooterMove : Node   //슈터 무브 노드
 {
     public Shooter_Move Shooter
     {
@@ -71,7 +71,7 @@ public class ShooterMove : Node
     }
 }
 
-public class ChangeGun : Node
+public class ChangeGun : Node    //총알 바꾸는 노드
 {
     public Shooter_Move Shooter
     {
@@ -110,7 +110,7 @@ public class DetectPos : Node       //IsCollision 노드 추가함
     }
 }
 
-public class IsDead : Node
+public class IsDead : Node    //죽었을 때 노드
 {
     public Shooter_Move Shooter
     {
@@ -123,7 +123,7 @@ public class IsDead : Node
     }
 }
 
-public class OnAttack : Node
+public class OnAttack : Node  //공격 노드
 {
     public Shooter_Move Shooter
     {

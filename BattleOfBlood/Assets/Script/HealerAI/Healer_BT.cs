@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MoveHealer : Node
+public class MoveHealer : Node //힐러 움직임 노드
 {
     public HealerMove Healer
     {
@@ -17,7 +17,7 @@ public class MoveHealer : Node
     }
 }
 
-public class HealerTeamHpDetect : Node     // revival 클래스 생성
+public class HealerTeamHpDetect : Node     // 힐러 같은팀 체력감지 노드
 {
     public HealerMove Healer
     {
@@ -32,7 +32,7 @@ public class HealerTeamHpDetect : Node     // revival 클래스 생성
     }
 }
 
-public class HealerMyHpDetect : Node     // revival 클래스 생성
+public class HealerMyHpDetect : Node     // 힐러 자기체력감지 노드
 {
     public HealerMove Healer
     {
@@ -47,7 +47,7 @@ public class HealerMyHpDetect : Node     // revival 클래스 생성
     }
 }
 
-public class HealerIsDead : Node
+public class HealerIsDead : Node //힐러 죽음 노드
 {
     public HealerMove Healer
     {

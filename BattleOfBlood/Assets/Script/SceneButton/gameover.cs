@@ -12,7 +12,7 @@ public class gameover : MonoBehaviour
 
     public void OnClickExit()
     {
-        Application.Quit();
+        Application.Quit(); //게임 종료
     }
     // Update is called once per frame
     void Update()

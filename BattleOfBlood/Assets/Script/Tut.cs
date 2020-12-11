@@ -7,12 +7,19 @@ public class Tut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+         * 튜토리얼 씬1일 경우 Enter 키를 누르면 다음 튜토리얼 씬으로 넘어감
+         * 튜토리얼 씬2일 경우 Enter 키를 누르면 다음 튜토리얼 씬으로 넘어감
+         * 튜토리얼 씬3일 경우 Enter 키를 누르면 다음 튜토리얼 씬으로 넘어감
+         * 튜토리얼 씬4일 경우 Enter 키를 누르면 캐릭터 선택 씬으로 넘어감
+         * 
+         */
         if (SceneManager.GetActiveScene().name == "Tut1")
         {
             if (Input.GetKeyDown(KeyCode.Return))

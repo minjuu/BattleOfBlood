@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static int PlayerHp = 100;
-    public static Vector3 PlayerPos;
+    public static int PlayerHp = 100; //플레이어의 체력
+    public static Vector3 PlayerPos; //플레이어 위치
     public static Vector3 PlayerColPos;
     bool col = false;
-    public GameObject WaterBalloon;
-    public static float PlayerSpeed = 3f;
-    public Rigidbody rb;
-    public static GameObject[] characters;
+    public GameObject WaterBalloon; //물풍선 오브젝트
+    public static float PlayerSpeed = 3f; //플레이어 스피드
+    public Rigidbody rb; //플레이어 리지드바디
+    public static GameObject[] characters; //캐릭터 변수들
 
-    public static int[] Team_Hp = new int[3];
-    public static int[] Enemy_Hp = new int[3];
+    public static int[] Team_Hp = new int[3]; //같은 팀 체력 배열
+    public static int[] Enemy_Hp = new int[3]; //적 팀 체력 배열
 
-    public static bool pl;
-    public static bool ba;
-    public static bool sn;
-    public static bool hl;
-    public static bool bo;
-    public static bool sh;
+    public static bool pl; //플레이어 활성변수
+    public static bool ba; //바스티온 활성변수
+    public static bool sn; //쏘니 활성변수
+    public static bool hl; //힐러 활성변수
+    public static bool bo; //부스터 활성변수
+    public static bool sh; //슈터 활성변수
     public static int n = 0;
 
-    public GameObject char1;
+    public GameObject char1; //캐릭터 저장 변수들
     public GameObject char2;
     public GameObject char3;
     public GameObject char4;
@@ -46,75 +46,75 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         PlayerPos = gameObject.transform.position;
 
-        if(SelectMng.booster1 == "Team")
+        if(SelectMng.booster1 == "Team") //SelectMng 스크립트에서 나눈 태그에 따라 오브젝트의 태그를 달아줌
             GameObject.Find("Booster").tag = "Team";
         else if(SelectMng.booster1 == "Enemy")
             GameObject.Find("Booster").tag = "Enemy";
 
-        if (SelectMng.bastion1 == "Team")
+        if (SelectMng.bastion1 == "Team") //SelectMng 스크립트에서 나눈 태그에 따라 오브젝트의 태그를 달아줌
             GameObject.Find("Bastion").tag = "Team";
         else if (SelectMng.bastion1 == "Enemy")
             GameObject.Find("Bastion").tag = "Enemy";
 
-        if (SelectMng.healer1 == "Team")
+        if (SelectMng.healer1 == "Team") //SelectMng 스크립트에서 나눈 태그에 따라 오브젝트의 태그를 달아줌
             GameObject.Find("Healer").tag = "Team";
         else if (SelectMng.healer1 == "Enemy")
             GameObject.Find("Healer").tag = "Enemy";
 
-        if (SelectMng.sonny1 == "Team")
+        if (SelectMng.sonny1 == "Team") //SelectMng 스크립트에서 나눈 태그에 따라 오브젝트의 태그를 달아줌
             GameObject.Find("Sonny").tag = "Team";
         else if (SelectMng.sonny1 == "Enemy")
             GameObject.Find("Sonny").tag = "Enemy";
 
-        if (SelectMng.shooter1 == "Team")
+        if (SelectMng.shooter1 == "Team") //SelectMng 스크립트에서 나눈 태그에 따라 오브젝트의 태그를 달아줌
             GameObject.Find("Shooter").tag = "Team";
         else if (SelectMng.shooter1 == "Enemy")
             GameObject.Find("Shooter").tag = "Enemy";
 
 
-        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team")
+        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Team") //플레이어의 태그가 팀이면 오브젝트 변수를 팀 캐릭터 변수에 넣어줌
             char1 = GameObject.Find("Player");
-        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team")
+        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Team") //쏘니의 태그가 팀이면 오브젝트 변수를 팀 캐릭터 변수에 넣어줌
             char2 = GameObject.Find("Sonny");
-        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team")
+        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Team") //바스티온의 태그가 팀이면 오브젝트 변수를 팀 캐릭터 변수에 넣어줌
             char3 = GameObject.Find("Bastion");
-        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team")
+        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Team") //슈터의 태그가 팀이면 오브젝트 변수를 팀 캐릭터 변수에 넣어줌
             char4 = GameObject.Find("Shooter");
-        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team")
+        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Team") //힐러의 태그가 팀이면 오브젝트 변수를 팀 캐릭터 변수에 넣어줌
             char5 = GameObject.Find("Healer");
-        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team")
+        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Team") //부스터의 태그가 팀이면 오브젝트 변수를 팀 캐릭터 변수에 넣어줌
             char6 = GameObject.Find("Booster");
 
-        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy")
+        if (GameObject.Find("Player") != null && GameObject.Find("Player").gameObject.tag == "Enemy") //플레이어의 태그가 적이면 오브젝트 변수를 적 캐릭터 변수에 넣어줌
             Char1 = GameObject.Find("Player");
-        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy")
+        if (GameObject.Find("Sonny") != null && GameObject.Find("Sonny").gameObject.tag == "Enemy") //쏘니의 태그가 적이면 오브젝트 변수를 적 캐릭터 변수에 넣어줌
             Char2 = GameObject.Find("Sonny");
-        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy")
+        if (GameObject.Find("Bastion") != null && GameObject.Find("Bastion").gameObject.tag == "Enemy") //바스티온의 태그가 적이면 오브젝트 변수를 적 캐릭터 변수에 넣어줌
             Char3 = GameObject.Find("Bastion");
-        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy")
+        if (GameObject.Find("Shooter") != null && GameObject.Find("Shooter").gameObject.tag == "Enemy") //슈터의 태그가 적이면 오브젝트 변수를 적 캐릭터 변수에 넣어줌
             Char4 = GameObject.Find("Shooter");
-        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy")
+        if (GameObject.Find("Healer") != null && GameObject.Find("Healer").gameObject.tag == "Enemy") //힐러의 태그가 적이면 오브젝트 변수를 적 캐릭터 변수에 넣어줌
             Char5 = GameObject.Find("Healer");
-        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy")
+        if (GameObject.Find("Booster") != null && GameObject.Find("Booster").gameObject.tag == "Enemy") //부스터의 태그가 적이면 오브젝트 변수를 적 캐릭터 변수에 넣어줌
             Char6 = GameObject.Find("Booster");
 
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++) //팀 체력, 적 체력 배열 초기화
         {
             Team_Hp[i] = 100;
             Enemy_Hp[i] = 100;
         }
 
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "SampleScene") //스테이지 1이면
         {
-            pl = false;
+            pl = false; //모든 캐릭터 활성변수 초기화
             ba = false;
             sn = false;
             hl = false;
             bo = false;
             sh = false;
 
-            if (char1 != null && char1.tag == "Team")
+            if (char1 != null && char1.tag == "Team") //캐릭터마다 태그가 팀인지 검사하여 활성화시킴
                 pl = true;
             if (char2 != null && char2.tag == "Team")
                 sn = true;
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
             if (char6 != null && char6.tag == "Team")
                 bo = true;
 
-            if (Char1 != null && Char1.tag == "Enemy")
+            if (Char1 != null && Char1.tag == "Enemy") //캐릭터마다 태그가 적인지 검사하여 활성화시킴
                 pl = true;
             if (Char2 != null && Char2.tag == "Enemy")
                 sn = true;
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
             if (Char6 != null && Char6.tag == "Enemy")
                 bo = true;
 
-            Player.PlayerHp = 100;
+            Player.PlayerHp = 100; //모든 캐릭터의 체력을 초기화
             Shooter_Move.ShooterHp = 100;
             HealerMove.HealerHp = 100;
             BoosterMove.BoosterHp = 100;
@@ -149,69 +149,21 @@ public class Player : MonoBehaviour
         }
         
 
-        if (ba == false)
+        if (ba == false) //bool변수가 비활성화된 캐릭터를 비활성화함
             GameObject.Find("Bastion").active = false;
-        if (bo == false)
+        if (bo == false) //bool변수가 비활성화된 캐릭터를 비활성화함
             GameObject.Find("Booster").active = false;
-        if (sh == false)
+        if (sh == false) //bool변수가 비활성화된 캐릭터를 비활성화함
             GameObject.Find("Shooter").active = false;
-        if (hl == false)
+        if (hl == false) //bool변수가 비활성화된 캐릭터를 비활성화함
             GameObject.Find("Healer").active = false;
-        if (sn == false)
+        if (sn == false) //bool변수가 비활성화된 캐릭터를 비활성화함
             GameObject.Find("Sonny").active = false;
-
-
-
-        //int count_1 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Team") //tag가 Team 일때
-        //    {
-        //        Team_arr[count_1] = characters[i]; //characters배열에 있는 순서대로 재배열하여 저장
-        //        Team_Ap[count_1] = characters_Ap[i];
-        //        count_1++;
-        //    }
-        //}
-
-        //int count_2 = 0;
-        //for (int i = 0; i < characters.Length; i++)
-        //{
-        //    if (characters[i].tag == "Enemy")
-        //    {
-        //        Enemy_arr[count_2] = characters[i];
-        //        Enemy_Ap[count_1] = characters_Ap[i];
-        //        count_2++;
-        //    }
-        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2" && n == 0)
-        {
-            ba = true;
-            bo = true;
-            ba = true;
-            sh = true;
-            hl = true;
-
-            GameObject.Find("Player").active = true;
-            GameObject.Find("Bastion").active = true;
-            GameObject.Find("Booster").active = true;
-            GameObject.Find("Shooter").active = true;
-            GameObject.Find("Healer").active = true;
-            GameObject.Find("Sonny").active = true;
-
-            Player.PlayerHp = 100;
-            Shooter_Move.ShooterHp = 100;
-            HealerMove.HealerHp = 100;
-            BoosterMove.BoosterHp = 100;
-            BastionMove.BastionHp = 100;
-            SonnyMove.SonnyHp = 100;
-            n++;
-        }
-
         if (transform.position.z < -15) //절벽 범위 조건문
         {
             Vector3 swap1 = transform.position; //벡터 저장
@@ -251,29 +203,28 @@ public class Player : MonoBehaviour
         // 리지드바디의 속도에 newVelocity 할당
         rb.velocity = newVelocity;
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow)) //위 방향키를 누르면 위로 이동
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow)) //아래 방향키를 누르면 아래로 이동
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow)) //왼쪽 방향키를 누르면 왼쪽으로 이동
         {
-
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow)) //오른쪽 방향키를 누르면 오른쪽으로 이동
         {
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //스페이스바를 누르면
         {
-            GameObject balloon = GameObject.Instantiate(WaterBalloon)
+            GameObject balloon = GameObject.Instantiate(WaterBalloon) //물풍선 생성해서 놓음
                as GameObject;
             b_rb = balloon.GetComponent<Rigidbody>();
             b_rb.isKinematic = false;

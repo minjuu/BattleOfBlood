@@ -21,17 +21,10 @@ public class Camera1 : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        //if (Input.GetKeyDown(KeyCode.Tab) && cam == true)
-        //    cam = false;
-        //if (Input.GetKeyDown(KeyCode.Tab) && cam == false)
-        //    cam = true;
+        cameraPosition.x = player.transform.position.x + offsetX; //캐릭터 3인칭 시점 카메라의 x좌표 설정
+        cameraPosition.y = player.transform.position.y + offsetY; //캐릭터 3인칭 시점 카메라의 y좌표 설정
+        cameraPosition.z = player.transform.position.z + offsetZ; //캐릭터 3인칭 시점 카메라의 z좌표 설정
 
-  
-            cameraPosition.x = player.transform.position.x + offsetX;
-            cameraPosition.y = player.transform.position.y + offsetY;
-            cameraPosition.z = player.transform.position.z + offsetZ;
-
-            transform.position = cameraPosition;
-        
+        transform.position = cameraPosition;       
     }
 }

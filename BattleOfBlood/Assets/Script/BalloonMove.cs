@@ -4,68 +4,55 @@ using UnityEngine;
 
 public class BalloonMove : MonoBehaviour
 {
-    public static bool Sonnykick = false;
-    public Vector3 Dir;
-    public Rigidbody rb;
-    public bool stop;
-    public Vector3 pos;
+    public static bool Sonnykick = false; // sonny와 물풍선 충돌 감지 변수
+    public Vector3 Dir; // 공의 방향
+    public Rigidbody rb; //공의 리지드바디
+    public bool stop; // 공과 큐브 충돌 감지
+    public Vector3 pos; // 공의 위치
     void Start()
     {
-        stop = false;
-        Destroy(gameObject, 5.0f);
+        stop = false; // 공과 충돌 초기화
+        Destroy(gameObject, 5.0f); //5초후 사라짐
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (gameObject.tag == "SonnyBalloon")
+        if (gameObject.tag == "SonnyBalloon") // Sonny가 만든 물풍선일 경우
         {
-            //if (Sonnykick == true)
-            //transform.position += SonnyMove.GoalPos * SonnyMove.SonnySpeed* Time.deltaTime;
-            // transform.position = Vector3.MoveTowards(transform.position, Dir, 0.05f);
-            //transform.position = new Vector3(0, 0, 0);
-            //rb.MovePosition(transform.position + (SonnyMove.GoalPos * SonnyMove.SonnySpeed * Time.deltaTime));
 
-            if (stop == false)
+            if (stop == false) // 물풍선이 큐브와 충돌하지 않았을때
             {
-                gameObject.transform.position += SonnyMove.GoalPos * 0.05f;
-                pos = gameObject.transform.position;
-                pos.y = 0.8f;
-                gameObject.transform.position = pos;
+                gameObject.transform.position += SonnyMove.GoalPos * 0.05f; // Sonny에서 얻은 목표지점으로 이동
+                pos = gameObject.transform.position; // 물풍선 좌표 저장
+                pos.y = 0.8f; // 물풍선 y 조정
+                gameObject.transform.position = pos; //물풍선 위치 변경
             }
             else
             {
-
-                transform.position = pos;
+                transform.position = pos; // 큐브와 충돌하면 멈춤
             }
-            // transform.position = Vector3.MoveTowards(transform.position,SonnyMove.GoalPos, 0.05f);
 
-            //gameObject.transform.position += Dir * 0.05f;
-            // gameObject.transform.position +=  SonnyMove.GoalPos * 0.5f;
-            //Vector3 p = new Vector3(1, 0, 0);
-            //transform.position = p*5f * Time.deltaTime;
-            //if (transform.position == SonnyMove.GoalPos)
-            //  Sonnykick = false;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
 
-        if (collision.gameObject.name == "Player" || collision.gameObject.name == "Sonny")
+        if (collision.gameObject.name == "Player" || collision.gameObject.name == "Sonny") // Player와 Sonny 충돌
         {
             rb = gameObject.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
+            rb.isKinematic = true; //Kinematic 속성 변경
         }
     }
     private void OnTriggerStay(Collider collision)
     {
 
-        if (collision.gameObject.tag == "Cube")
+        if (collision.gameObject.tag == "Cube") // 큐브와 충돌시
         {
-            pos = transform.position;
-            stop = true;
+            pos = transform.position; // 현재 위치 저장
+            stop = true; // 충돌 변수값 변경
         }
     }
 

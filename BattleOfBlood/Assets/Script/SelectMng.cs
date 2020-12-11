@@ -19,21 +19,13 @@ public class SelectMng : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "selectchar" || SceneManager.GetActiveScene().name == "selectchar2")
+        if (SceneManager.GetActiveScene().name == "selectchar" || SceneManager.GetActiveScene().name == "selectchar2") //캐릭터 선택 창이 나오면
         {
-            //character1.gameObject.tag = "Untagged";
-            //character2.gameObject.tag = "Untagged";
-            //character3.gameObject.tag = "Untagged";
-            //character4.gameObject.tag = "Untagged";
-            //character5.gameObject.tag = "Untagged";
-
-            sonny1 = "";
+            sonny1 = ""; //모든 캐릭터들의 태그를 초기화
             bastion1 = "";
             shooter1 = "";
             healer1 = "";
             booster1 = "";
-
-
         }
     }
 

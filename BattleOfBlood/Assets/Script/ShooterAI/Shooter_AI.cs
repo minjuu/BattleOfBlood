@@ -23,8 +23,8 @@ public class Shooter_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Shooter = gameObject.GetComponent<Shooter_Move>();
-        root.AddChild(selector);
+        m_Shooter = gameObject.GetComponent<Shooter_Move>();  //슈터무브 컴포넌트 받기
+        root.AddChild(selector);            //트리 구성
         selector.AddChild(seqDead);
         selector.AddChild(seqMovingAttack);
 
@@ -35,11 +35,11 @@ public class Shooter_AI : MonoBehaviour
         m_OnAttack.Shooter = m_Shooter;
         m_IsDead.Shooter = m_Shooter;
 
-        seqMovingAttack.AddChild(moveForTarget);
+        seqMovingAttack.AddChild(moveForTarget);    //자식
         seqMovingAttack.AddChild(m_OnAttack);
         seqMovingAttack.AddChild(changeGun);
         seqMovingAttack.AddChild(isCollision); //IsCollision 자식 노드 추가
-        seqMovingAttack.AddChild(detectPos);
+        seqMovingAttack.AddChild(detectPos);  //detectPos 자식노드
 
         seqDead.AddChild(m_IsDead);
 
@@ -56,11 +56,11 @@ public class Shooter_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Stage2" && count == 0)
+        if (SceneManager.GetActiveScene().name == "Stage2" && count == 0)  //stage2이면
         {
-            m_Shooter = gameObject.GetComponent<Shooter_Move>();
-            root.AddChild(selector);
-            selector.AddChild(seqDead);
+            m_Shooter = gameObject.GetComponent<Shooter_Move>();   //슈터무브 컴포넌트
+            root.AddChild(selector);           //트리구성
+            selector.AddChild(seqDead);           //자식
             selector.AddChild(seqMovingAttack);
 
             moveForTarget.Shooter = m_Shooter;
@@ -70,7 +70,7 @@ public class Shooter_AI : MonoBehaviour
             m_OnAttack.Shooter = m_Shooter;
             m_IsDead.Shooter = m_Shooter;
 
-            seqMovingAttack.AddChild(moveForTarget);
+            seqMovingAttack.AddChild(moveForTarget);    //자식노드
             seqMovingAttack.AddChild(m_OnAttack);
             seqMovingAttack.AddChild(changeGun);
             seqMovingAttack.AddChild(isCollision); //IsCollision 자식 노드 추가

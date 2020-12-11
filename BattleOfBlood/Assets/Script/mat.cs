@@ -16,9 +16,9 @@ public class mat : MonoBehaviour
     void Update()
     {
        
-        if(ParObject.tag=="Enemy")
+        if(ParObject.tag=="Enemy") //오브젝트의 태그가 적이면
         {
-            AiColor.material.color = Color.red;
+            AiColor.material.color = Color.red; //빨갛게 색을 바꿔줌
         }
    
 

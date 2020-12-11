@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 
-public class MoveinMap : Node
+public class MoveinMap : Node //쏘니 움직임 노드
 {
     public SonnyMove Enemy
     {
@@ -18,7 +18,7 @@ public class MoveinMap : Node
     }
 }
 
-public class SonnyIsDead : Node
+public class SonnyIsDead : Node //쏘니 죽음 노드
 {
     public SonnyMove Enemy
     {
@@ -31,7 +31,7 @@ public class SonnyIsDead : Node
     }
 }
 
-public class SonnyOnAttack : Node
+public class SonnyOnAttack : Node //쏘니 공격 노드
 {
     public SonnyMove Enemy
     {
@@ -44,9 +44,9 @@ public class SonnyOnAttack : Node
     }
 }
 
-public class Is_Collision : Node       //IsCollision 노드 추가함
+public class Is_Collision : Node       //IsCollision 노드
 {
-    public SonnyMove Enemy           //노드 내용
+    public SonnyMove Enemy
     {
         set { _Enemy = value; }
     }
@@ -57,7 +57,7 @@ public class Is_Collision : Node       //IsCollision 노드 추가함
     }
 }
 
-public class DetectPosi : Node       //IsCollision 노드 추가함
+public class DetectPosi : Node       //쏘니 위치 감지 노드
 {
     public SonnyMove Enemy           //노드 내용
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class BastionMoveFollowTarget : Node
+public class BastionMoveFollowTarget : Node //바스티온이 움직이도록 하는 노드 추가
 {
     public BastionMove Enemy
     {
@@ -17,7 +17,7 @@ public class BastionMoveFollowTarget : Node
     }
 }
 
-public class BastionFindEnemy : Node
+public class BastionFindEnemy : Node //바스티온이 적을 찾는 노드 추가
 {
     public BastionMove Enemy
     {
@@ -32,7 +32,7 @@ public class BastionFindEnemy : Node
 }
 
 
-public class IsBastionCol : Node //LeftRight 클래스를 노드에 추가함
+public class IsBastionCol : Node  //바스티온의 충돌여부를 확인하는 노드 추가
 {
     public BastionMove Enemy
     {
@@ -46,7 +46,7 @@ public class IsBastionCol : Node //LeftRight 클래스를 노드에 추가함
     }
 }
 
-public class BastionIsDead : Node
+public class BastionIsDead : Node //바스티온이 죽는 노드 추가
 {
     public BastionMove Enemy
     {
@@ -59,7 +59,7 @@ public class BastionIsDead : Node
     }
 }
 
-public class BastionOnAttack : Node
+public class BastionOnAttack : Node //바스티온이 공격하는 노드추가
 {
     public BastionMove Enemy
     {

@@ -7,7 +7,7 @@ public class quitbtn : MonoBehaviour
     // Start is called before the first frame update
     public void OnStart()
     {
-        Application.Quit();
+        Application.Quit(); //종료시킴
     }
 
     // Update is called once per frame

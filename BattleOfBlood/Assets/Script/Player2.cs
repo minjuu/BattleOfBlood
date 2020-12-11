@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-    public GameObject WaterBalloon;
+    public GameObject WaterBalloon; //WaterBalloon 오브젝트
     public Rigidbody rb;
     public Rigidbody b_rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage2") //현재 스테이지가 스테이지2 일때
         {
-            Player.PlayerHp = 100;
-            Shooter_Move.ShooterHp = 100;
-            HealerMove.HealerHp = 100;
-            BoosterMove.BoosterHp = 100;
-            BastionMove.BastionHp = 100;
-            SonnyMove.SonnyHp = 100;
+            Player.PlayerHp = 100; //각 캐릭터 Hp초기 지정
+            Shooter_Move.ShooterHp = 100; //각 캐릭터 Hp초기 지정
+            HealerMove.HealerHp = 100; //각 캐릭터 Hp초기 지정
+            BoosterMove.BoosterHp = 100; //각 캐릭터 Hp초기 지정
+            BastionMove.BastionHp = 100; //각 캐릭터 Hp초기 지정
+            SonnyMove.SonnyHp = 100; //각 캐릭터 Hp초기 지정
 
             for (int i = 0; i < 3; i++)
             {
-                Player.Team_Hp[i] = 100;
-                Player.Enemy_Hp[i] = 100;
+                Player.Team_Hp[i] = 100; //팀 Hp 초기 지정
+                Player.Enemy_Hp[i] = 100; //적 Hp 초기 지정
             }
 
-            GameObject.Find("Char").transform.Find("Booster").gameObject.SetActive(true);
-            GameObject.Find("Char").transform.Find("Sonny").gameObject.SetActive(true);
-            GameObject.Find("Char").transform.Find("Bastion").gameObject.SetActive(true);
-            GameObject.Find("Char").transform.Find("Shooter").gameObject.SetActive(true);
-            GameObject.Find("Char").transform.Find("Healer").gameObject.SetActive(true);
+            GameObject.Find("Char").transform.Find("Booster").gameObject.SetActive(true); //비활성화 된 각 ai들을 다시 활성화 시킴
+            GameObject.Find("Char").transform.Find("Sonny").gameObject.SetActive(true); //비활성화 된 각 ai들을 다시 활성화 시킴
+            GameObject.Find("Char").transform.Find("Bastion").gameObject.SetActive(true); //비활성화 된 각 ai들을 다시 활성화 시킴
+            GameObject.Find("Char").transform.Find("Shooter").gameObject.SetActive(true); //비활성화 된 각 ai들을 다시 활성화 시킴
+            GameObject.Find("Char").transform.Find("Healer").gameObject.SetActive(true); //비활성화 된 각 ai들을 다시 활성화 시킴
 
             Player.ba = true;
             Player.bo = true;
@@ -38,47 +38,39 @@ public class Player2 : MonoBehaviour
             Player.sh = true;
             Player.hl = true;
 
-           // GameObject.Find("Player").active = true;
-           // GameObject.Find("Bastion").active = true;
-           // GameObject.Find("Booster").active = true;
-            //GameObject.Find("Shooter").active = true;
-            //GameObject.Find("Healer").active = true;
-            //GameObject.Find("Sonny").active = true;
-
-            
         }
         rb = GetComponent<Rigidbody>();
 
         Player.PlayerPos = gameObject.transform.position;
 
-        if (SelectMng.booster1 == "Team")
-            GameObject.Find("Booster").tag = "Team";
-        else if (SelectMng.booster1 == "Enemy")
-            GameObject.Find("Booster").tag = "Enemy";
+        if (SelectMng.booster1 == "Team") //스테이지2에서 booster을 팀으로 선택했을 때
+            GameObject.Find("Booster").tag = "Team"; //Booster태그 Team저장
+        else if (SelectMng.booster1 == "Enemy") //스테이지2 캐릭터 선택에서 적으로 된 경우
+            GameObject.Find("Booster").tag = "Enemy"; //태그를 Enemy로 저장
 
-        if (SelectMng.bastion1 == "Team")
-            GameObject.Find("Bastion").tag = "Team";
-        else if (SelectMng.bastion1 == "Enemy")
-            GameObject.Find("Bastion").tag = "Enemy";
+        if (SelectMng.bastion1 == "Team") //스테이지2 캐릭터 선택에서 우리 팀으로 된 경우
+            GameObject.Find("Bastion").tag = "Team"; //태그 Team으로 저장
+        else if (SelectMng.bastion1 == "Enemy") //스테이지2 캐릭터 선택에서 적으로 된 경우
+            GameObject.Find("Bastion").tag = "Enemy"; //태그를 Enemy로 저장
 
-        if (SelectMng.healer1 == "Team")
-            GameObject.Find("Healer").tag = "Team";
-        else if (SelectMng.healer1 == "Enemy")
-            GameObject.Find("Healer").tag = "Enemy";
+        if (SelectMng.healer1 == "Team") //스테이지2 캐릭터 선택에서 우리 팀으로 된 경우
+            GameObject.Find("Healer").tag = "Team"; //태그 Team으로 저장
+        else if (SelectMng.healer1 == "Enemy") //스테이지2 캐릭터 선택에서 적으로 된 경우
+            GameObject.Find("Healer").tag = "Enemy"; //태그를 Enemy로 저장
 
-        if (SelectMng.sonny1 == "Team")
-            GameObject.Find("Sonny").tag = "Team";
-        else if (SelectMng.sonny1 == "Enemy")
-            GameObject.Find("Sonny").tag = "Enemy";
+        if (SelectMng.sonny1 == "Team") //스테이지2 캐릭터 선택에서 우리 팀으로 된 경우
+            GameObject.Find("Sonny").tag = "Team"; //태그 Team으로 저장
+        else if (SelectMng.sonny1 == "Enemy") //스테이지2 캐릭터 선택에서 적으로 된 경우
+            GameObject.Find("Sonny").tag = "Enemy"; //태그를 Enemy로 저장
 
-        if (SelectMng.shooter1 == "Team")
-            GameObject.Find("Shooter").tag = "Team";
-        else if (SelectMng.shooter1 == "Enemy")
-            GameObject.Find("Shooter").tag = "Enemy";
+        if (SelectMng.shooter1 == "Team") //스테이지2 캐릭터 선택에서 우리 팀으로 된 경우
+            GameObject.Find("Shooter").tag = "Team"; //태그 Team으로 저장
+        else if (SelectMng.shooter1 == "Enemy") //스테이지2 캐릭터 선택에서 적으로 된 경우
+            GameObject.Find("Shooter").tag = "Enemy"; //태그를 Enemy로 저장
 
-        
 
-        
+
+
     }
 
     // Update is called once per frame
@@ -126,41 +118,41 @@ public class Player2 : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0); //(0, 0, 0)으로 회전
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0); //(0, 180, 0)으로 회전
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
 
-            transform.rotation = Quaternion.Euler(0, -90, 0);
+            transform.rotation = Quaternion.Euler(0, -90, 0); //(0, -90, 0)으로 회전
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.rotation = Quaternion.Euler(0, 90, 0); //(0, 90, 0)으로 회전
         }
+        // 스테이지 2에서 방향키를 이용하여 이동함
 
 
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //스페이스 바를 누르면
         {
             GameObject balloon = GameObject.Instantiate(WaterBalloon)
-               as GameObject;
+               as GameObject; //WaterBalloon을 생성
             b_rb = balloon.GetComponent<Rigidbody>();
             b_rb.isKinematic = false;
             Vector3 v = transform.position;
-            v.x = Mathf.Round(v.x);
-            v.y = 0.8f;
-            v.z = Mathf.Round(v.z);
+            v.x = Mathf.Round(v.x); //물풍선 놓는 곳을 정수에 놔두도록 함
+            v.y = 0.8f; //물풍선 생성의 y좌표
+            v.z = Mathf.Round(v.z); //물풍선 놓는 곳을 정수에 놔두도록 함
             balloon.transform.position = v;
         }
 
 
 
     }
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision) //충돌 감지
     {
         if (collision.collider.CompareTag("Cube"))
         {
