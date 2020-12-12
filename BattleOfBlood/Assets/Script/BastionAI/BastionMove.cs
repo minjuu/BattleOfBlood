@@ -373,7 +373,12 @@ public class BastionMove : MonoBehaviour
             }
         }
         return true;*/
-        if (BastionHp >= 5 && BastionHp <= 20) //체력이 거의 안 남았을때 자폭하여 바스티온의 주변으로 물풍선이 8개 생기도록 함
+        if (BastionHp == 0)
+        {
+            gameObject.SetActive(false);
+            return false;
+        }
+        if (BastionHp > 0 && BastionHp <= 20) //체력이 거의 안 남았을때 자폭하여 바스티온의 주변으로 물풍선이 8개 생기도록 함
         {
             GameObject water_balloon1 = GameObject.Instantiate(Prefab_balloon) as GameObject; //풍선1을 생성
             balloon1.x = transform.position.x + 1;
